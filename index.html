@@ -218,6 +218,22 @@
     color: white;
   }
 
+    @media (max-width: 768px) {
+    nav {
+      justify-content: space-between;  /* Assure un espacement entre les éléments */
+      overflow-x: auto;  /* Permet un défilement horizontal si nécessaire */
+    }
+
+    nav a {
+      font-size: 0.8rem;  /* Réduit la taille de la police pour que tout tienne sur la même ligne */
+      padding: 0.5rem;    /* Réduit l'espacement autour des liens */
+    }
+
+    .home {
+      font-size: 0.8rem;
+    }
+  }
+
   </style>
 </head>
 <body>
