@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextStage - Université en France</title>
+  <link rel="icon" href="icons8-airplane-take-off-50.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+  
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+  }
+
+  html::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--background-color);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+  }
+
+  :root {
+    --primary-color: #1e3a8a;
+    --secondary-color: #2563eb;
+    --accent-color: #facc15;
+    --background-color: #f9fafb;
+    --text-color: #1f2937;
+    --light-gray: #e5e7eb;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  body {
+    padding-top: 70px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .home {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+  }
+
+  .home:hover {
+    color: var(--accent-color);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  nav a:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+  }
+
+  .container {
+    max-width: auto;
+    margin: 2.5rem 2rem;
+    padding: 1.1rem;
+    background: var(--background-color);
+    box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .section h3 {
+    padding: 0.8rem 0rem;
+  }
+
+  .section p {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+
+  .highlight {
+    background: #e6f3ff;
+    padding: 1rem;
+    border-left: 5px solid var(--primary-color);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+  }
+
+  ul {
+    margin-left: 1.7rem;
+  }
+
+  ul li {
+    margin-bottom: 0.6rem;
+  }
+
+  .quote {
+    text-align: center;
+    font-style: italic;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    max-width: 800px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding-top: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    line-height: 2rem;
+  }
+
+  .right {
+    font-weight: 600;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--accent-color);
+    margin: 0 0.8rem;
+    font-size: 1.5rem;
+    transition: color 0.4s;
+  }
+
+  footer a:hover {
+    color: white;
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="home"><h1>NextStage</h1></a>
+    <nav class="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="etape.html">Étapes</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div id="universite" class="section">
+      <h2>Les formations proposées par les universités françaises</h2>
+      <p>Les universités françaises offrent une large gamme de formations dans différents domaines d'études, adaptées à tous les types de profils et de carrières. Que vous soyez intéressé par les sciences humaines, les technologies, ou les arts, vous trouverez une formation qui correspond à vos ambitions professionnelles.</p>
+
+      <div class="highlight">
+        <strong>Pourquoi choisir une université française ?</strong>
+        <ul>
+          <li>Une éducation de qualité avec une reconnaissance internationale.</li>
+          <li>Des diplômes accrédités et des partenariats avec des entreprises renommées.</li>
+          <li>Un large choix de spécialités pour développer vos compétences dans divers domaines.</li>
+        </ul>
+      </div>
+
+      <h3>Les principaux types de formations universitaires en France</h3>
+      <p>Les universités françaises offrent plusieurs types de formations, allant des diplômes de premier cycle (licence) aux diplômes de troisième cycle (master et doctorat). Voici les principales formations disponibles :</p>
+
+      <ul>
+        <li><strong>La Licence</strong> (L1, L2, L3) : C'est le premier cycle d'enseignement supérieur, équivalent à un baccalauréat + 3 ans. Elle offre des formations dans de nombreux domaines comme les sciences, les lettres, le droit, l'économie, etc.</li>
+        <li><strong>Le Master</strong> (M1, M2) : Ce diplôme de deuxième cycle permet de se spécialiser dans un domaine précis après avoir obtenu une licence. Il dure généralement 2 ans.</li>
+        <li><strong>Le Doctorat</strong> : Il s'agit d'un diplôme de troisième cycle, axé sur la recherche, qui dure environ 3 ans après un master.</li>
+        <li><strong>Les DUT/BTS</strong> : Ce sont des formations professionnelles courtes (2 ans) qui préparent directement à des métiers techniques ou commerciaux, avec une possibilité de poursuite d'études en licence ou master.</li>
+      </ul>
+      <div class="highlight">
+        <h3>Quelques domaines de formation populaires</h3>
+        <ul>
+          <li><strong>Sciences et Technologies</strong> : Informatique, électronique, biotechnologies, physique, chimie, etc.</li>
+          <li><strong>Sciences humaines et sociales</strong> : Droit, psychologie, sociologie, philosophie, économie.</li>
+          <li><strong>Arts et Lettres</strong> : Littérature, langues étrangères, histoire, arts plastiques, cinéma, design.</li>
+          <li><strong>Économie et Gestion</strong> : Comptabilité, finance, marketing, gestion d'entreprise, ressources humaines.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote" id="quote"></div>
+
+  <footer>
+    <p class="right">© 2025 NextStage. Tous droits réservés.</p>
+    <p>Votre partenaire pour réussir le parcours universitaire en France.</p>
+    <a href="https://www.facebook.com/share/1ENUbPtaJt" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/nexsttage/profilecard/?igsh=MXFkNWRicTc3eTgxZw==" target="_blank"><i class="fab fa-instagram" target="_blank"></i></a>
+    <a href="mailto:nextsttage@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a href="tel:+213559387068" target="_blank"><i class="fas fa-phone-alt"></i></a>
+  </footer>
+  <script>
+    const quotes = [
+      "N'attendez pas que les opportunités viennent à vous, créez-les.",
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Croyez en vos rêves et ils se réaliseront.",
+      "Chaque étape est une opportunité de grandir.",
+      "Rien n'est impossible pour celui qui essaie.",
+      "Le succès appartient à ceux qui croient en la beauté de leurs rêves.",
+      "Ce n’est pas la destination qui compte, mais le chemin parcouru.",
+      "Crois en toi, et tu es déjà à mi-chemin.",
+      "La seule limite à tes rêves, c’est toi-même.",
+      "Rêve grand, travaille dur et reste concentré.",
+      "Fais aujourd’hui ce dont ton futur moi te remerciera.",
+      "Les défis forgent les personnes ordinaires pour des destins extraordinaires.",
+      "Le secret du succès, c’est de commencer.",
+      "Ne t’arrête pas avant d’être fier de toi.",
+      "Il n’est jamais trop tard pour fixer un nouveau but ou rêver un nouveau rêve.",
+      "Si tu peux le rêver, tu peux le faire.",
+      "Le seul moyen de faire du bon travail est d’aimer ce que tu fais.",
+      "L’échec n’est pas une fin, c’est une étape vers le succès.",
+      "Le succès ne vient pas de ce que tu fais parfois, mais de ce que tu fais constamment.",
+      "Le doute tue plus de rêves que l’échec ne le fera jamais.",
+      "N’attends pas que l’opportunité vienne à toi, crée-la.",
+      "Un petit progrès chaque jour mène à de grands résultats.",
+      "Pousse-toi à donner le meilleur, car personne ne le fera pour toi.",
+      "Ce qui semble impossible aujourd’hui sera ta routine demain.",
+      "Travaille dur en silence, laisse ton succès faire le bruit.",
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Poursuis tes rêves, mais souviens-toi toujours du chemin pour rentrer chez toi.",
+      "La discipline, c’est choisir entre ce que tu veux maintenant et ce que tu veux le plus.",
+      "Tu n’es pas venu aussi loin pour t’arrêter maintenant.",
+      "Fais ce que tu peux avec ce que tu as, là où tu es.",
+      "Les opportunités ne se présentent pas, elles se créent.",
+      "Commence là où tu es. Utilise ce que tu as. Fais ce que tu peux.",
+      "Le succès arrive souvent à ceux qui sont trop occupés pour le chercher.",
+      "Les grandes choses ne se font pas par impulsion, mais par une série de petites actions réunies.",
+      "Reste fidèle à tes décisions, mais sois flexible dans ton approche.",
+      "Le succès, c’est aller d’échec en échec sans perdre son enthousiasme.",
+      "Ne regarde pas l’horloge, fais comme elle : avance.",
+      "La meilleure façon de prédire l’avenir, c’est de le créer.",
+      "Travaille dur jusqu’à ce que ton nom parle pour toi.",
+      "Ta vie ne s’améliore pas par hasard, elle s’améliore par le changement.",
+      "Ce n’est pas le poids qui te brise, c’est la façon dont tu le portes.",
+      "Le succès, c’est faire des choses ordinaires de façon extraordinaire.",
+      "L’action est la clé fondamentale de tout succès.",
+      "Plus tu travailles dur pour quelque chose, plus tu seras fier quand tu l’obtiendras.",
+      "Ne limite pas tes défis. Défie tes limites."
+    ];
+    
+    const quoteElement = document.getElementById('quote');
+    let currentIndex = 10;
+  
+    function changeQuote() {
+      quoteElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        quoteElement.textContent = quotes[currentIndex];
+  
+        quoteElement.style.opacity = '1';
+      }, 500);
+    }
+    
+    quoteElement.textContent = quotes[currentIndex];
+    
+    setInterval(changeQuote, 5000);
+  
+  </script>
+</body>
+</html>

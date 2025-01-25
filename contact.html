@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextStage - Contact</title>
+  <link rel="icon" href="icons8-airplane-take-off-50.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+  }
+
+  html::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--background-color);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+  }
+
+  :root {
+    --primary-color: #1e3a8a;
+    --secondary-color: #2563eb;
+    --accent-color: #facc15;
+    --background-color: #f9fafb;
+    --text-color: #1f2937;
+    --light-gray: #e5e7eb;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  body {
+    padding-top: 70px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .home {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+  }
+
+  .home:hover {
+    color: var(--accent-color);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  nav a:hover {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+  }
+
+  .a-propos {
+    text-align: center;
+    padding: 3rem 3.5rem;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .a-propos h2, .contactez-nous h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+  }
+
+  .a-propos fieldset, .contactez-nous fieldset {
+    border: 2px solid var(--light-gray);
+    border-radius: 10px; 
+    padding: 1.5rem;
+    background-color: var(--background-color);
+    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .a-propos p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.8;
+  }
+
+  hr {
+    border: 2px solid var(--accent-color);
+    margin: 0 auto;
+    max-width: 15rem;
+    border-radius: 5rem;
+  }
+
+  .contactez-nous {
+    text-align: left;
+    padding: 3rem 3.5rem;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  h3 {
+    color: var(--secondary-color);
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .first {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.8rem;
+  }
+
+  .infos {
+    padding-top: 1.8rem;
+    padding-bottom: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .direct {
+    text-decoration: none;
+    font-style: italic;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin: 2px;
+  }
+
+  .quote {
+    text-align: center;
+    font-style: italic;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    max-width: 800px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+
+  footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding-top: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    line-height: 2rem;
+  }
+
+  .right {
+    font-weight: 600;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: var(--accent-color);
+    margin: 0 0.8rem;
+    font-size: 1.5rem;
+    transition: color 0.4s;
+  }
+
+  footer a:hover {
+    color: white;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="home"><h1>NextStage</h1></a>
+    <nav class="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="etape.html">Étapes</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="a-propos">
+    <h2>À Propos De NextStage</h2>
+    <section class="a-propos-text">
+      <fieldset>
+        <p><strong>NextStage </strong>simplifie votre parcours <i>Campus France.</i> De la préparation au TCF à la soumission de votre dossier, nous vous guidons à chaque étape pour réussir vos études en France. Notre mission : vous offrir un accompagnement personnalisé et vous aider à franchir les étapes clés avec confiance. Prêt à réaliser votre rêve d'étudier en France ? <strong>NextStage </strong>est là pour vous.</p>
+      </fieldset>
+    </section>
+  </div>
+
+  <hr>
+
+  <div class="contactez-nous">
+    <h2>Contactez-nous</h2>
+    <section class="info-contact">
+      <fieldset>
+        <h3>Informations de contact</h3>
+        <div class="first">
+          <p>Vous avez des questions ou besoin d'aide ? Notre équipe est à votre disposition pour vous accompagner. Vous pouvez nous joindre via nos réseaux sociaux ci-dessous ou découvrir nos ressources pour plus d'informations :</p>
+        </div>
+        <div class="infos">
+          <p><i>Email : </i><a href="mailto:nextsttage@gmail.com" class="direct">nextsttage@gmail.com</a></p>
+          <p><i>Téléphone : </i><a href="tel:+213559387068" class="direct">+213 559 38 70 68</a></p>
+        </div>
+        <p class="first">Nous sommes à votre écoute du Samedi au Jeudi, de 9h à 20h.</p>
+      </fieldset>
+    </section>
+  </div>
+
+  <div class="quote" id="quote"></div>
+
+  <footer>
+    <p class="right">© 2025 NextStage. Tous droits réservés.</p>
+    <p>Votre partenaire pour réussir le parcours Campus France.</p>
+    <a href="https://www.facebook.com/share/1ENUbPtaJt" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/nexsttage/profilecard/?igsh=MXFkNWRicTc3eTgxZw==" target="_blank"><i class="fab fa-instagram" target="_blank"></i></a>
+    <a href="mailto:nextsttage@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    <a href="tel:+213559387068" target="_blank"><i class="fas fa-phone-alt"></i></a>
+  </footer>
+  <script>
+    const quotes = [
+      "N'attendez pas que les opportunités viennent à vous, créez-les.",
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Croyez en vos rêves et ils se réaliseront.",
+      "Chaque étape est une opportunité de grandir.",
+      "Rien n'est impossible pour celui qui essaie.",
+      "Le succès appartient à ceux qui croient en la beauté de leurs rêves.",
+      "Ce n’est pas la destination qui compte, mais le chemin parcouru.",
+      "Crois en toi, et tu es déjà à mi-chemin.",
+      "La seule limite à tes rêves, c’est toi-même.",
+      "Rêve grand, travaille dur et reste concentré.",
+      "Fais aujourd’hui ce dont ton futur moi te remerciera.",
+      "Les défis forgent les personnes ordinaires pour des destins extraordinaires.",
+      "Le secret du succès, c’est de commencer.",
+      "Ne t’arrête pas avant d’être fier de toi.",
+      "Il n’est jamais trop tard pour fixer un nouveau but ou rêver un nouveau rêve.",
+      "Si tu peux le rêver, tu peux le faire.",
+      "Le seul moyen de faire du bon travail est d’aimer ce que tu fais.",
+      "L’échec n’est pas une fin, c’est une étape vers le succès.",
+      "Le succès ne vient pas de ce que tu fais parfois, mais de ce que tu fais constamment.",
+      "Le doute tue plus de rêves que l’échec ne le fera jamais.",
+      "N’attends pas que l’opportunité vienne à toi, crée-la.",
+      "Un petit progrès chaque jour mène à de grands résultats.",
+      "Pousse-toi à donner le meilleur, car personne ne le fera pour toi.",
+      "Ce qui semble impossible aujourd’hui sera ta routine demain.",
+      "Travaille dur en silence, laisse ton succès faire le bruit.",
+      "Le succès est la somme de petits efforts répétés jour après jour.",
+      "Poursuis tes rêves, mais souviens-toi toujours du chemin pour rentrer chez toi.",
+      "La discipline, c’est choisir entre ce que tu veux maintenant et ce que tu veux le plus.",
+      "Tu n’es pas venu aussi loin pour t’arrêter maintenant.",
+      "Fais ce que tu peux avec ce que tu as, là où tu es.",
+      "Les opportunités ne se présentent pas, elles se créent.",
+      "Commence là où tu es. Utilise ce que tu as. Fais ce que tu peux.",
+      "Le succès arrive souvent à ceux qui sont trop occupés pour le chercher.",
+      "Les grandes choses ne se font pas par impulsion, mais par une série de petites actions réunies.",
+      "Reste fidèle à tes décisions, mais sois flexible dans ton approche.",
+      "Le succès, c’est aller d’échec en échec sans perdre son enthousiasme.",
+      "Ne regarde pas l’horloge, fais comme elle : avance.",
+      "La meilleure façon de prédire l’avenir, c’est de le créer.",
+      "Travaille dur jusqu’à ce que ton nom parle pour toi.",
+      "Ta vie ne s’améliore pas par hasard, elle s’améliore par le changement.",
+      "Ce n’est pas le poids qui te brise, c’est la façon dont tu le portes.",
+      "Le succès, c’est faire des choses ordinaires de façon extraordinaire.",
+      "L’action est la clé fondamentale de tout succès.",
+      "Plus tu travailles dur pour quelque chose, plus tu seras fier quand tu l’obtiendras.",
+      "Ne limite pas tes défis. Défie tes limites."
+    ];
+    
+    const quoteElement = document.getElementById('quote');
+    let currentIndex = 12;
+
+    function changeQuote() {
+      quoteElement.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentIndex = (currentIndex + 1) % quotes.length;
+        quoteElement.textContent = quotes[currentIndex];
+
+        quoteElement.style.opacity = '1';
+      }, 500);
+    }
+    
+    quoteElement.textContent = quotes[currentIndex];
+    
+    setInterval(changeQuote, 5000);
+
+  </script>
+</body>
+</html>
