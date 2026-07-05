@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement - NextStage</title>
+  <meta name="description" content="Finalise ton paiement NextStage via BaridiMob ou CCP">
+  <link rel="icon" type="image/png" href="favicon-paiement.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #09090b;
+      --bg-card:   #111318;
+      --bg-card-2: #0d0f14;
+      --bg-subtle: #16191f;
+      --border:    rgba(255,255,255,0.07);
+      --border-2:  rgba(255,255,255,0.13);
+      --text:      #F9FAFB;
+      --text-2:    #6B7280;
+      --text-dim:  #4B5563;
+      --copper:    #2563EB;
+      --copper-2:  #1E40AF;
+      --copper-bg: rgba(37,99,235,0.1);
+      --amber:     #FACC15;
+      --amber-bg:  rgba(250,204,21,0.08);
+      --green:     #22c55e;
+      --green-bg:  rgba(34,197,94,0.1);
+      --green-border: rgba(34,197,94,0.25);
+      --red:       #ef4444;
+      --red-bg:    rgba(239,68,68,0.1);
+      --red-border: rgba(239,68,68,0.25);
+      --orange:    #f59e0b;
+      --orange-bg: rgba(245,158,11,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse 70% 40% at 50% -5%, rgba(37,99,235,0.10), transparent);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 10px; }
+
+    /* NAV */
+    nav {
+      background: rgba(17,19,24,0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text); }
+    .nav-logo em { color: var(--copper); font-style: normal; }
+    .nav-back {
+      font-size: 0.85rem; color: var(--text-2); text-decoration: none;
+      display: flex; align-items: center; gap: 6px; transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* LAYOUT */
+    .page { max-width: 1020px; margin: 0 auto; padding: 2.5rem 5% 5rem; }
+    .page-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper); background: var(--copper-bg);
+      border: 1px solid rgba(37,99,235,0.2);
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 0.9rem;
+    }
+    .page-title { font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .page-sub { color: var(--text-2); font-size: 0.95rem; margin-bottom: 2.5rem; max-width: 560px; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+    @media(max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+
+    /* PACK SELECTOR */
+    .pack-selector { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .pack-option {
+      border: 1.5px solid var(--border-2); border-radius: 14px;
+      padding: 1.1rem 1.25rem; cursor: pointer; transition: all .2s;
+      background: var(--bg-subtle); display: flex; align-items: center; gap: 1rem;
+    }
+    .pack-option:hover { border-color: rgba(37,99,235,0.4); }
+    .pack-option.selected { border-color: var(--copper); background: var(--copper-bg); }
+    .pack-option input[type=radio] { display: none; }
+    .pack-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid var(--border-2); flex-shrink: 0; transition: all .2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pack-option.selected .pack-dot { border-color: var(--copper); background: var(--copper); }
+    .pack-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: white; display: none; }
+    .pack-option.selected .pack-dot::after { display: block; }
+    .pack-info { flex: 1; }
+    .pack-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    .pack-desc { font-size: 0.8rem; color: var(--text-2); margin-top: 2px; }
+    .pack-price { font-weight: 800; font-size: 1.1rem; color: var(--copper); white-space: nowrap; }
+    .pack-popular {
+      background: var(--amber); color: #1a1a1a; font-size: 0.65rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px; margin-left: 8px;
+    }
+
+    /* UPGRADE CHECKBOX */
+    .upgrade-box {
+      display: none;
+      align-items: flex-start; gap: 0.875rem;
+      margin-top: 1rem; padding: 1rem 1.1rem;
+      background: linear-gradient(135deg, rgba(250,204,21,0.06), rgba(250,204,21,0.03));
+      border: 1.5px solid rgba(250,204,21,0.2);
+      border-radius: 14px; cursor: pointer;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+    }
+    .upgrade-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(250,204,21,0.4), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .upgrade-box:hover {
+      border-color: rgba(250,204,21,0.45);
+      background: linear-gradient(135deg, rgba(250,204,21,0.09), rgba(250,204,21,0.04));
+      box-shadow: 0 4px 20px rgba(250,204,21,0.08);
+    }
+    .upgrade-box:hover::before { opacity: 1; }
+    .upgrade-box.show { display: flex; }
+
+    /* Case à cocher custom */
+    .upgrade-box input[type=checkbox] { display: none; }
+    .upgrade-checkbox-custom {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
+      border-radius: 7px;
+      border: 2px solid rgba(250,204,21,0.35);
+      background: rgba(250,204,21,0.06);
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s; cursor: pointer;
+    }
+    .upgrade-checkbox-custom svg {
+      opacity: 0; transform: scale(0.5);
+      transition: all .2s cubic-bezier(.16,1,.3,1);
+      color: #1a1a1a;
+    }
+    .upgrade-box input[type=checkbox]:checked ~ * .upgrade-checkbox-custom,
+    .upgrade-box.checked .upgrade-checkbox-custom {
+      background: var(--amber);
+      border-color: var(--amber);
+      box-shadow: 0 0 12px rgba(250,204,21,0.3);
+    }
+    .upgrade-box input[type=checkbox]:checked ~ * .upgrade-checkbox-custom svg,
+    .upgrade-box.checked .upgrade-checkbox-custom svg {
+      opacity: 1; transform: scale(1);
+    }
+
+    .upgrade-box-text { font-size: 0.875rem; color: var(--text); line-height: 1.5; font-weight: 500; }
+    .upgrade-box-text strong { color: var(--amber); font-weight: 700; }
+    .upgrade-box-sub { font-size: 0.76rem; color: var(--text-2); margin-top: 3px; line-height: 1.5; }
+
+    .upgrade-price-tag {
+      display: none; align-items: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--amber);
+      background: rgba(250,204,21,0.1);
+      border: 1px solid rgba(250,204,21,0.25);
+      padding: 5px 12px; border-radius: 8px;
+      margin-top: 0.7rem; width: fit-content;
+    }
+    .upgrade-price-tag.show { display: flex; }
+    .upgrade-price-tag .old-price {
+      text-decoration: line-through;
+      color: var(--text-dim); font-weight: 500;
+    }
+    .upgrade-price-tag .new-price {
+      font-size: 1rem;
+    }
+
+    /* CARD */
+    .card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem; margin-bottom: 1.5rem;
+    }
+    .card-title {
+      font-weight: 700; font-size: 1rem; margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-num {
+      width: 24px; height: 24px; background: var(--copper); color: white;
+      border-radius: 50%; font-size: 0.72rem; font-weight: 700;
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    /* RIP BOX */
+    .rip-box {
+      background: var(--copper-bg); border: 1.5px solid rgba(37,99,235,0.25);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    }
+    .rip-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #60a5fa; margin-bottom: 0.5rem; }
+    .rip-value { font-family: 'Courier New', monospace; font-size: 1.2rem; font-weight: 700; color: var(--text); letter-spacing: 0.05em; word-break: break-all; }
+    .rip-name { font-size: 0.82rem; color: var(--text-2); margin-top: 4px; }
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--copper); color: white; border: none;
+      padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; margin-top: 0.75rem; transition: background .2s; font-family: inherit;
+    }
+    .copy-btn:hover { background: var(--copper-2); }
+    .copy-btn.copied { background: var(--green); }
+
+    .amount-display {
+      text-align: center; padding: 1.25rem; background: var(--bg-subtle);
+      border-radius: 10px; margin-bottom: 1rem; border: 1px dashed var(--border-2);
+    }
+    .amount-num { font-size: 2rem; font-weight: 800; color: var(--text); }
+    .amount-note { font-size: 0.78rem; color: var(--text-2); margin-top: 4px; }
+    .amount-warn {
+      font-size: 0.78rem; color: var(--amber);
+      background: var(--amber-bg); border: 1px solid rgba(250,204,21,0.15);
+      border-radius: 6px; padding: 6px 10px; margin-top: 8px;
+    }
+
+    .steps-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .step-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; }
+    .step-n {
+      width: 22px; height: 22px; background: var(--bg-subtle); border: 1px solid var(--border-2);
+      color: var(--text); border-radius: 50%; font-size: 0.7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .step-txt { color: var(--text-2); line-height: 1.5; }
+    .step-txt strong { font-weight: 600; color: var(--text); }
+
+    /* FORM */
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-2);
+      border-radius: 10px; font-size: 0.9rem; font-family: inherit;
+      color: var(--text); background: var(--bg-subtle); transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .field input::placeholder, .field select { color: var(--text-dim); }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--copper); box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .field input.error, .field select.error { border-color: var(--red); }
+    .field-hint { font-size: 0.75rem; color: var(--text-2); margin-top: 4px; }
+    .field-error { font-size: 0.75rem; color: var(--red); margin-top: 4px; display: none; }
+    .field input.error + .field-error, .field select.error + .field-error,
+    .field input.error ~ .field-error { display: block; }
+
+    /* UPLOAD */
+    .upload-zone {
+      border: 2px dashed var(--border-2); border-radius: 12px; padding: 2rem;
+      text-align: center; cursor: pointer; transition: all .2s; background: var(--bg-subtle);
+    }
+    .upload-zone:hover, .upload-zone.drag { border-color: var(--copper); background: var(--copper-bg); }
+    .upload-zone.has-file { border-color: var(--green); background: var(--green-bg); }
+    .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .upload-txt { font-size: 0.875rem; color: var(--text-2); }
+    .upload-txt strong { color: var(--copper); }
+    .upload-zone.has-file .upload-txt { color: var(--green); }
+    .upload-zone.has-file .upload-txt strong { color: var(--green); }
+    .upload-preview { max-width: 100%; max-height: 220px; border-radius: 8px; margin-top: 1rem; display: none; border: 1px solid var(--border-2); }
+    #receiptInput { display: none; }
+    .upload-compress-note { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem; text-align: center; }
+
+    /* SUBMIT */
+    .submit-btn {
+      width: 100%; padding: 1rem; background: var(--copper); color: white;
+      border: none; border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .submit-btn:hover { background: var(--copper-2); transform: translateY(-1px); }
+    .submit-btn:disabled { background: var(--bg-subtle); color: var(--text-dim); cursor: not-allowed; transform: none; border: 1px solid var(--border-2); }
+    .submit-btn .spinner {
+      width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white; border-radius: 50%; animation: spin .7s linear infinite; display: none;
+    }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-txt { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .form-privacy { font-size: 0.75rem; color: var(--text-2); text-align: center; margin-top: 0.75rem; }
+
+    /* SUCCESS */
+    .success-screen { display: none; text-align: center; padding: 3rem 1.5rem; }
+    .success-screen.active { display: block; }
+    .success-circle {
+      width: 64px; height: 64px; background: var(--green-bg); border: 1px solid var(--green-border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem; margin: 0 auto 1.5rem;
+    }
+    .success-screen h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .success-screen p { color: var(--text-2); font-size: 0.9rem; max-width: 400px; margin: 0 auto 2rem; line-height: 1.6; }
+    .success-steps { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; text-align: left; margin-bottom: 2rem; }
+    .success-step { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; padding: 6px 0; color: var(--text); }
+    .ss-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; margin-top: 6px; }
+    .btn-wa {
+      display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: white;
+      padding: 0.85rem 1.75rem; border-radius: 10px; font-weight: 700; text-decoration: none;
+      font-size: 0.9rem; transition: all .2s;
+    }
+    .btn-wa:hover { background: #1da851; transform: translateY(-1px); }
+
+    /* ALERTS */
+    .alert { padding: 0.875rem 1rem; border-radius: 10px; font-size: 0.875rem; margin-bottom: 1rem; border: 1px solid transparent; }
+    .alert-info { background: var(--copper-bg); border-color: rgba(37,99,235,0.2); color: #93c5fd; }
+    .alert-info a { color: #bfdbfe; }
+    .alert-warn { background: var(--amber-bg); border-color: rgba(250,204,21,0.18); color: var(--amber); }
+    .alert-warn a { color: var(--amber); }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      padding: 1rem 1.25rem; margin-bottom: 2rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; font-size: 0.8rem; color: var(--text-2);
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; }
+    .trust-item svg { color: var(--green); flex-shrink: 0; }
+    /* Lucide icons sizing */
+    .lucide { width: 1em; height: 1em; vertical-align: -0.15em; flex-shrink: 0; stroke-width: 2; }
+    .alert .lucide, .alert-info .lucide, .alert-warn .lucide { width: 1rem; height: 1rem; vertical-align: -0.2em; opacity: 0.85; }
+    .amount-warn .lucide { width: 0.9rem; height: 0.9rem; vertical-align: -0.15em; }
+    .form-privacy .lucide { width: 0.85rem; height: 0.85rem; vertical-align: -0.1em; opacity: 0.7; }
+    .upload-icon .lucide { width: 2rem; height: 2rem; vertical-align: middle; opacity: 0.6; }
+    .success-circle .lucide { width: 2rem; height: 2rem; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Next<em>Stage</em></a>
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Retour au site
+  </a>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <span class="page-eyebrow">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    Paiement sécurisé
+  </span>
+  <h1 class="page-title">Finalise ton paiement</h1>
+  <p class="page-sub">Choisis ton pack, effectue le virement, et envoie-nous la confirmation. Tu recevras ton accès sous 24h.</p>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      Validation manuelle sous 24h
+    </div>
+    <div class="trust-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      Suivi par Rayan en personne
+    </div>
+    <div class="trust-item">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      Données confidentielles
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <!-- COLONNE GAUCHE : Instructions -->
+    <div>
+
+      <!-- SÉLECTEUR DE PACK -->
+      <div class="card">
+        <div class="card-title"><span class="card-num">1</span> Choisis ton pack</div>
+        <div class="pack-selector">
+          <label class="pack-option" id="packEssentiel" onclick="selectPack('essentiel', 0)">
+            <input type="radio" name="pack" value="essentiel">
+            <div class="pack-dot"></div>
+            <div class="pack-info">
+              <div class="pack-name">Essentiel</div>
+              <div class="pack-desc">Guide + ressources de base</div>
+            </div>
+            <div class="pack-price">Gratuit</div>
+          </label>
+          <label class="pack-option selected" id="packStandard" onclick="selectPack('standard', 9950)">
+            <input type="radio" name="pack" value="standard" checked>
+            <div class="pack-dot"></div>
+            <div class="pack-info">
+              <div class="pack-name">Standard <span class="pack-popular">Le + choisi</span></div>
+              <div class="pack-desc">Pack complet + espace membre</div>
+            </div>
+            <div class="pack-price">9 950 DA</div>
+          </label>
+          <label class="pack-option" id="packPremium" onclick="selectPack('premium', 29950)">
+            <input type="radio" name="pack" value="premium">
+            <div class="pack-dot"></div>
+            <div class="pack-info">
+              <div class="pack-name">Premium</div>
+              <div class="pack-desc">Suivi personnalisé + WhatsApp prioritaire</div>
+            </div>
+            <div class="pack-price">29 950 DA</div>
+          </label>
+        </div>
+        <div class="alert alert-warn" id="gratuitAlert" style="display:none; margin-top: 1rem;">
+          Le pack Essentiel est gratuit - <a href="index.html#diagnostic" style="font-weight:700">remplis le formulaire de diagnostic</a> pour y accéder directement.
+        </div>
+
+        <label class="upgrade-box" id="upgradeBox" onclick="onUpgradeToggle()">
+          <input type="checkbox" id="upgradeCheckbox">
+          <div class="upgrade-checkbox-custom">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="upgrade-box-text">Je suis déjà client <strong>Standard</strong> et je passe au Premium</div>
+            <div class="upgrade-box-sub">Tu ne payes que la différence, pas besoin de repayer le Standard.</div>
+            <div class="upgrade-price-tag" id="upgradePriceTag">
+              <span class="old-price">29 950 DA</span>
+              <span>→</span>
+              <span class="new-price">20 000 DA</span>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- INSTRUCTIONS VIREMENT -->
+      <div class="card" id="paymentInstructions">
+        <div class="card-title"><span class="card-num">2</span> Effectue le virement BaridiMob</div>
+
+        <div class="rip-box">
+          <div class="rip-label">RIP ECCP - Compte bénéficiaire</div>
+          <div class="rip-value" id="ripDisplay">007 99999 0042707371 58</div>
+          <div class="rip-name">M. REMILI RAYAN · El Kseur, Béjaïa</div>
+          <button class="copy-btn" onclick="copyRip(this)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copier le RIP
+          </button>
+        </div>
+
+        <div class="amount-display">
+          <div class="amount-num" id="amountDisplay">9 950 DA</div>
+          <div class="amount-note">Montant exact à virer (ne pas arrondir)</div>
+          <div class="amount-warn"><i data-lucide="triangle-alert"></i> Le montant exact permet de vérifier ton paiement. Ne pas modifier.</div>
+        </div>
+
+        <div class="steps-list">
+          <div class="step-row"><div class="step-n">1</div><div class="step-txt">Ouvre <strong>BaridiMob</strong> sur ton téléphone</div></div>
+          <div class="step-row"><div class="step-n">2</div><div class="step-txt">Va dans <strong>Virement → Vers un compte CCP</strong></div></div>
+          <div class="step-row"><div class="step-n">3</div><div class="step-txt">Entre le RIP : <strong>007 99999 0042707371 58</strong></div></div>
+          <div class="step-row"><div class="step-n">4</div><div class="step-txt">Entre le montant exact : <strong id="stepsAmount">9 950 DA</strong></div></div>
+          <div class="step-row"><div class="step-n">5</div><div class="step-txt"><strong>Prends une capture d'écran</strong> du reçu de confirmation</div></div>
+          <div class="step-row"><div class="step-n">6</div><div class="step-txt">Remplis le formulaire ci-contre et envoie ta capture</div></div>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <i data-lucide="message-circle"></i> Une question sur le paiement ? <a href="https://wa.me/33759804462?text=Salut Rayan, j'ai une question sur le paiement NextStage" target="_blank" style="font-weight:700">Écris sur WhatsApp →</a>
+      </div>
+
+    </div>
+
+    <!-- COLONNE DROITE : Formulaire -->
+    <div>
+      <div class="card">
+        <div class="card-title"><span class="card-num">3</span> Confirme ton paiement</div>
+
+        <form id="paymentForm" novalidate>
+
+          <div class="field">
+            <label>Ton prénom *</label>
+            <input type="text" name="prenom" placeholder="Ex : Yacine" required>
+            <div class="field-error">Ce champ est requis</div>
+          </div>
+
+          <div class="field">
+            <label>Ton WhatsApp (avec +213) *</label>
+            <input type="tel" name="whatsapp" placeholder="+213 6XX XXX XXX" required>
+            <div class="field-hint">On te contacte ici pour confirmer ton accès</div>
+            <div class="field-error">Ce champ est requis</div>
+          </div>
+
+          <div class="field">
+            <label>Ton email *</label>
+            <input type="email" name="email" placeholder="ton@email.com" required>
+            <div class="field-hint">Pour recevoir ton accès et les ressources</div>
+            <div class="field-error">Email invalide</div>
+          </div>
+
+          <div class="field">
+            <label>Numéro de référence BaridiMob *</label>
+            <input type="text" name="reference" placeholder="Ex : TRF2026XXXXXXXX" required>
+            <div class="field-hint">Le code unique visible sur ton reçu de virement</div>
+            <div class="field-error">Ce champ est requis</div>
+          </div>
+
+          <div class="field">
+            <label>Capture d'écran du reçu *</label>
+            <div class="upload-zone" id="uploadZone" onclick="document.getElementById('receiptInput').click()">
+              <div class="upload-icon"><i data-lucide="camera"></i></div>
+              <div class="upload-txt"><strong>Clique pour uploader</strong> ou glisse ta capture ici</div>
+            </div>
+            <input type="file" id="receiptInput" name="receipt" accept="image/*">
+            <img id="uploadPreview" class="upload-preview" alt="Aperçu du reçu">
+            <div class="field-error" id="uploadError">Merci d'ajouter une capture d'écran</div>
+            <div class="upload-compress-note" id="compressNote"></div>
+          </div>
+
+          <input type="hidden" name="pack" id="hiddenPack" value="standard">
+          <input type="hidden" name="montant" id="hiddenMontant" value="9950">
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <div class="spinner"></div>
+            <span class="btn-txt">Envoyer ma confirmation →</span>
+          </button>
+          <p class="form-privacy"><i data-lucide="lock"></i> Tes informations sont confidentielles et sécurisées</p>
+        </form>
+
+        <!-- SUCCESS -->
+        <div class="success-screen" id="successScreen">
+          <div class="success-circle"><i data-lucide="check-circle-2"></i></div>
+          <h2>Confirmation reçue !</h2>
+          <p>Je vais vérifier ton virement et t'envoyer ton accès sur WhatsApp sous <strong>24h maximum</strong>.</p>
+          <div class="success-steps">
+            <div class="success-step"><div class="ss-dot"></div><span>Tu recevras un message WhatsApp de Rayan pour confirmer</span></div>
+            <div class="success-step"><div class="ss-dot"></div><span>Ton accès sera activé dès validation du paiement</span></div>
+            <div class="success-step"><div class="ss-dot"></div><span>Les ressources arriveront par email</span></div>
+          </div>
+          <a href="https://wa.me/33759804462" target="_blank" class="btn-wa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+            Écrire à Rayan sur WhatsApp
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+  lucide.createIcons();
+</script>
+
+<script>
+/* ═══════════════════════════════════
+   CONFIG
+═══════════════════════════════════ */
+const SUPABASE_URL = 'https://xrxlteycmcmztdqscfeq.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyeGx0ZXljbWNtenRkcXNjZmVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDk5NDUsImV4cCI6MjA5Njc4NTk0NX0.nW_isNhNwAjWdzahAsccVE6kPsAJR2_ZBdTT6iDFh-s';
+const NOTIFY_URL = `${SUPABASE_URL}/functions/v1/notify-lead`;
+
+const PACKS = {
+  essentiel: { label: 'Essentiel', price: 0, amount: 0 },
+  standard:  { label: 'Standard',  price: 9950, amount: 9950 },
+  premium:   { label: 'Premium',   price: 29950, amount: 29950 },
+};
+const PREMIUM_UPGRADE_AMOUNT = 20000; // 29 950 - 9 950, pour les clients Standard existants
+
+let currentPack = 'standard';
+let isUpgrade = false;
+
+/* ═══════════════════════════════════
+   PACK SELECTOR
+═══════════════════════════════════ */
+function selectPack(pack, amount) {
+  currentPack = pack;
+  document.querySelectorAll('.pack-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById('pack' + pack.charAt(0).toUpperCase() + pack.slice(1))?.classList.add('selected');
+
+  const instructions = document.getElementById('paymentInstructions');
+  const gratuitAlert = document.getElementById('gratuitAlert');
+  const upgradeBox = document.getElementById('upgradeBox');
+  const upgradeCheckbox = document.getElementById('upgradeCheckbox');
+
+  // La case "upgrade" n'a de sens que pour le pack Premium
+  if (pack === 'premium') {
+    upgradeBox.classList.add('show');
+  } else {
+    upgradeBox.classList.remove('show');
+    upgradeCheckbox.checked = false;
+    isUpgrade = false;
+    document.getElementById('upgradePriceTag').classList.remove('show');
+  }
+
+  if (pack === 'essentiel') {
+    instructions.style.display = 'none';
+    gratuitAlert.style.display = 'block';
+    document.getElementById('submitBtn').disabled = true;
+  } else {
+    instructions.style.display = 'block';
+    gratuitAlert.style.display = 'none';
+    document.getElementById('submitBtn').disabled = false;
+    applyAmount(pack === 'premium' && isUpgrade ? PREMIUM_UPGRADE_AMOUNT : amount);
+  }
+
+  document.getElementById('hiddenPack').value = pack;
+}
+
+function applyAmount(amount) {
+  const fmt = amount.toLocaleString('fr-DZ') + ' DA';
+  document.getElementById('amountDisplay').textContent = fmt;
+  document.getElementById('stepsAmount').textContent = fmt;
+  document.getElementById('hiddenMontant').value = amount;
+}
+
+/* ═══════════════════════════════════
+   UPGRADE STANDARD → PREMIUM
+═══════════════════════════════════ */
+function onUpgradeToggle() {
+  const checkbox = document.getElementById('upgradeCheckbox');
+  const box = document.getElementById('upgradeBox');
+  checkbox.checked = !checkbox.checked;
+  isUpgrade = checkbox.checked;
+  box.classList.toggle('checked', isUpgrade);
+  document.getElementById('upgradePriceTag').classList.toggle('show', isUpgrade);
+  applyAmount(isUpgrade ? PREMIUM_UPGRADE_AMOUNT : PACKS.premium.amount);
+}
+
+/* ═══════════════════════════════════
+   COPY RIP
+═══════════════════════════════════ */
+function copyRip(btn) {
+  navigator.clipboard.writeText('00799999004270737158').then(() => {
+    btn.classList.add('copied');
+    btn.textContent = '✓ Copié !';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copier le RIP`;
+    }, 2500);
+  });
+}
+
+/* ═══════════════════════════════════
+   UPLOAD (avec compression auto)
+═══════════════════════════════════ */
+const uploadZone = document.getElementById('uploadZone');
+const receiptInput = document.getElementById('receiptInput');
+const preview = document.getElementById('uploadPreview');
+const compressNote = document.getElementById('compressNote');
+let receiptBase64 = null;
+let receiptMime = null;
+
+receiptInput.addEventListener('change', handleFile);
+
+uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if (file) processFile(file);
+});
+
+function handleFile(e) { if (e.target.files[0]) processFile(e.target.files[0]); }
+
+function processFile(file) {
+  if (!file.type.startsWith('image/')) { alert('Merci d\'uploader une image (JPG, PNG, etc.)'); return; }
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      // Redimensionne pour rester sous ~1MB en base64
+      const MAX_DIM = 1280;
+      let { width, height } = img;
+      if (width > MAX_DIM || height > MAX_DIM) {
+        const ratio = Math.min(MAX_DIM / width, MAX_DIM / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      receiptBase64 = dataUrl.split(',')[1];
+      receiptMime = 'image/jpeg';
+
+      preview.src = dataUrl;
+      preview.style.display = 'block';
+      uploadZone.classList.add('has-file');
+      uploadZone.classList.remove('error');
+      document.getElementById('uploadError').style.display = 'none';
+      uploadZone.querySelector('.upload-txt').innerHTML = `✓ <strong>${file.name}</strong> chargée`;
+
+      const sizeKb = Math.round((receiptBase64.length * 0.75) / 1024);
+      compressNote.textContent = `Image optimisée (~${sizeKb} Ko)`;
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ═══════════════════════════════════
+   FORM SUBMIT
+═══════════════════════════════════ */
+document.getElementById('paymentForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (currentPack === 'essentiel') return;
+
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  let valid = true;
+
+  // Validation
+  form.querySelectorAll('input[required]').forEach(el => {
+    const empty = !el.value.trim();
+    el.classList.toggle('error', empty);
+    if (empty) { valid = false; }
+  });
+
+  // Validation email simple
+  const emailEl = form.querySelector('[name=email]');
+  if (emailEl.value.trim() && !/^\S+@\S+\.\S+$/.test(emailEl.value.trim())) {
+    emailEl.classList.add('error');
+    valid = false;
+  }
+
+  // Validation reçu
+  document.getElementById('uploadError').style.display = 'none';
+  uploadZone.classList.remove('error');
+  if (!receiptBase64) {
+    uploadZone.style.borderColor = 'var(--red)';
+    document.getElementById('uploadError').style.display = 'block';
+    valid = false;
+  } else {
+    uploadZone.style.borderColor = '';
+  }
+
+  if (!valid) return;
+
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  const payload = {
+    prenom:    form.querySelector('[name=prenom]').value.trim(),
+    whatsapp:  form.querySelector('[name=whatsapp]').value.trim(),
+    email:     form.querySelector('[name=email]').value.trim(),
+    reference: form.querySelector('[name=reference]').value.trim(),
+    pack:      currentPack,
+    montant:   currentPack === 'premium' && isUpgrade ? PREMIUM_UPGRADE_AMOUNT : PACKS[currentPack].amount,
+    is_upgrade: currentPack === 'premium' && isUpgrade,
+    receipt_b64:  receiptBase64,
+    receipt_mime: receiptMime,
+    status:    'pending',
+    created_at: new Date().toISOString(),
+  };
+
+  try {
+    // Enregistrer dans Supabase
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/payments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=representation'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) throw new Error('Erreur Supabase');
+
+    // Notif email via Edge Function
+    fetch(NOTIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${SUPABASE_KEY}` },
+      body: JSON.stringify({ type: 'payment', record: payload })
+    }).catch(() => {});
+
+    // Afficher succès
+    form.style.display = 'none';
+    document.getElementById('successScreen').classList.add('active');
+
+  } catch (err) {
+    console.error(err);
+    alert('Erreur réseau. Envoie ta capture directement sur WhatsApp : wa.me/33759804462');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
+});
+
+/* Clear errors on input */
+document.querySelectorAll('input').forEach(el => {
+  el.addEventListener('input', () => el.classList.remove('error'));
+});
+
+/* Lire ?pack= dans l'URL et présélectionner le bon pack */
+(function() {
+  const param = new URLSearchParams(window.location.search).get('pack');
+  if (param === 'premium')   selectPack('premium',   29950);
+  else if (param === 'standard') selectPack('standard', 9950);
+  else if (param === 'essentiel') selectPack('essentiel', 0);
+})();
+</script>
+</body>
+</html>
