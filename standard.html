@@ -647,6 +647,53 @@
     .student-page .btn-premium:hover { background: #fde047; transform: translateY(-1px); box-shadow: 0 6px 28px rgba(250,204,21,0.3); }
 
     /* ── TOAST ── */
+    /* ── MODALE ONBOARDING ── */
+    .student-page .onboard-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .student-page .onboard-box {
+      background: var(--bg-2); border: 1px solid var(--border-2);
+      border-radius: 20px; padding: 2rem 1.75rem;
+      width: 100%; max-width: 400px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      animation: tabIn .35s var(--ease);
+    }
+    .student-page .onboard-ico {
+      width: 48px; height: 48px; border-radius: 12px; margin-bottom: 1rem;
+      background: var(--blue-bg); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .student-page .onboard-title {
+      font-family: var(--font-d); font-size: 1.2rem; font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 0.35rem;
+    }
+    .student-page .onboard-sub {
+      font-size: 0.85rem; color: var(--text-2); margin-bottom: 1.5rem; line-height: 1.55;
+    }
+    .student-page .onboard-field { margin-bottom: 1rem; }
+    .student-page .onboard-field label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--text-2); margin-bottom: 0.4rem;
+    }
+    .student-page .onboard-field input {
+      width: 100%; padding: 0.75rem 1rem;
+      background: var(--bg-3); border: 1.5px solid var(--border-2);
+      border-radius: 10px; font-size: 0.9rem; font-family: inherit;
+      color: var(--text); outline: none; transition: border-color .2s;
+    }
+    .student-page .onboard-field input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.12); }
+    .student-page .onboard-field input.error { border-color: var(--red); }
+    .student-page .onboard-btn {
+      width: 100%; padding: 0.875rem; border-radius: 11px;
+      background: var(--blue); color: white; font-size: 0.9rem;
+      font-weight: 700; font-family: var(--font-d); margin-top: 0.5rem;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 18px rgba(37,99,235,0.25);
+    }
+    .student-page .onboard-btn:hover { background: var(--blue-d); transform: translateY(-1px); }
+
     .student-page .toast {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
       background: var(--bg-2); border: 1px solid var(--border-2); color: var(--text);
@@ -745,6 +792,26 @@
      APP
 ════════════════════ -->
 <div class="app" id="app">
+
+  <!-- MODALE ONBOARDING (apparait une seule fois à la première connexion) -->
+  <div class="onboard-overlay" id="onboardOverlay" style="display:none">
+    <div class="onboard-box">
+      <div class="onboard-ico"><i data-lucide="user-round"></i></div>
+      <div class="onboard-title">Bienvenue dans ton espace</div>
+      <div class="onboard-sub">Pour personnaliser ton accompagnement, dis-moi qui tu es. Ces infos restent dans ton navigateur.</div>
+      <div class="onboard-field">
+        <label>Ton prénom *</label>
+        <input type="text" id="onboardPrenom" placeholder="Ex : Yacine" autocomplete="given-name">
+      </div>
+      <div class="onboard-field">
+        <label>Ton WhatsApp (avec +213)</label>
+        <input type="tel" id="onboardWhatsapp" placeholder="+213 6XX XXX XXX" autocomplete="tel">
+      </div>
+      <button class="onboard-btn" onclick="saveOnboarding()">
+        Accéder à mon espace →
+      </button>
+    </div>
+  </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
@@ -1667,7 +1734,7 @@
             <p>Un espace privé réservé aux membres Standard. Entraide, questions, et retours d'expérience entre étudiants.</p>
             <span class="contact-note"><i data-lucide="shield-check"></i> Accès réservé aux membres Standard uniquement</span>
           </div>
-          <a href="https://chat.whatsapp.com/JR6iKnaH7CjI6vnAW8ROz2" target="_blank" class="btn-wa">
+          <a href="https://chat.whatsapp.com/LIEN_STANDARD_TEMPORAIRE" target="_blank" class="btn-wa">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.99 0C5.369 0 0 5.369 0 11.99c0 2.133.563 4.13 1.543 5.861L.057 23.994l6.304-1.654C7.926 23.358 9.912 24 11.99 24 18.61 24 24 18.631 24 12.01 24 5.369 18.61 0 11.99 0z"/></svg>
             Rejoindre le groupe →
           </a>
@@ -1748,6 +1815,13 @@ async function doLogin() {
   }
 }
 function doLogout() { localStorage.removeItem(SESSION_KEY); location.reload(); }
+
+const STUDENT_KEY = 'ns_student_identity';
+function getStudentIdentity() {
+  try { return JSON.parse(localStorage.getItem(STUDENT_KEY) || 'null'); }
+  catch { return null; }
+}
+
 function showApp() {
   document.getElementById('loginPage').style.display = 'none';
   document.getElementById('app').classList.add('active');
@@ -1755,6 +1829,36 @@ function showApp() {
   loadName();
   startCountdown();
   renderIcons();
+
+  // Afficher la modale d'onboarding si c'est la première connexion
+  const identity = getStudentIdentity();
+  if (!identity || !identity.prenom) {
+    setTimeout(() => {
+      document.getElementById('onboardOverlay').style.display = 'flex';
+      document.getElementById('onboardPrenom').focus();
+    }, 400);
+  }
+}
+
+function saveOnboarding() {
+  const prenomEl = document.getElementById('onboardPrenom');
+  const waEl = document.getElementById('onboardWhatsapp');
+  const prenom = prenomEl.value.trim();
+
+  if (!prenom) {
+    prenomEl.classList.add('error');
+    prenomEl.focus();
+    return;
+  }
+  prenomEl.classList.remove('error');
+
+  const identity = { prenom, whatsapp: waEl.value.trim() };
+  localStorage.setItem(STUDENT_KEY, JSON.stringify(identity));
+  localStorage.setItem(NAME_KEY, prenom);
+
+  document.getElementById('onboardOverlay').style.display = 'none';
+  loadName();
+  showToast('Bienvenue ' + prenom + ' !', 'success');
 }
 if (hasSession()) showApp();
 
