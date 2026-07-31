@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checklist Campus France - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+.sub-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#2563EB; color:#fff; padding:4px 10px; border-radius:5px; margin:0.875rem 0 0.5rem; display:inline-block; }
+.qa-item { margin-bottom:1rem; background:#f9fafb; border-radius:10px; overflow:hidden; border:1px solid #e5e7eb; }
+.qa-q { background:#1E3A8A; color:#fff; padding:0.6rem 1rem; font-size:0.82rem; font-weight:600; }
+.qa-a { padding:0.75rem 1rem; font-size:0.82rem; color:#374151; line-height:1.65; }
+.qa-a .tip { display:block; margin-top:0.4rem; font-size:0.75rem; color:#2563EB; font-style:italic; }
+.qa-a .erreur { display:block; margin-top:0.4rem; font-size:0.75rem; color:#dc2626; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.lettre-block { background:#fafafa; border:1px solid #e5e7eb; border-radius:10px; padding:1.5rem; margin:1rem 0; font-size:0.875rem; line-height:1.9; color:#1f2937; }
+.lettre-block .ph { font-size:0.82rem; }
+@media print { .print-btn { display:none; } body { padding:1.5rem; } }
+</style></head>
+<body><button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+<div class="doc-header">
+  <div class="doc-logo">Next<em>Stage</em></div>
+  <div class="doc-meta"><div class="doc-title">Checklist Campus France</div><div class="doc-sub">Espace Standard · 6 phases · Procédure complète</div></div>
+</div>
+<div class="conseil"><strong>Comment utiliser :</strong> Coche chaque case au fur et à mesure dans l'ordre. La procédure dure entre 6 et 10 mois. Plus tu commences tôt, mieux tu seras préparé. La procédure ouvre en octobre pour une rentrée en septembre de l'année suivante.</div>
+
+<span class="phase-title">Phase 1 - Préparation initiale</span>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Définir ta filière et le niveau visé (L1, L2, Master)<span class="note">Sois précis : pas juste « informatique » mais « Licence informatique parcours développement »</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Lister 5 à 8 universités cibles<span class="note">1 ambitieuse, 3 réalistes, 2-3 sûres - varie les villes</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Vérifier les prérequis de chaque formation</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer et passer le TCF ou DELF<span class="note">TCF DAP pour L1 (4 épreuves) · TCF Tout Public pour L2 et plus (3 épreuves) · Niveau B2 requis · Valide 2 ans · Inscription sur le site de l'Institut Français</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Vérifier la validité du passeport<span class="note">Doit être valide au moins 8 mois après la date de dépôt du visa</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Rassembler les documents académiques<span class="note">Relevés de notes traduits, diplômes, bulletins scolaires des 3 dernières années, CV</span></div></div>
+
+<span class="phase-title">Phase 2 - Dossier Boite Pastel (Octobre - Décembre)</span>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Créer ton compte sur la Boîte Pastel (etudes-en-france.fr)<span class="note">C'est la plateforme officielle de Campus France - tu y gères tout ton dossier</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Compléter ton profil étudiant (parcours, filières, motivations)</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Rédiger ta lettre de motivation Pastel<span class="note">Structure : parcours scolaire → projet d'études → pourquoi la France → pourquoi cette université → projet professionnel</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Uploader tous les documents demandés</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Sélectionner tes formations (max 3 pour L1, max 7 pour L2 et plus)</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Valider et soumettre ton dossier<span class="note">Impossible de modifier après soumission - vérifie tout avant</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Payer les frais Campus France (20 000 DA en Algérie)</div></div>
+
+<span class="phase-title">Phase 3 - Entretien Campus France (Janvier - Mars)</span>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Prendre rendez-vous pour l'entretien dès réception de la convocation</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer les réponses aux 15 questions fréquentes<span class="note">Voir le Guide Entretien NextStage dans ton espace</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Vérifier la cohérence entre ta lettre Pastel et ce que tu diras</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Rassembler les documents physiques pour le jour J<span class="note">Passeport + relevés de notes originaux + lettre de motivation imprimée</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Passer l'entretien Campus France</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Récupérer l'email de fin de procédure Campus France<span class="note">Document obligatoire pour le dossier visa</span></div></div>
+
+<span class="phase-title">Phase 4 - Admissions universitaires (Mars - Mai)</span>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Suivre l'avancement des candidatures sur Pastel</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Accepter les admissions dans les délais impartis</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Choisir ton université définitive</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Obtenir la lettre d'admission officielle ou l'attestation de préinscription<span class="note">Document obligatoire pour le dossier visa</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Commencer les démarches de logement (CROUS ou privé)<span class="note">Fais ta demande CROUS dès l'admission - les places partent vite</span></div></div>
+
+<span class="phase-title">Phase 5 - Dossier Visa Consulaire (Avril - Juillet)</span>
+<div class="conseil"><strong>Capago :</strong> En Algérie, le dépôt du dossier visa se fait via le prestataire <strong>Capago</strong> (pas directement au consulat). Prends rendez-vous sur capago.eu dès que possible - les créneaux partent vite.</div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Prendre rendez-vous sur capago.eu</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Compléter le formulaire France-Visas en ligne<span class="note">Sur france-visas.gouv.fr - section Étudiant / VLS-TS</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer TOUS les documents du dossier visa<span class="note">Voir le Guide Dossier Visa dans ton espace Premium</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer la lettre de motivation consulaire<span class="note">Différente de celle de Pastel - voir le modèle dans l'espace Premium</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer les justificatifs financiers (7 500€ minimum)<span class="note">Relevés bancaires 3 derniers mois + lettre explicative sur la provenance des fonds</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Préparer l'attestation sur l'honneur de versement des 7 500€</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Faire signer la lettre de prise en charge financière<span class="note">Par le parent ou garant - voir le modèle dans l'espace Standard</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Déposer le dossier chez Capago</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Attendre la décision (2 à 6 semaines)</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Retirer le visa - vérifier toutes les informations</div></div>
+
+<span class="phase-title">Phase 6 - Arrivée en France</span>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Valider ton visa VLS-TS dans les 3 mois après arrivée<span class="note">Sur le site ANEF (administration-etrangers-en-france.fr) - OBLIGATOIRE sous peine d'irrégularité</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire administrativement à l'université</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Ouvrir un compte bancaire français<span class="note">Utile pour y déposer les 7 500€ comme tu l'as attesté</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire à la Sécurité sociale étudiante</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Faire une demande d'APL (aide au logement)<span class="note">Sur caf.fr - peut réduire ton loyer de 100 à 200€/mois</span></div></div>
+
+<div class="alerte"><strong>En cas de refus de visa :</strong> Un refus n'est pas une fin. Demande le motif par écrit, analyse chaque point, corrige le dossier et redépose. J'ai moi-même eu un refus et obtenu mon visa la même année. Contacte Rayan directement pour analyser les raisons.</div>
+<div class="doc-footer">
+  <span>nextstagefr.com</span>
+  <span>Modèle à personnaliser - ne pas copier mot pour mot</span>
+  <span>© NextStage 2026</span>
+</div></body></html>

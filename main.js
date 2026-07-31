@@ -101,7 +101,7 @@ const DIAGNOSTIC_CONTENT = {
       '🔎 Analyse des raisons probables de ton refus',
       '🛠️ Ce que tu dois corriger dans ton dossier',
       '📋 Plan d\'action pour ta 2ème demande',
-      '💬 Rayan a obtenu son visa au 2ème essai — il sait quoi faire',
+      '💬 Rayan a obtenu son visa au 2ème essai, il sait quoi faire',
     ],
     recap: 'Tu recevras une analyse de ton refus et un plan d\'action concret pour ta 2ème demande de visa. Rayan est passé par là.',
   },

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lettre de prise en charge financière - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+.sub-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#2563EB; color:#fff; padding:4px 10px; border-radius:5px; margin:0.875rem 0 0.5rem; display:inline-block; }
+.qa-item { margin-bottom:1rem; background:#f9fafb; border-radius:10px; overflow:hidden; border:1px solid #e5e7eb; }
+.qa-q { background:#1E3A8A; color:#fff; padding:0.6rem 1rem; font-size:0.82rem; font-weight:600; }
+.qa-a { padding:0.75rem 1rem; font-size:0.82rem; color:#374151; line-height:1.65; }
+.qa-a .tip { display:block; margin-top:0.4rem; font-size:0.75rem; color:#2563EB; font-style:italic; }
+.qa-a .erreur { display:block; margin-top:0.4rem; font-size:0.75rem; color:#dc2626; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.lettre-block { background:#fafafa; border:1px solid #e5e7eb; border-radius:10px; padding:1.5rem; margin:1rem 0; font-size:0.875rem; line-height:1.9; color:#1f2937; }
+.lettre-block .ph { font-size:0.82rem; }
+@media print { .print-btn { display:none; } body { padding:1.5rem; } }
+</style></head>
+<body><button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+<div class="doc-header">
+  <div class="doc-logo">Next<em>Stage</em></div>
+  <div class="doc-meta"><div class="doc-title">Lettre de prise en charge financière</div><div class="doc-sub">Espace Standard · Modèle garant en Algérie</div></div>
+</div>
+<div class="conseil"><strong>À qui s'adresse cette lettre :</strong> Au Consulat Général de France, à joindre au dossier visa VLS-TS. Signée par le parent ou garant qui finance. Joindre obligatoirement les justificatifs selon sa situation professionnelle (voir tableau en bas).</div>
+<div class="alerte"><strong>Important :</strong> Le consulat est au courant que beaucoup d'Algériens louent des fonds pour obtenir le papier de la banque. Une lettre explicative sur la <em>provenance réelle</em> des fonds est indispensable - sans elle le dossier est suspect.</div>
+
+<div class="lettre-block">
+<p><span class="ph">[Prénom NOM du garant]</span><br>
+<span class="ph">[Profession]</span><br>
+<span class="ph">[Adresse complète - Wilaya, Algérie]</span><br>
+<span class="ph">[Téléphone]</span><br>
+<span class="ph">[Email]</span></p>
+
+<p style="text-align:right"><span class="ph">[Ville]</span>, le <span class="ph">[JJ/MM/AAAA]</span></p>
+
+<p>À l'attention de Monsieur le Consul Général de France à <span class="ph">[Alger / Annaba / Oran]</span></p>
+
+<p><strong>Objet : Attestation de prise en charge financière - <span class="ph">[Prénom NOM de l'étudiant(e)]</span></strong></p>
+
+<p>Monsieur le Consul,</p>
+
+<p>J'ai l'honneur de venir très respectueusement par la présente vous fournir des explications relatives à la provenance de mes ressources financières destinées à couvrir les dépenses liées au séjour d'étude en France de mon <span class="ph">[fils / ma fille]</span>, <span class="ph">[Prénom NOM de l'étudiant(e)]</span>.</p>
+
+<p>Je soussigné(e), <span class="ph">[Prénom NOM du garant]</span>, <span class="ph">[profession]</span>, demeurant à <span class="ph">[adresse complète]</span>, certifie prendre en charge financièrement les études de <span class="ph">[Prénom de l'étudiant(e)]</span> pour l'année universitaire <span class="ph">[2026-2027]</span> à <span class="ph">[nom de l'université]</span>, <span class="ph">[ville]</span>, France.</p>
+
+<p>Je m'engage à lui verser mensuellement la somme de <strong><span class="ph">[montant en euros - ex : 700€]</span></strong> pour couvrir ses frais de logement, de nourriture et de vie courante. La somme totale de <strong><span class="ph">[7 500€]</span></strong> mise à sa disposition provient de <span class="ph">[mes revenus mensuels / plusieurs années d'économies / [préciser la source réelle]]</span>.</p>
+
+<p>Par ailleurs, <span class="ph">[ajouter si un garant complémentaire existe : mon/ma [lien de parenté], M./Mme [Prénom NOM], se tient prêt(e) à apporter un soutien financier complémentaire si nécessaire]</span>.</p>
+
+<p>Veuillez trouver ci-joints les pièces justificatives requises pour prouver la provenance de cette somme et ma capacité financière :</p>
+
+<ul>
+<li>Attestation de retrait / relevé bancaire des 3 derniers mois</li>
+<li>Attestation de salaire ou de revenus</li>
+<li>Copie de ma pièce d'identité</li>
+<li><span class="ph">[Autres justificatifs selon ta situation - voir tableau ci-dessous]</span></li>
+</ul>
+
+<p>Je certifie sur l'honneur l'exactitude de toutes les informations mentionnées dans ce document.</p>
+
+<p>Je vous prie d'agréer, Monsieur le Consul Général, l'assurance de ma haute considération.</p>
+
+<p>Fait à <span class="ph">[Ville]</span>, le <span class="ph">[JJ/MM/AAAA]</span></p>
+<p><span class="ph">[Prénom NOM du garant]</span><br><em style="font-size:0.8rem;color:#6B7280">Signature :</em></p>
+<div style="border:1px solid #e5e7eb;border-radius:6px;height:70px;width:220px;margin-top:0.5rem;"></div>
+</div>
+
+<div class="section-bar"><div class="section-num">⚠</div><div class="section-label">Documents à joindre selon la situation du garant</div></div>
+<table>
+<tr><th>Situation</th><th>Documents obligatoires</th></tr>
+<tr><td><strong>Salarié / Fonctionnaire</strong></td><td>Attestation de travail · Affiliation CNAS · Fiches de paie (3 derniers mois) · Relevés bancaires (3 derniers mois)</td></tr>
+<tr><td><strong>Commerçant / Artisan</strong></td><td>Registre du commerce · Attestation des impôts (C20) · Attestation fiscale · Relevés bancaires (3 derniers mois)</td></tr>
+<tr><td><strong>Agriculteur</strong></td><td>Fiche signalétique · Relevés bancaires (3 derniers mois)</td></tr>
+<tr><td><strong>Profession libérale</strong></td><td>Autorisation d'exercice d'activité (agrément) · Attestation des impôts (C20) · Relevés bancaires (3 derniers mois)</td></tr>
+<tr><td><strong>Retraité</strong></td><td>Attestation de retraite avec montant actualisé · Relevés bancaires (3 derniers mois)</td></tr>
+</table>
+
+<div class="conseil"><strong>Conseil NextStage :</strong> Ajoute aussi une lettre explicative sur le lien de parenté avec le garant (fiche familiale, acte de naissance, livret de famille). Le consulat la demande systématiquement pour vérifier que la prise en charge est réelle.</div>
+<div class="doc-footer">
+  <span>nextstagefr.com</span>
+  <span>Modèle à personnaliser - ne pas copier mot pour mot</span>
+  <span>© NextStage 2026</span>
+</div></body></html>

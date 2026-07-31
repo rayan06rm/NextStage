@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guide preparation TCF / DELF - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.success { background:#f0fdf4; border-left:3px solid #22c55e; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.success strong { color:#15803d; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.lettre-block { background:#fafafa; border:1px solid #e5e7eb; border-radius:10px; padding:1.5rem; margin:1rem 0; font-size:0.875rem; line-height:1.9; color:#1f2937; }
+/* CV specifique */
+.cv-page { max-width:700px; }
+.cv-header-block { background:#1E3A8A; color:#fff; padding:2rem; border-radius:12px; margin-bottom:1.5rem; }
+.cv-name { font-size:1.6rem; font-weight:800; margin-bottom:0.25rem; }
+.cv-titre { font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:1rem; }
+.cv-contacts { display:flex; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:rgba(255,255,255,0.9); }
+.cv-contact-item { display:flex; align-items:center; gap:0.4rem; }
+.cv-body { display:grid; grid-template-columns:1fr 2fr; gap:1.5rem; }
+.cv-col-left { }
+.cv-col-right { }
+.cv-section-title { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; border-bottom:2px solid #2563EB; padding-bottom:4px; margin:1.25rem 0 0.75rem; }
+.cv-item { margin-bottom:1rem; }
+.cv-item-title { font-size:0.88rem; font-weight:700; color:#1f2937; }
+.cv-item-sub { font-size:0.78rem; color:#2563EB; font-weight:600; margin-bottom:2px; }
+.cv-item-date { font-size:0.72rem; color:#6B7280; margin-bottom:4px; }
+.cv-item-desc { font-size:0.78rem; color:#374151; line-height:1.6; }
+.cv-skill-bar { margin-bottom:0.6rem; }
+.cv-skill-name { font-size:0.78rem; color:#374151; margin-bottom:3px; font-weight:600; }
+.cv-skill-track { background:#e5e7eb; height:5px; border-radius:99px; overflow:hidden; }
+.cv-skill-fill { height:100%; background:#2563EB; border-radius:99px; }
+.cv-tag { display:inline-block; background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe; border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; margin:2px; }
+.cv-lang-item { display:flex; justify-content:space-between; font-size:0.78rem; margin-bottom:4px; }
+.cv-lang-level { color:#2563EB; font-weight:600; }
+@media print { .print-btn { display:none; } body { padding:1rem; } }
+</style></head>
+<body class=""><button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+<div class="doc-header"><div class="doc-logo">Next<em>Stage</em></div><div class="doc-meta"><div class="doc-title">Guide preparation TCF / DELF</div><div class="doc-sub">Espace Standard - Etape 1 de la procedure</div></div></div>
+<div class="conseil"><strong>Pourquoi ce guide :</strong> Le TCF ou DELF est l'une des premieres etapes de la procedure Campus France. Sans attestation de langue, ton dossier Pastel ne peut pas etre soumis. Ce guide t'explique tout ce qu'il faut savoir pour bien te preparer.</div>
+
+<div class="section-bar"><div class="section-num">1</div><div class="section-label">TCF ou DELF : lequel choisir ?</div></div>
+
+<table>
+<tr><th>Critere</th><th>TCF DAP</th><th>TCF Tout Public</th><th>DELF</th></tr>
+<tr><td><strong>Pour qui</strong></td><td>Inscription en L1</td><td>L2, L3, M1, M2</td><td>Tous niveaux</td></tr>
+<tr><td><strong>Epreuves</strong></td><td>4 (oral, ecrit, structures, expression ecrite)</td><td>3 (oral, ecrit, structures)</td><td>4 selon niveau</td></tr>
+<tr><td><strong>Niveau minimum</strong></td><td>B1 accepte parfois, B2 recommande</td><td>B2 minimum</td><td>B2 minimum</td></tr>
+<tr><td><strong>Validite</strong></td><td>2 ans</td><td>2 ans</td><td>A vie</td></tr>
+<tr><td><strong>Ou passer</strong></td><td>Institut Francais Algerie</td><td>Institut Francais Algerie</td><td>Institut Francais / CCFJ</td></tr>
+<tr><td><strong>Score</strong></td><td>0 a 699 points</td><td>0 a 699 points</td><td>Diplome passe/echoue</td></tr>
+</table>
+
+<div class="conseil"><strong>Mon conseil :</strong> Si tu t'inscris en L1, passe le <strong>TCF DAP</strong>. Pour L2 et plus, passe le <strong>TCF Tout Public</strong>. Le DELF est permanent (valable a vie) mais plus difficile - choisis-le si tu veux une certification durable.</div>
+
+<div class="section-bar"><div class="section-num">2</div><div class="section-label">Niveaux requis par les universites</div></div>
+
+<table>
+<tr><th>Niveau de langue</th><th>Score TCF</th><th>Ce que ca signifie</th></tr>
+<tr><td>A1</td><td>100-199</td><td>Debutant - insuffisant pour Campus France</td></tr>
+<tr><td>A2</td><td>200-299</td><td>Elementaire - insuffisant</td></tr>
+<tr><td>B1</td><td>300-399</td><td>Intermediaire - accepte dans quelques formations</td></tr>
+<tr><td>B2</td><td>400-499</td><td>Independant - niveau minimum recommande</td></tr>
+<tr><td>C1</td><td>500-599</td><td>Avance - ideal pour les formations selectves</td></tr>
+<tr><td>C2</td><td>600-699</td><td>Maitrise - excellent</td></tr>
+</table>
+
+<div class="important"><strong>Important :</strong> Certaines universites exigent un minimum de B2 (400 points). En dessous, ta candidature peut etre rejetee directement. Vise minimum <strong>400 points</strong> pour securiser tes chances.</div>
+
+<div class="section-bar"><div class="section-num">3</div><div class="section-label">Comment s'inscrire au TCF en Algerie</div></div>
+
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Aller sur le site de l'Institut Francais Algerie</strong><span class="note">institutfrancais-algerie.com - verifie les dates de sessions disponibles dans ta ville</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Choisir ta ville de passage</strong><span class="note">Alger, Oran, Annaba, Constantine, Tlemcen, Bejaia... selon disponibilite</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>S'inscrire en ligne et payer les frais d'inscription</strong><span class="note">Les places partent vite - inscris-toi des que les sessions ouvrent, souvent 2 mois a l'avance</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Preparer ses documents pour le jour J</strong><span class="note">Convocation + piece d'identite valide (carte nationale ou passeport)</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Recuperer son attestation TCF</strong><span class="note">Disponible en ligne quelques semaines apres le test - telecharge-la en PDF et conserve plusieurs copies</span></div></div>
+
+<div class="section-bar"><div class="section-num">4</div><div class="section-label">Plan de preparation - 8 semaines</div></div>
+
+<span class="phase-title">Semaines 1 et 2 - Diagnostic</span>
+<ul>
+<li>Passe une annale complete en conditions reelles (minuteur)</li>
+<li>Identifie tes points faibles : comprehension orale, ecrite, structures ou expression</li>
+<li>Evalue ton niveau de depart objectivement</li>
+<li>Telecharge les annales disponibles dans ton espace Standard NextStage</li>
+</ul>
+
+<span class="phase-title">Semaines 3, 4 et 5 - Travail cible</span>
+<ul>
+<li>Comprehension orale : ecoute RFI, TV5Monde, podcasts en francais chaque jour (30 min minimum)</li>
+<li>Comprehension ecrite : lis des articles du Monde, Le Figaro, 20minutes.fr</li>
+<li>Structures de la langue : revise la grammaire francaise - subjonctif, concordance des temps, pronoms relatifs</li>
+<li>Expression ecrite (TCF DAP) : entraine-toi a rediger des textes structures de 250 mots</li>
+<li>Fais 2 a 3 annales par semaine</li>
+</ul>
+
+<span class="phase-title">Semaines 6 et 7 - Entrainement intensif</span>
+<ul>
+<li>Fais les annales en conditions d'examen strict : minuteur, sans aide</li>
+<li>Analyse chaque erreur - comprends pourquoi tu t'es trompe</li>
+<li>Travaille ta vitesse de lecture et d'ecoute</li>
+<li>Revise les pieges les plus frequents du TCF</li>
+</ul>
+
+<span class="phase-title">Semaine 8 - Finalisation</span>
+<ul>
+<li>Pas de nouvelle matiere - consolide ce que tu sais</li>
+<li>Fais 1 annale complete pour confirmer ton niveau</li>
+<li>Prepare tes affaires pour le jour J : convocation, piece d'identite, stylo</li>
+<li>Dors bien les 2 nuits avant l'examen</li>
+</ul>
+
+<div class="section-bar"><div class="section-num">5</div><div class="section-label">Le jour de l'examen - conseils pratiques</div></div>
+
+<div class="success"><strong>Ce qu'il faut faire :</strong>
+<ul style="margin-top:0.5rem">
+<li>Arriver 20 minutes en avance</li>
+<li>Lire attentivement les consignes avant chaque epreuve</li>
+<li>Repondre a toutes les questions - pas de penalite pour mauvaise reponse</li>
+<li>Gerer son temps : ne pas bloquer sur une question difficile</li>
+<li>Pour l'oral : parler clairement, ne pas parler trop vite</li>
+</ul>
+</div>
+
+<div class="alerte"><strong>Erreurs a eviter :</strong>
+<ul style="margin-top:0.5rem">
+<li>Arriver en retard - tu peux etre refuse</li>
+<li>Oublier sa piece d'identite - refus d'entree garanti</li>
+<li>Paniquer sur une question difficile - passe a la suivante</li>
+<li>Ne pas repeter le TCF si le score est insuffisant - tu as le droit de le repasser</li>
+</ul>
+</div>
+
+<div class="section-bar"><div class="section-num">6</div><div class="section-label">Ressources gratuites pour se preparer</div></div>
+
+<table>
+<tr><th>Ressource</th><th>Utilite</th><th>Acces</th></tr>
+<tr><td>Annales TCF NextStage (17 annales)</td><td>Pratique en conditions reelles</td><td>Ton espace Standard</td></tr>
+<tr><td>RFI Savoirs</td><td>Podcasts pour ameliorer l'oral</td><td>rfi.fr/fr/podcasts</td></tr>
+<tr><td>TV5Monde Langue Francaise</td><td>Exercices de grammaire et vocabulaire</td><td>langue-francaise.tv5monde.com</td></tr>
+<tr><td>Le Conjugueur</td><td>Conjugaison et grammaire</td><td>leconjugueur.com</td></tr>
+<tr><td>Reverso Context</td><td>Vocabulaire en contexte</td><td>context.reverso.net</td></tr>
+<tr><td>Institut Francais Algerie</td><td>Sujets officiels TCF</td><td>institutfrancais-algerie.com</td></tr>
+</table>
+<div class="doc-footer"><span>nextstagefr.com</span><span>Modele a personnaliser</span><span>NextStage 2026</span></div></body></html>

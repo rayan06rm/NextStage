@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Guide arrivee en France - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.success { background:#f0fdf4; border-left:3px solid #22c55e; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.success strong { color:#15803d; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.lettre-block { background:#fafafa; border:1px solid #e5e7eb; border-radius:10px; padding:1.5rem; margin:1rem 0; font-size:0.875rem; line-height:1.9; color:#1f2937; }
+/* CV specifique */
+.cv-page { max-width:700px; }
+.cv-header-block { background:#1E3A8A; color:#fff; padding:2rem; border-radius:12px; margin-bottom:1.5rem; }
+.cv-name { font-size:1.6rem; font-weight:800; margin-bottom:0.25rem; }
+.cv-titre { font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:1rem; }
+.cv-contacts { display:flex; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:rgba(255,255,255,0.9); }
+.cv-contact-item { display:flex; align-items:center; gap:0.4rem; }
+.cv-body { display:grid; grid-template-columns:1fr 2fr; gap:1.5rem; }
+.cv-col-left { }
+.cv-col-right { }
+.cv-section-title { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; border-bottom:2px solid #2563EB; padding-bottom:4px; margin:1.25rem 0 0.75rem; }
+.cv-item { margin-bottom:1rem; }
+.cv-item-title { font-size:0.88rem; font-weight:700; color:#1f2937; }
+.cv-item-sub { font-size:0.78rem; color:#2563EB; font-weight:600; margin-bottom:2px; }
+.cv-item-date { font-size:0.72rem; color:#6B7280; margin-bottom:4px; }
+.cv-item-desc { font-size:0.78rem; color:#374151; line-height:1.6; }
+.cv-skill-bar { margin-bottom:0.6rem; }
+.cv-skill-name { font-size:0.78rem; color:#374151; margin-bottom:3px; font-weight:600; }
+.cv-skill-track { background:#e5e7eb; height:5px; border-radius:99px; overflow:hidden; }
+.cv-skill-fill { height:100%; background:#2563EB; border-radius:99px; }
+.cv-tag { display:inline-block; background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe; border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; margin:2px; }
+.cv-lang-item { display:flex; justify-content:space-between; font-size:0.78rem; margin-bottom:4px; }
+.cv-lang-level { color:#2563EB; font-weight:600; }
+@media print { .print-btn { display:none; } body { padding:1rem; } }
+</style></head>
+<body class=""><button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+<div class="doc-header"><div class="doc-logo">Next<em>Stage</em></div><div class="doc-meta"><div class="doc-title">Guide arrivee en France</div><div class="doc-sub">Espace Standard - Premieres semaines, demarches, budget</div></div></div>
+<div class="conseil"><strong>Felicitations !</strong> Si tu lis ce guide, c'est que tu as obtenu ton visa. C'est une etape majeure. Mais le travail n'est pas fini - les premieres semaines en France sont cruciales pour bien s'installer. Voici tout ce qu'il faut faire dans l'ordre.</div>
+
+<div class="section-bar"><div class="section-num">1</div><div class="section-label">Dans les 3 premiers mois - demarches obligatoires</div></div>
+
+<div class="alerte"><strong>Priorite absolue : Valider ton visa VLS-TS dans les 3 mois suivant ton arrivee.</strong> Si tu ne le fais pas, ton visa devient invalide et tu te retrouves en situation irreguliere. C'est une obligation legale.</div>
+
+<div class="check-item"><div class="check-box"></div><div class="check-text">Valider le visa VLS-TS sur le site ANEF<span class="note">administration-etrangers-en-france.fr - fais-le dans les 3 mois apres l'arrivee - OBLIGATOIRE</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire administrativement a l'universite<span class="note">Apporte : lettre d'admission, visa, passeport, photos, justificatif de logement, releves de notes</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Ouvrir un compte bancaire francais<span class="note">Banques classiques (BNP, Societe Generale) ou en ligne (Lydia, Revolut) - plus facile pour les etudiants etrangers</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Deposer 7 500 euros sur ton compte bancaire<span class="note">Comme tu l'as atteste dans ton dossier visa - conserve le justificatif de depot</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire a la Securite sociale etudiante<span class="note">Automatique via l'inscription universitaire - verifie que tu as bien une carte Vitale ou attestation</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Faire la demande APL sur caf.fr<span class="note">Dans les 3 mois suivant l'emmenagement - ne pas attendre</span></div></div>
+
+<div class="section-bar"><div class="section-num">2</div><div class="section-label">L'inscription universitaire - ce qu'il faut apporter</div></div>
+
+<table>
+<tr><th>Document</th><th>Detail</th></tr>
+<tr><td>Lettre d'admission</td><td>Original et copie</td></tr>
+<tr><td>Passeport + visa</td><td>Original et copie de toutes les pages</td></tr>
+<tr><td>2 a 4 photos d'identite</td><td>Normes francaises - fond blanc</td></tr>
+<tr><td>Justificatif de logement</td><td>Attestation CROUS, bail ou attestation hebergement</td></tr>
+<tr><td>Releves de notes</td><td>Originaux + traductions si en arabe</td></tr>
+<tr><td>Diplome du bac</td><td>Original + traduction</td></tr>
+<tr><td>Attestation TCF/DELF</td><td>Si demande par l'universite</td></tr>
+<tr><td>RIB bancaire</td><td>Si tu as deja un compte francais</td></tr>
+</table>
+
+<div class="section-bar"><div class="section-num">3</div><div class="section-label">Ouvrir un compte bancaire en France</div></div>
+
+<p>Un compte bancaire francais est indispensable pour recevoir l'APL, payer le loyer, et deposer tes fonds. Voici les options les plus faciles pour un etudiant etranger :</p>
+
+<table>
+<tr><th>Banque</th><th>Type</th><th>Avantages</th></tr>
+<tr><td>Societe Generale (Kapsul)</td><td>Classique</td><td>Offre etudiante dedilee, presence en Algerie</td></tr>
+<tr><td>BNP Paribas</td><td>Classique</td><td>Liens historiques France-Algerie, bon reseau</td></tr>
+<tr><td>Revolut</td><td>En ligne</td><td>Tres facile a ouvrir, pas besoin de rendez-vous</td></tr>
+<tr><td>Lydia</td><td>En ligne</td><td>Populaire chez les etudiants, ouverture instantanee</td></tr>
+<tr><td>Banque Postale</td><td>La Poste</td><td>Accessible partout, offre etudiante</td></tr>
+</table>
+
+<div class="conseil"><strong>Conseil :</strong> Ouvre d'abord un compte en ligne (Revolut ou Lydia) a ton arrivee pour avoir un RIB rapidement. Puis ouvre un compte dans une banque classique dans les semaines suivantes pour l'APL et les virements importants.</div>
+
+<div class="section-bar"><div class="section-num">4</div><div class="section-label">Budget mensuel - ce qu'il faut prevoir</div></div>
+
+<table>
+<tr><th>Poste de depense</th><th>Paris</th><th>Ville moyenne</th></tr>
+<tr><td>Logement (apres APL)</td><td>400 a 700 euros</td><td>150 a 400 euros</td></tr>
+<tr><td>Nourriture</td><td>200 a 300 euros</td><td>150 a 250 euros</td></tr>
+<tr><td>Transport</td><td>50 a 90 euros (carte Navigo)</td><td>30 a 60 euros</td></tr>
+<tr><td>Telephone</td><td>10 a 20 euros</td><td>10 a 20 euros</td></tr>
+<tr><td>Divers (sorties, vetements)</td><td>100 a 200 euros</td><td>50 a 100 euros</td></tr>
+<tr><td><strong>Total minimum</strong></td><td><strong>760 a 1 310 euros</strong></td><td><strong>390 a 830 euros</strong></td></tr>
+</table>
+
+<div class="important"><strong>Conseil budget :</strong> Pour Paris, prevois minimum 800 euros/mois. Pour les autres villes, 600 euros/mois suffit generalement. La carte etudiant te donne acces a des tarifs reduits dans les musees, cinemas, transports et restaurants universitaires (ticket RU a 3,30 euros).</div>
+
+<div class="section-bar"><div class="section-num">5</div><div class="section-label">Astuces pratiques pour bien s'integrer</div></div>
+
+<ul>
+<li><strong>Restaurant Universitaire (RU) :</strong> Repas complet pour 3,30 euros avec la carte etudiant. Mange au RU le midi - tu economises enormement sur l'annee.</li>
+<li><strong>Carte etudiant internationale (ISIC) :</strong> Reductions partout - musees gratuits, cinemas a prix reduit, logiciels.</li>
+<li><strong>Jobbing etudiant :</strong> En France, tu as le droit de travailler 964 heures par an (environ 20h/semaine). Jobijoba, StudentJob ou Indeed pour trouver des petits boulots.</li>
+<li><strong>Bourses complementaires :</strong> Certaines universites ont des bourses pour etudiants etrangers. Renseigne-toi aupres du service des relations internationales de ton universite.</li>
+<li><strong>Associations etudiantes :</strong> Rejoins les associations de ton universite des la premiere semaine - c'est le moyen le plus rapide de se faire des amis et de s'integrer.</li>
+</ul>
+<div class="doc-footer"><span>nextstagefr.com</span><span>Modele a personnaliser</span><span>NextStage 2026</span></div></body></html>

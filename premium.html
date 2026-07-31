@@ -444,8 +444,13 @@
     }
     .student-page .check-box:hover { border-color: var(--green); }
     .student-page .check-box.done { background: var(--green); border-color: var(--green); }
-    .student-page .check-box .lucide { width: 13px; height: 13px; color: #052e16; opacity: 0; transition: opacity .15s; }
-    .student-page .check-box.done .lucide { opacity: 1; }
+    .student-page .check-box .ck-svg {
+      width:13px; height:13px; stroke:#fff;
+      stroke-width:3; fill:none;
+      opacity:0; transition:opacity .15s; flex-shrink:0;
+      display:block;
+    }
+    .student-page .check-box.done .ck-svg { opacity:1; }
     .student-page .check-content { flex: 1; min-width: 0; }
     .student-page .check-label { font-size: 0.86rem; color: var(--text); line-height: 1.45; }
     .student-page .check-item.done .check-label { color: var(--text-dim); text-decoration: line-through; text-decoration-color: var(--text-dim); }
@@ -498,6 +503,59 @@
     }
     .student-page .btn-soon .lucide { width: 12px; height: 12px; }
 
+
+    /* ════ DOCUMENTS / RESSOURCES ════ */
+    .student-page .doc-section-title {
+      font-size:0.62rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.1em; color:var(--text-dim);
+      padding:0.4rem 0; margin:1.5rem 0 0.75rem;
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:center; gap:0.5rem;
+    }
+    .student-page .doc-grid {
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+      gap:0.75rem; margin-bottom:1rem;
+    }
+    .student-page .doc-card {
+      background:var(--bg-2); border:1px solid var(--border);
+      border-radius:14px; padding:1rem; display:flex; flex-direction:column;
+      gap:0.6rem; transition:all .15s; position:relative; overflow:hidden;
+    }
+    .student-page .doc-card.horizontal { flex-direction:row; align-items:center; }
+    .student-page .doc-card.horizontal .doc-card-btn { flex-shrink:0; width:auto; padding:0.6rem 1.1rem; white-space:nowrap; margin-top:0; }
+    .student-page .doc-card.horizontal .doc-card-desc { margin-top:4px; }
+    .student-page .doc-card:hover { border-color:var(--blue-b); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
+    .student-page .doc-card-top { display:flex; align-items:flex-start; gap:0.75rem; }
+    .student-page .doc-card-ico {
+      width:36px; height:36px; border-radius:10px; flex-shrink:0;
+      background:var(--blue-bg); border:1px solid var(--blue-b);
+      color:var(--blue); display:flex; align-items:center; justify-content:center;
+    }
+    .student-page .doc-card-ico svg { width:16px; height:16px; }
+    .student-page .doc-card-ico.green { background:rgba(34,197,94,0.1); border-color:rgba(34,197,94,0.25); color:#4ade80; }
+    .student-page .doc-card-name { font-size:0.85rem; font-weight:700; color:var(--text); line-height:1.3; margin-top:2px; }
+    .student-page .doc-card-desc { font-size:0.75rem; color:var(--text-2); line-height:1.6; flex:1; }
+    .student-page .doc-card-tag {
+      display:inline-block; font-size:0.6rem; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.06em; padding:2px 8px; border-radius:20px;
+      background:var(--blue-bg); color:#93c5fd; border:1px solid var(--blue-b);
+      align-self:flex-start;
+    }
+    .student-page .doc-card-tag.green { background:rgba(34,197,94,0.08); color:#4ade80; border-color:rgba(34,197,94,0.2); }
+    .student-page .doc-card-btn {
+      display:flex; align-items:center; justify-content:center; gap:5px;
+      padding:0.55rem; border-radius:9px; font-size:0.78rem; font-weight:600;
+      background:var(--blue); color:#fff; text-decoration:none;
+      transition:all .15s; margin-top:auto;
+    }
+    .student-page .doc-card-btn:hover { background:#1d4ed8; }
+    .student-page .doc-card-btn svg { width:13px; height:13px; }
+    @media(max-width:480px) {
+      .student-page .doc-grid { grid-template-columns:1fr 1fr; }
+    }
+
+
+
     /* ── MODÈLES ── */
     .student-page .modele-card {
       background: var(--bg-2); border: 1px solid var(--border);
@@ -549,6 +607,142 @@
     .student-page .tcf-fact-k { font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
     .student-page .tcf-fact-v { font-size: 0.84rem; color: var(--text); font-weight: 600; }
     .student-page .tcf-tips-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; }
+    /* ── TCF UNIFIÉ ── */
+.student-page .tcf-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+/* ── TCF ANNALES ── */
+.student-page .tcf-progress-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.875rem; }
+.student-page .tcf-progress-bar { flex:1; height:5px; background:var(--border); border-radius:999px; overflow:hidden; }
+.student-page .tcf-progress-fill { height:100%; background:#22c55e; border-radius:999px; transition:width .4s ease; }
+.student-page .tcf-progress-label { font-size:0.75rem; color:var(--text-2); white-space:nowrap; }
+.student-page .tcf-annale-card { background:var(--bg-2); border:1px solid var(--border); border-radius:12px; padding:0.875rem; cursor:pointer; transition:all .15s; display:flex; flex-direction:column; gap:0.5rem; position:relative; overflow:hidden; }
+.student-page .tcf-annale-card:hover { border-color:var(--blue); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.35); }
+.student-page .tcf-annale-card.active-card { border-color:var(--blue); background:var(--blue-bg); }
+.student-page .tcf-annale-card.done-card { border-color:rgba(34,197,94,0.35); background:rgba(34,197,94,0.05); }
+.student-page .tcf-done-badge { position:absolute; top:0.5rem; right:0.5rem; width:18px; height:18px; border-radius:50%; background:#22c55e; display:none; align-items:center; justify-content:center; }
+.student-page .tcf-annale-card.done-card .tcf-done-badge { display:flex; }
+.student-page .tcf-done-badge svg { width:10px; height:10px; stroke:#000; stroke-width:3; fill:none; }
+.student-page .tcf-annale-num { font-family:var(--font-d); font-size:1.5rem; font-weight:800; color:rgba(37,99,235,0.15); line-height:1; }
+.student-page .tcf-annale-card.done-card .tcf-annale-num { color:rgba(34,197,94,0.25); }
+.student-page .tcf-annale-card.active-card .tcf-annale-num { color:rgba(37,99,235,0.4); }
+.student-page .tcf-annale-name { font-size:0.82rem; font-weight:700; color:var(--text); }
+.student-page .tcf-annale-tag { font-size:0.58rem; font-weight:700; padding:2px 6px; border-radius:20px; background:var(--blue-bg); color:var(--blue); border:1px solid var(--blue-b); }
+.student-page .tcf-annale-tag.red { background:rgba(239,68,68,0.08); color:#fca5a5; border-color:rgba(239,68,68,0.2); }
+.student-page .tcf-annale-tag.green { background:rgba(34,197,94,0.1); color:#4ade80; border-color:rgba(34,197,94,0.25); }
+.student-page .tcf-audio-wrap { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:0.75rem; }
+.student-page .tcf-audio-wrap audio { width:100%; height:40px; }
+.student-page .tcf-pdf-wrap { border:1px solid var(--border); border-radius:10px; overflow:hidden; background:#fff; }
+.student-page .tcf-pdf-iframe { width:100%; height:720px; border:none; display:block; }
+.student-page .tcf-pdf-fallback { padding:1.25rem; text-align:center; font-size:0.82rem; color:var(--text-2); display:none; }
+.student-page .tcf-done-btn { display:flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.65rem; border-radius:9px; font-size:0.82rem; font-weight:600; border:1.5px solid var(--border-2); color:var(--text-2); background:transparent; cursor:pointer; transition:all .15s; width:100%; font-family:var(--font); }
+.student-page .tcf-done-btn:hover { border-color:rgba(34,197,94,0.4); color:#22c55e; }
+.student-page .tcf-done-btn.marked { background:rgba(34,197,94,0.08); border-color:rgba(34,197,94,0.3); color:#22c55e; }
+@media(max-width:640px){ .student-page .tcf-annales-grid { grid-template-columns:repeat(3,1fr); } .student-page .tcf-pdf-iframe { height:320px; } }
+
+.student-page .tcf-annales-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.875rem;
+}
+.student-page .tcf-annales-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+.student-page .tcf-annales-note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.student-page .tcf-annales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.student-page .tcf-annale-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.student-page .tcf-annale-card:hover {
+  border-color: var(--blue);
+  background: var(--blue-bg);
+  transform: translateY(-1px);
+}
+.student-page .tcf-annale-num { font-family:var(--font-d); font-size:1.5rem; font-weight:800; color:rgba(37,99,235,0.15); line-height:1; }
+.student-page .tcf-annale-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.student-page .tcf-annale-tags {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+.student-page .tcf-annale-tag {
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 20px;
+  background: var(--blue-bg);
+  color: var(--blue);
+  border: 1px solid var(--blue-b);
+  font-weight: 600;
+}
+.student-page .tcf-player {
+  display: none;
+  background: var(--bg-2);
+  border: 1px solid var(--blue-b);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  animation: fadeUp .2s ease;
+}
+.student-page .tcf-player.open { display: block; }
+.student-page .tcf-player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--blue-bg);
+  border-bottom: 1px solid var(--blue-b);
+}
+.student-page .tcf-player-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--blue);
+}
+.student-page .tcf-player-close {
+  color: var(--text-2);
+  padding: 2px;
+  border-radius: 5px;
+  transition: background .15s;
+}
+.student-page .tcf-player-close:hover { background: var(--border-2); }
+.student-page .tcf-player-body { padding: 1rem; }
+.student-page .tcf-tips-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+@media (max-width: 640px) {
+  .student-page .tcf-annales-grid { grid-template-columns: repeat(3, 1fr); }
+  .student-page .tcf-tips-row { grid-template-columns: 1fr; }
+}
 
     /* ── ENTRETIEN ── */
     .student-page .entretien-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; }
@@ -886,6 +1080,25 @@
       .student-page .stat-num { font-size: 1.2rem; }
       .student-page .countdown-row { flex-wrap: wrap; }
     }
+/* ── PROFILE MODAL ── */
+#profileModalBg { display:none !important; }
+#profileModalBg.open { display:flex !important; }
+.student-page .profile-modal-bg { position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:200; align-items:center; justify-content:center; padding:1rem; }
+.student-page .profile-modal { background:var(--bg-2); border:1px solid var(--border-2); border-radius:20px; padding:2rem; width:100%; max-width:400px; animation:fadeUp .25s ease; }
+.student-page .profile-modal-logo { font-family:var(--font-d); font-size:1.1rem; font-weight:800; margin-bottom:1.5rem; }
+.student-page .profile-modal-logo em { color:var(--blue); font-style:normal; }
+.student-page .profile-modal h3 { font-family:var(--font-d); font-size:1.3rem; font-weight:800; margin-bottom:0.35rem; }
+.student-page .profile-modal p { font-size:0.85rem; color:var(--text-2); margin-bottom:1.5rem; line-height:1.6; }
+.student-page .profile-field { display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1rem; }
+.student-page .profile-field label { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-dim); }
+.student-page .profile-field input { background:rgba(255,255,255,0.05); border:1.5px solid var(--border-2); border-radius:10px; padding:0.75rem 1rem; font-size:0.9rem; color:var(--text); font-family:var(--font); outline:none; transition:border-color .15s; width:100%; box-sizing:border-box; }
+.student-page .profile-field input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(37,99,235,0.1); }
+.student-page .profile-field input::placeholder { color:var(--text-dim); }
+.student-page .profile-modal-actions { display:flex; gap:0.75rem; margin-top:1.25rem; }
+.student-page .profile-modal-actions .btn-save { flex:1; background:var(--blue); color:#fff; border:none; border-radius:10px; padding:0.8rem; font-size:0.9rem; font-weight:700; cursor:pointer; font-family:var(--font); transition:background .15s; }
+.student-page .profile-modal-actions .btn-save:hover { background:#1d4ed8; }
+.student-page .profile-modal-actions .btn-skip { background:transparent; border:1.5px solid var(--border-2); border-radius:10px; padding:0.8rem 1.1rem; font-size:0.85rem; font-weight:600; color:var(--text-2); cursor:pointer; font-family:var(--font); transition:all .15s; }
+.student-page .profile-modal-actions .btn-skip:hover { border-color:var(--blue); color:var(--text); }
   </style>
 </head>
 <body class="student-page">
@@ -1035,7 +1248,7 @@
           <div>
             <div class="dash-greeting"><span id="greetName">Salut</span> <em>👋</em></div>
             <p class="dash-sub">Bienvenue dans ton espace NextStage. Voici où tu en es dans ta procédure Campus France - continue, tu es sur la bonne voie.</p>
-            <span class="dash-edit-name" id="editProfileBtn" onclick="editProfile()">
+            <span class="dash-edit-name" onclick="editName()">
               <i data-lucide="pencil"></i> Modifier mon profil
             </span>
           </div>
@@ -1045,22 +1258,22 @@
           <div class="dash-card">
             <div class="dash-card-ico green"><i data-lucide="check-circle-2"></i></div>
             <div class="dash-card-num" id="dashDone">0</div>
-            <div class="dash-card-label">Tâches cochées</div>
+            <div class="dash-card-label">Taches cochees</div>
           </div>
           <div class="dash-card">
             <div class="dash-card-ico"><i data-lucide="list-checks"></i></div>
-            <div class="dash-card-num">29</div>
-            <div class="dash-card-label">Tâches au total</div>
+            <div class="dash-card-num">55</div>
+            <div class="dash-card-label">Taches au total</div>
           </div>
           <div class="dash-card">
-            <div class="dash-card-ico"><i data-lucide="folder-open"></i></div>
-            <div class="dash-card-num">6</div>
-            <div class="dash-card-label">Ressources</div>
+            <div class="dash-card-ico"><i data-lucide="layers"></i></div>
+            <div class="dash-card-num">7</div>
+            <div class="dash-card-label">Phases</div>
           </div>
           <div class="dash-card">
-            <div class="dash-card-ico amber"><i data-lucide="video"></i></div>
-            <div class="dash-card-num">6</div>
-            <div class="dash-card-label">Vidéos exclusives</div>
+            <div class="dash-card-ico amber"><i data-lucide="target"></i></div>
+            <div class="dash-card-num" id="dashPct">0%</div>
+            <div class="dash-card-label">Progression</div>
           </div>
         </div>
 
@@ -1103,7 +1316,7 @@
             </div>
             <div class="countdown-target">Objectif : <strong>Début procédure Campus France - Octobre 2026</strong></div>
             <button class="btn-share" onclick="shareProgress()">
-              <i data-lucide="send"></i> Partager ma progression à Rayan
+              <i data-lucide="send"></i> Partager ma progression avec NextStage
             </button>
           </div>
         </div>
@@ -1116,7 +1329,7 @@
       <div class="section-block tab-section" id="revue">
         <span class="section-eyebrow">Premium</span>
         <h2 class="section-title">Revue de dossier</h2>
-        <p class="section-sub">Envoie tes documents à Rayan pour une relecture complète. Lettre de motivation, CV, dossier Boite Pastel - il vérifie tout en personne.</p>
+        <p class="section-sub">Envoie tes documents pour une relecture complète. L'équipe NextStage vérifie chaque pièce et te fait un retour détaillé.</p>
 
         <div class="premium-status-bar" id="revueStatusBar">
           <div class="status-step" data-step="1">
@@ -1144,9 +1357,14 @@
             <div class="form-row">
               <label>Type de document</label>
               <select id="revueDocType">
-                <option value="lettre">Lettre de motivation</option>
+                <option value="lettre">Lettre de motivation Campus France (Pastel)</option>
+                <option value="lettre_consulaire">Lettre de motivation consulaire (visa)</option>
                 <option value="cv">CV</option>
-                <option value="pastel">Dossier Boite Pastel complet</option>
+                <option value="lettre_financement">Lettre de prise en charge financière</option>
+                <option value="lettre_hebergement">Lettre explicative hébergement</option>
+                <option value="lettre_fonds">Lettre explicative provenance des fonds</option>
+                <option value="lettre_parente">Lettre explicative lien de parenté</option>
+                <option value="dossier_visa">Dossier visa complet (ensemble des pièces)</option>
                 <option value="autre">Autre document</option>
               </select>
             </div>
@@ -1283,54 +1501,119 @@
            CHECKLIST
       ══════════════════ -->
       <div class="section-block tab-section" id="checklist">
-        <span class="section-eyebrow">Étape par étape</span>
+        <span class="section-eyebrow">Etape par etape</span>
         <h2 class="section-title">Ta checklist Campus France</h2>
-        <p class="section-sub">Coche chaque tâche au fur et à mesure. Ta progression est sauvegardée dans ton navigateur.</p>
+        <p class="section-sub">Coche chaque tache au fur et a mesure. Ta progression est sauvegardee automatiquement dans ton navigateur. La procedure Campus France prend entre 6 et 10 mois - commence le plus tot possible.</p>
 
         <!-- STATS -->
         <div class="stats-row">
           <div class="stat-card">
             <div class="stat-ico"><i data-lucide="check-circle-2"></i></div>
             <div class="stat-num" id="statDone">0</div>
-            <div class="stat-label">Tâches cochées</div>
+            <div class="stat-label">Taches cochees</div>
           </div>
           <div class="stat-card">
             <div class="stat-ico"><i data-lucide="list-checks"></i></div>
-            <div class="stat-num">29</div>
-            <div class="stat-label">Tâches au total</div>
+            <div class="stat-num">55</div>
+            <div class="stat-label">Taches au total</div>
           </div>
           <div class="stat-card">
-            <div class="stat-ico"><i data-lucide="folder-open"></i></div>
-            <div class="stat-num">6</div>
-            <div class="stat-label">Ressources</div>
+            <div class="stat-ico"><i data-lucide="layers"></i></div>
+            <div class="stat-num">7</div>
+            <div class="stat-label">Phases</div>
           </div>
           <div class="stat-card">
-            <div class="stat-ico"><i data-lucide="video"></i></div>
-            <div class="stat-num">6</div>
-            <div class="stat-label">Vidéos</div>
+            <div class="stat-ico"><i data-lucide="target"></i></div>
+            <div class="stat-num" id="statPct">0%</div>
+            <div class="stat-label">Progression</div>
           </div>
         </div>
 
         <!-- RECHERCHE -->
         <div class="checklist-search" id="checklistSearch">
           <i data-lucide="search"></i>
-          <input type="text" id="searchInput" placeholder="Rechercher une tâche (ex : lettre de motivation, RDV consulat…)" oninput="onSearch(this.value)">
+          <input type="text" id="searchInput" placeholder="Rechercher une tache (ex : lettre de motivation, Capago, CROUS...)" oninput="onSearch(this.value)">
           <span class="clear-search" onclick="clearSearch()"><i data-lucide="x" class="clear-ico"></i></span>
         </div>
         <div class="no-results" id="noResults">
           <i data-lucide="search-x"></i>
-          <div>Aucune tâche ne correspond à ta recherche.</div>
+          <div>Aucune tache ne correspond a ta recherche.</div>
         </div>
 
         <div class="phases-list" id="phasesList">
+          <div class="phase-card open" data-phase="prep">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-left">
+                <div class="phase-ico"><i data-lucide="clipboard-list"></i></div>
+                <div class="phase-texts">
+                  <div class="phase-name">Phase 1 - Preparation initiale</div>
+                  <div class="phase-count" id="count-prep">0 / 6</div>
+                </div>
+              </div>
+              <div class="phase-right">
+                <div class="phase-bar"><div class="phase-bar-fill" id="bar-prep" style="width:0%"></div></div>
+                <div class="phase-chevron"><i data-lucide="chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="phase-items">
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Verifier la validite de ton passeport</div>
+                  <div class="check-tip">Doit etre valide au moins 8 mois apres la date de depot du visa chez Capago</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Definir ta filiere et ton niveau cible (L1, L2, Master)</div>
+                  <div class="check-tip">Sois precis : pas juste "informatique" mais "Licence informatique parcours developpement"</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Lister 5 a 8 universites cibles</div>
+                  <div class="check-tip">1 ambitieuse, 3 realistes, 2-3 suretes - varie les villes. Paris est plus cher et plus selectif que la province</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Verifier les prerequis de chaque formation</div>
+                  <div class="check-tip">Notes minimales requises, niveau de langue, documents specifiques demandes</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Scanner et organiser tous tes documents academiques</div>
+                  <div class="check-tip">Releves de notes Bac + annees universitaires, diplomes, bulletins scolaires 3 dernieres annees - format PDF, lisibles, en couleur</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="prep-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Faire traduire les documents en arabe par un traducteur assermente</div>
+                  <div class="check-tip">Obligatoire - les documents en arabe seuls ne sont pas acceptes sur Pastel</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+            </div>
+          </div>
 
-          <div class="phase-card open" data-phase="tcf">
+          <div class="phase-card" data-phase="tcf">
             <div class="phase-header" onclick="togglePhase(this)">
               <div class="phase-left">
                 <div class="phase-ico"><i data-lucide="languages"></i></div>
                 <div class="phase-texts">
-                  <div class="phase-name">Phase 1 - TCF / DELF</div>
-                  <div class="phase-count" id="count-tcf">0 / 5</div>
+                  <div class="phase-name">Phase 2 - TCF / DELF</div>
+                  <div class="phase-count" id="count-tcf">0 / 7</div>
                 </div>
               </div>
               <div class="phase-right">
@@ -1338,46 +1621,62 @@
                 <div class="phase-chevron"><i data-lucide="chevron-right"></i></div>
               </div>
             </div>
-            <div class="phase-items">
+            <div class="phase-items" style="display:none">
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="tcf-1"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="tcf-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Vérifier le niveau requis par ton université cible</div>
-                  <div class="check-tip">B2 minimum pour la majorité des formations</div>
+                  <div class="check-label">Choisir le bon test : TCF DAP (L1) ou TCF Tout Public (L2+)</div>
+                  <div class="check-tip">TCF DAP = 4 epreuves dont expression ecrite · TCF Tout Public = 3 epreuves · DELF = diplome permanent mais plus difficile</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="tcf-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Verifier le niveau minimum requis par tes universites cibles</div>
+                  <div class="check-tip">B2 minimum (400 points) recommande - certaines formations exigent C1</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="tcf-2"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="tcf-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">S'inscrire à la session TCF ou DELF la plus proche</div>
-                  <div class="check-tip">Campus France Algérie organise des sessions régulières</div>
+                  <div class="check-label">S'inscrire a une session TCF sur le site de l'Institut Francais Algerie</div>
+                  <div class="check-tip">Les places partent vite - inscris-toi 2 mois a l'avance minimum · Villes disponibles : Alger, Oran, Annaba, Constantine, Bejaia...</div>
                 </div>
-                <span class="check-tag tag-doc">Document</span>
+                <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="tcf-3"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="tcf-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Préparer le TCF avec des annales et exercices officiels</div>
-                  <div class="check-tip">Minimum 15j-1mois de préparation recommandés</div>
+                  <div class="check-label">Preparer le TCF avec les 17 annales disponibles dans la section TCF</div>
+                  <div class="check-tip">Plan 8 semaines recommande - utilise les annales avec chronometre · Travaille oral, ecrit et structures chaque semaine</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="tcf-4"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="tcf-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Passer l'examen et récupérer les résultats officiels</div>
-                  <div class="check-tip">Garde l'original + 2 copies</div>
+                  <div class="check-label">Ecouter RFI Savoirs et TV5Monde 20 minutes par jour</div>
+                  <div class="check-tip">Pour la comprehension orale - c'est l'epreuve que les etudiants sous-estiment le plus</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="tcf-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Passer l'examen - apporter convocation + piece d'identite</div>
+                  <div class="check-tip">Arrive 20 minutes en avance · Pas de penalite pour mauvaise reponse, reponds a tout</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="tcf-5"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="tcf-7"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Vérifier la date de validité de tes résultats</div>
-                  <div class="check-tip">Valable 2 ans à partir de la date de l'examen</div>
+                  <div class="check-label">Recuperer et telecharger l'attestation officielle de resultats</div>
+                  <div class="check-tip">Valable 2 ans · Garde l'original + 3 copies numeriques · Ajoute sur Pastel</div>
                 </div>
-                <span class="check-tag tag-tip">Conseil</span>
+                <span class="check-tag tag-doc">Document</span>
               </div>
             </div>
           </div>
@@ -1387,8 +1686,8 @@
               <div class="phase-left">
                 <div class="phase-ico"><i data-lucide="monitor"></i></div>
                 <div class="phase-texts">
-                  <div class="phase-name">Phase 2 - Dossier Pastel</div>
-                  <div class="phase-count" id="count-pastel">0 / 7</div>
+                  <div class="phase-name">Phase 3 - Dossier Pastel (Boite Pastel)</div>
+                  <div class="phase-count" id="count-pastel">0 / 8</div>
                 </div>
               </div>
               <div class="phase-right">
@@ -1398,58 +1697,66 @@
             </div>
             <div class="phase-items" style="display:none">
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-1"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Créer ton compte sur la plateforme Etude en France (Boite Pastel)</div>
-                  <div class="check-tip">https://pastel.diplomatie.gouv.fr/etudesenfrance/dyn/public/authentification/login.html - utilise un email sérieux</div>
+                  <div class="check-label">Creer ton compte sur la Boite Pastel (etudes-en-france.fr)</div>
+                  <div class="check-tip">Utilise un email serieux que tu consultes regulierement · Campus France Algerie = Boite Pastel · Un seul compte</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-2"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Scanner tous tes relevés de notes</div>
-                  <div class="check-tip">Bac + années universitaires · Format PDF, lisibles, en couleur</div>
+                  <div class="check-label">Remplir ton profil etudiant sur Pastel</div>
+                  <div class="check-tip">Parcours academique, notes, experiences - sois coherent avec tes documents · Tout sera verifie a l'entretien</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-3"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Rédiger ta lettre de motivation</div>
-                  <div class="check-tip">C'est le document le plus important. Voir le modèle dans cet espace.</div>
+                  <div class="check-label">Rediger ta lettre de motivation Pastel</div>
+                  <div class="check-tip">Structure : parcours → projet d'etudes → projet professionnel → pourquoi la France → pourquoi cette formation · Voir le modele dans la section Ressources · C'est la piece la plus importante</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-4"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Rédiger ton CV au format français</div>
-                  <div class="check-tip">Voir le modèle disponible dans la section Modèles</div>
+                  <div class="check-label">Rediger ton CV au format francais</div>
+                  <div class="check-tip">Maximum 1 page · Pas de photo obligatoire en France · Voir le modele dans la section Ressources</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-5"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Sélectionner tes formations cibles</div>
-                  <div class="check-tip">Stratégie : 1 ambitieuse, 3 réalistes, 3 sûres</div>
+                  <div class="check-label">Selectionner tes formations sur Pastel</div>
+                  <div class="check-tip">Maximum 3 pour L1, maximum 7 pour L2 et plus · Ordonne-les par preference reelle · Strategie : 1 ambitieuse, 3 realistes, 2-3 suretes</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-6"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Remplir le formulaire de présentation Pastel</div>
-                  <div class="check-tip">Cohérence absolue avec ta lettre de motivation</div>
+                  <div class="check-label">Uploader tous les documents requis sur Pastel</div>
+                  <div class="check-tip">Releves de notes, diplomes, TCF/DELF, CV, lettre de motivation - format PDF, chaque fichier < 2 Mo · Verifier la lisibilite de chaque scan</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="pastel-7"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Payer les frais Campus France : 20 000 DA</div>
+                  <div class="check-tip">Paiement en ligne sur Pastel · Conserver la preuve de paiement · Sans paiement = dossier non traite</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="pastel-7"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="pastel-8"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Soumettre le dossier avant la date limite</div>
-                  <div class="check-tip">La deadline est stricte. Ne pas attendre le dernier jour.</div>
+                  <div class="check-label">Valider et soumettre le dossier avant la date limite</div>
+                  <div class="check-tip">La deadline est stricte · Impossible de modifier apres soumission - relis tout avant de confirmer · Ne pas attendre le dernier jour</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
@@ -1461,8 +1768,8 @@
               <div class="phase-left">
                 <div class="phase-ico"><i data-lucide="mic"></i></div>
                 <div class="phase-texts">
-                  <div class="phase-name">Phase 3 - Entretien Campus France</div>
-                  <div class="phase-count" id="count-entretien">0 / 5</div>
+                  <div class="phase-name">Phase 4 - Entretien Campus France</div>
+                  <div class="phase-count" id="count-entretien">0 / 8</div>
                 </div>
               </div>
               <div class="phase-right">
@@ -1472,42 +1779,66 @@
             </div>
             <div class="phase-items" style="display:none">
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="ent-1"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="ent-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Prendre rendez-vous sur Campus France Algérie</div>
-                  <div class="check-tip">Le délai peut être long - prendre RDV dès que possible</div>
+                  <div class="check-label">Prendre rendez-vous pour l'entretien des reception de la convocation</div>
+                  <div class="check-tip">Les creneaux partent vite - prends RDV immediatement · Ne pas attendre</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="ent-2"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="ent-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Préparer ton argumentaire sur ton projet d'études</div>
-                  <div class="check-tip">Pourquoi cette filière ? Pourquoi la France ? Projet pro ?</div>
+                  <div class="check-label">Preparer ta presentation personnelle (2 minutes max)</div>
+                  <div class="check-tip">Ne recite pas ton CV - qui tu es, ton parcours en 2-3 phrases, puis oriente vers ton projet · Entraine-toi a voix haute</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="ent-3"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="ent-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Se renseigner sur chaque université choisie</div>
-                  <div class="check-tip">Connais les points forts de chaque formation sélectionnée</div>
+                  <div class="check-label">Connaitre le programme de chaque formation selectionnee</div>
+                  <div class="check-tip">L'agent te demandera pourquoi cette universite precisement - cite un cours, un labo, une specialisation du programme · Va sur le site de chaque fac</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="ent-4"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="ent-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Préparer les réponses aux questions difficiles</div>
-                  <div class="check-tip">Voir la section Entretien dans cet espace</div>
+                  <div class="check-label">Preparer ta reponse sur le projet professionnel et le retour en Algerie</div>
+                  <div class="check-tip">Question decisive pour le visa ensuite - cite un secteur precis en Algerie, une entreprise, un projet concret · Sois specifique et credible</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="ent-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Verifier la coherence entre ta lettre de motivation et ce que tu diras</div>
+                  <div class="check-tip">L'agent a ton dossier devant lui - toute incoherence est remarquee · Ce que tu ecris = ce que tu dis</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="ent-5"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="ent-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Passer l'entretien Campus France</div>
-                  <div class="check-tip">Tenue correcte, arrive 15 min avant, reste calme</div>
+                  <div class="check-label">Preparer une reponse claire sur le financement de tes etudes</div>
+                  <div class="check-tip">7 500€ pour une annee (615€/mois) - cite le montant mensuel prevu et la source (famille, bourse). Sois precis avec des chiffres</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="ent-7"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Rassembler les documents physiques pour le jour J</div>
+                  <div class="check-tip">Passeport original, releves de notes originaux, lettre de motivation imprimee, attestation TCF · Tenue correcte</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="ent-8"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Passer l'entretien Campus France - arrive 15 minutes en avance</div>
+                  <div class="check-tip">Parle lentement et clairement · Si tu ne comprends pas une question, demande poliment de la reformuler · Reste calme</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
@@ -1519,8 +1850,8 @@
               <div class="phase-left">
                 <div class="phase-ico"><i data-lucide="graduation-cap"></i></div>
                 <div class="phase-texts">
-                  <div class="phase-name">Phase 4 - Admissions universitaires</div>
-                  <div class="phase-count" id="count-admissions">0 / 4</div>
+                  <div class="phase-name">Phase 5 - Admissions universitaires</div>
+                  <div class="phase-count" id="count-admissions">0 / 6</div>
                 </div>
               </div>
               <div class="phase-right">
@@ -1530,36 +1861,52 @@
             </div>
             <div class="phase-items" style="display:none">
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="adm-1"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="adm-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Vérifier l'espace Boite Pastel régulièrement pour les réponses</div>
-                  <div class="check-tip">Les réponses arrivent entre janvier et avril</div>
+                  <div class="check-label">Suivre l'etat des candidatures sur Pastel regulierement</div>
+                  <div class="check-tip">Les reponses arrivent entre janvier et mai selon les universites · Verifie aussi tes emails</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="adm-2"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="adm-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Confirmer ton admission dans l'université choisie</div>
-                  <div class="check-tip">Délai limité - ne pas tarder à accepter</div>
+                  <div class="check-label">Accepter les admissions recues dans les delais</div>
+                  <div class="check-tip">Chaque universite a ses propres delais de reponse - lis attentivement chaque email · Un delai manque = place perdue</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="adm-3"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="adm-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Obtenir l'attestation d'admission officielle</div>
-                  <div class="check-tip">Document indispensable pour le dossier visa</div>
+                  <div class="check-label">Choisir ton universite definitive</div>
+                  <div class="check-tip">Previens les autres universites de ton refus - c'est une bonne pratique qui libere des places pour d'autres</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="adm-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Obtenir la lettre d'admission officielle ou attestation de preinscription</div>
+                  <div class="check-tip">Document obligatoire pour le dossier visa · Telechargeable sur Pastel pour les etablissements connectes</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="adm-4"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="adm-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Préparer les documents pour la demande de visa</div>
-                  <div class="check-tip">Voir la Phase 5 ci-dessous</div>
+                  <div class="check-label">Recuperer l'email de fin de procedure Campus France</div>
+                  <div class="check-tip">Email officiel indiquant que la procedure "Etudes en France" est terminee - obligatoire pour Capago</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="adm-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Faire la demande de logement CROUS des maintenant</div>
+                  <div class="check-tip">Sur messervices.etudiant.gouv.fr - les places partent en quelques jours apres l'ouverture · Les creneaux ouvrent en janvier pour septembre</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
               </div>
             </div>
           </div>
@@ -1569,8 +1916,8 @@
               <div class="phase-left">
                 <div class="phase-ico"><i data-lucide="plane-takeoff"></i></div>
                 <div class="phase-texts">
-                  <div class="phase-name">Phase 5 - Demande de visa</div>
-                  <div class="phase-count" id="count-visa">0 / 8</div>
+                  <div class="phase-name">Phase 6 - Dossier visa consulaire (Capago)</div>
+                  <div class="phase-count" id="count-visa">0 / 12</div>
                 </div>
               </div>
               <div class="phase-right">
@@ -1580,72 +1927,185 @@
             </div>
             <div class="phase-items" style="display:none">
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-1"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="visa-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Rassembler les preuves de ressources financières</div>
-                  <div class="check-tip">615€/mois minimum recommandé - relevé bancaire + attestation</div>
+                  <div class="check-label">Prendre rendez-vous sur capago.eu (prestataire officiel)</div>
+                  <div class="check-tip">En Algerie le depot se fait via Capago, pas directement au consulat · Les creneaux partent vite - prendre RDV des l'admission</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-2"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="visa-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Rédiger la lettre de motivation consulaire</div>
-                  <div class="check-tip">Différente de celle de Boite Pastel - axée sur ton retour en Algérie</div>
-                </div>
-                <span class="check-tag tag-urgent">Urgent</span>
-              </div>
-              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-3"><i data-lucide="check"></i></div>
-                <div class="check-content">
-                  <div class="check-label">Obtenir la caution parentale ou du tuteur légal</div>
-                  <div class="check-tip">Notariée, traduite en français par un traducteur agréé</div>
+                  <div class="check-label">Remplir le formulaire France-Visas en ligne</div>
+                  <div class="check-tip">Sur france-visas.gouv.fr · Section : Etudiant / VLS-TS · Date et signe · Imprimer</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-4"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="visa-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Réunir les justificatifs de logement en France</div>
-                  <div class="check-tip">Attestation d'hébergement ou contrat résidence universitaire</div>
+                  <div class="check-label">Reunir les papiers personnels obligatoires</div>
+                  <div class="check-tip">Passeport valide 8 mois apres le depot · 2 photos d'identite 35x45mm fond blanc · Copie des 5 premieres pages + pages avec visas</div>
                 </div>
                 <span class="check-tag tag-doc">Document</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-5"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="visa-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Prendre rendez-vous au consulat français d'Algérie</div>
-                  <div class="check-tip">Prendre RDV dès l'admission confirmée - délais longs</div>
+                  <div class="check-label">Rassembler les justificatifs du projet d'etudes</div>
+                  <div class="check-tip">Email de fin de procedure Campus France + attestation de preinscription + lettre d'admission + CV + lettre motivation Pastel + dernier diplome</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Preparer les justificatifs financiers (7 500€ minimum)</div>
+                  <div class="check-tip">Releve bancaire 3 derniers mois OU attestation de retrait de 7 500€ · Lettre explicative sur la provenance reelle des fonds (obligatoire) · Attestation sur l'honneur de versement dans un compte francais</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-6"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="visa-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Préparer l'entretien consulaire</div>
-                  <div class="check-tip">Justifie ton intention de retour en Algérie après tes études</div>
+                  <div class="check-label">Faire signer la lettre de prise en charge financiere par le garant</div>
+                  <div class="check-tip">Voir le modele dans la section Ressources · Joindre les justificatifs selon la situation professionnelle (salaried : attestation travail + CNAS + fiches de paie + releves)</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-7"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Rediger la lettre de motivation consulaire</div>
+                  <div class="check-tip">Differente de celle de Pastel - s'adresse au consul, pas a l'universite · Objectif : convaincre que tu rentreras · Voir le modele Premium · 5 sections : projet etudes, pourquoi France, retour Algerie, financement, logement</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-8"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Preparer le justificatif de logement en France</div>
+                  <div class="check-tip">Attribution CROUS (ideal) OU contrat de bail OU attestation hebergement (+ copie piece identite hebergeant + justificatif domicile < 3 mois + lettre explicative relation)</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-9"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Souscrire une assurance sante valable en France</div>
+                  <div class="check-tip">Obligatoire pour le dossier visa · Peut etre souscrite en Algerie avant le depart</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-10"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Verifier la coherence de tout le dossier avant le depot</div>
+                  <div class="check-tip">Tout doit etre coherent : lettre motivation, entretien Campus France, justificatifs financiers, projet de retour · Un seul document incoherent peut entrainer un refus</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-11"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Deposer le dossier complet chez Capago au rendez-vous</div>
+                  <div class="check-tip">Apporte originaux + copies de chaque document · Delai de traitement : 2 a 6 semaines · Ne pas deposer en juillet pour une rentree en septembre</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="visa-12"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Retirer le visa et verifier toutes les informations</div>
+                  <div class="check-tip">Verifier dates, prenom/nom, type de visa (VLS-TS) · Signaler immediatement toute erreur</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="phase-card" data-phase="arrivee">
+            <div class="phase-header" onclick="togglePhase(this)">
+              <div class="phase-left">
+                <div class="phase-ico"><i data-lucide="home"></i></div>
+                <div class="phase-texts">
+                  <div class="phase-name">Phase 7 - Arrivee en France</div>
+                  <div class="phase-count" id="count-arrivee">0 / 8</div>
+                </div>
+              </div>
+              <div class="phase-right">
+                <div class="phase-bar"><div class="phase-bar-fill" id="bar-arrivee" style="width:0%"></div></div>
+                <div class="phase-chevron"><i data-lucide="chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="phase-items" style="display:none">
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-1"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Valider le visa VLS-TS sur le site ANEF dans les 3 mois</div>
+                  <div class="check-tip">Sur administration-etrangers-en-france.fr · Obligatoire sous peine d'irregularite · Ne pas oublier - date limite = date entree + 3 mois</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-2"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">S'inscrire administrativement a l'universite</div>
+                  <div class="check-tip">Apporter : lettre d'admission, passeport + visa, 2-4 photos, justificatif logement, releves de notes, diplome du bac · Inscription avant la rentrée</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-3"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Ouvrir un compte bancaire francais</div>
+                  <div class="check-tip">Revolut ou Lydia en premier (ouverture immediate) puis BNP ou Societe Generale · Utile pour l'APL et le depot des 7 500€ que tu as atteste</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-7"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="arr-4"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Soumettre le dossier complet au consulat</div>
-                  <div class="check-tip">Vérifie chaque document deux fois avant de partir</div>
+                  <div class="check-label">Deposer les 7 500€ sur ton compte bancaire francais</div>
+                  <div class="check-tip">Tu l'as atteste dans ton dossier visa - fais-le rapidement apres l'ouverture du compte</div>
                 </div>
                 <span class="check-tag tag-urgent">Urgent</span>
               </div>
               <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
-                <div class="check-box" data-id="visa-8"><i data-lucide="check"></i></div>
+                <div class="check-box" data-id="arr-5"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
                 <div class="check-content">
-                  <div class="check-label">Recevoir et valider le visa VLS-TS</div>
-                  <div class="check-tip">Valider en France dans les 3 mois via l'OFII</div>
+                  <div class="check-label">Faire la demande APL sur caf.fr des l'emmenagement</div>
+                  <div class="check-tip">Aide au logement : 50 a 200€/mois selon la ville et le loyer · Ne pas attendre - s'applique des la date de la demande · Sur caf.fr</div>
+                </div>
+                <span class="check-tag tag-urgent">Urgent</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-6"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">S'inscrire a la Securite sociale etudiante</div>
+                  <div class="check-tip">Automatique via l'inscription universitaire · Verifier que tu as bien une attestation de droits</div>
+                </div>
+                <span class="check-tag tag-doc">Document</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-7"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">Acheter une carte de transport etudiante</div>
+                  <div class="check-tip">Carte Navigo en Ile-de-France (50% de reduction avec carte etudiant) · Pass abonnement dans les autres villes · Indispensable pour les trajets universite</div>
+                </div>
+                <span class="check-tag tag-tip">Conseil</span>
+              </div>
+              <div class="check-item" onclick="toggleCheck(this.querySelector('.check-box'))">
+                <div class="check-box" data-id="arr-8"><svg class="ck-svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                <div class="check-content">
+                  <div class="check-label">S'inscrire aux restaurants universitaires (RU)</div>
+                  <div class="check-tip">Repas complet a 3,30€ avec la carte etudiant · S'inscrire via le CROUS de ta ville · Enorme economie sur l'annee</div>
                 </div>
                 <span class="check-tag tag-tip">Conseil</span>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -1655,244 +2115,277 @@
       <div class="section-block tab-section" id="tcf">
         <span class="section-eyebrow">Étape clé</span>
         <h2 class="section-title">Préparation TCF / DELF</h2>
-        <p class="section-sub">Le niveau de français est souvent ce qui fait basculer un dossier. Voici de quoi t'entraîner sérieusement.</p>
+        <p class="section-sub">17 annales complètes avec audio. Entraîne-toi en conditions réelles.</p>
+        
+        <!-- INFOS RAPIDES -->
+        <!-- INFO TCF -->
+        <div class="tcf-info-card" style="margin-bottom:1.25rem">
+          <div class="entretien-title"><i data-lucide="info"></i> Comprendre le TCF</div>
+          <div class="tcf-facts-grid">
+            <div class="tcf-fact"><span class="tcf-fact-k">TCF DAP</span><span class="tcf-fact-v">Pour L1 - 4 epreuves</span></div>
+            <div class="tcf-fact"><span class="tcf-fact-k">TCF Tout Public</span><span class="tcf-fact-v">Pour L2+ - 3 epreuves</span></div>
+            <div class="tcf-fact"><span class="tcf-fact-k">Niveau minimum</span><span class="tcf-fact-v">B2 recommande (400 pts)</span></div>
+            <div class="tcf-fact"><span class="tcf-fact-k">Validite</span><span class="tcf-fact-v">2 ans</span></div>
+            <div class="tcf-fact"><span class="tcf-fact-k">Inscription</span><span class="tcf-fact-v">Institut Francais Algerie</span></div>
+            <div class="tcf-fact"><span class="tcf-fact-k">Preparation</span><span class="tcf-fact-v">2 mois minimum</span></div>
+          </div>
+        </div>
 
-        <div class="tcf-grid">
-
-          <div class="tcf-doc-card">
-            <div class="tcf-doc-ico"><i data-lucide="file-text"></i></div>
-            <div class="tcf-doc-body">
-              <span class="tag-essential">Document principal</span>
-              <div class="tcf-doc-title">Guide de préparation TCF complet</div>
-              <div class="tcf-doc-desc">Structure de l'examen, répartition des points par épreuve, exemples de questions pour chaque section (compréhension orale, structures de la langue, compréhension écrite), et méthode de révision sur 8 semaines.</div>
-              <div class="ressource-foot" style="margin-top:0.9rem">
-                <span class="ressource-size">PDF</span>
-                <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
+        <!-- CONSEILS TCF -->
+        <div class="tcf-tips-row" style="margin-bottom:1.25rem;">
+          <div class="entretien-card">
+            <div class="entretien-title"><i data-lucide="lightbulb"></i> Comment bien se preparer</div>
+            <div class="tips-list">
+              <div class="tip"><span class="tip-ico"><i data-lucide="headphones"></i></span><span><strong>Oral :</strong> ecoute RFI Savoirs et TV5Monde tous les jours. 20 minutes suffisent pour progresser vite.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="book-open"></i></span><span><strong>Ecrit :</strong> lis des articles du Monde ou 20minutes.fr. Habitue-toi a lire vite et a reperer les idees principales.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="pen-line"></i></span><span><strong>Structures :</strong> revise le subjonctif, la concordance des temps et les pronoms relatifs - c'est ce qui revient le plus.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="timer"></i></span><span><strong>Chronometrage :</strong> entraine-toi toujours avec un minuteur. La gestion du temps est aussi importante que le contenu.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="calendar-check"></i></span><span><strong>Inscription :</strong> inscris-toi le plus tot possible. Les places partent vite dans toutes les villes d'Algerie.</span></div>
+            </div>
+          </div>
+          <div class="entretien-card">
+            <div class="entretien-title"><i data-lucide="target"></i> Plan de revision 8 semaines</div>
+            <div class="tips-list">
+              <div class="tip"><span class="tip-ico"><i data-lucide="circle-1"></i></span><span><strong>Semaines 1-2 :</strong> annales 1 a 4 en diagnostic. Identifie tes points faibles sans te juger.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="circle-2"></i></span><span><strong>Semaines 3-5 :</strong> travail cible sur tes lacunes. 2 a 3 annales par semaine maximum.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="circle-3"></i></span><span><strong>Semaines 6-7 :</strong> entrainement intensif en conditions reelles. Minuteur, silence, aucune aide.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="flag"></i></span><span><strong>Semaine 8 :</strong> pas de nouvelle matiere. Consolide, dors bien les 2 nuits avant l'examen.</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- ANNALES -->
+        <div class="tcf-annales-header">
+          <div class="tcf-annales-title"><i data-lucide="graduation-cap" style="color:var(--blue);width:18px;height:18px;"></i> 17 annales d'entraînement</div>
+          <span class="tcf-annales-note">Clique sur une carte · PDF + audio</span>
+        </div>
+        <div class="tcf-progress-row">
+          <div class="tcf-progress-bar"><div class="tcf-progress-fill" id="tcfProgressFill" style="width:0%"></div></div>
+          <span class="tcf-progress-label" id="tcfProgressLabel">0 / 17 faites</span>
+        </div>
+        <div class="tcf-annales-grid" id="tcfAnnalesGrid"></div>
+        <!-- PLAYER -->
+        <div class="tcf-player" id="tcfPlayer">
+          <div class="tcf-player-header">
+            <div class="tcf-player-title" id="tcfPlayerTitle">Annale 1</div>
+            <button class="tcf-player-close" onclick="closeTcfPlayer()"><i data-lucide="x"></i></button>
+          </div>
+          <div class="tcf-player-body">
+            <div class="tcf-audio-wrap">
+              <audio id="tcfAudio" controls>Navigateur non compatible.</audio>
+            </div>
+            <div class="tcf-pdf-wrap">
+              <iframe id="tcfPdfIframe" class="tcf-pdf-iframe" src="" allowfullscreen></iframe>
+              <div class="tcf-pdf-fallback" id="tcfPdfFallback">
+                Le PDF ne s'affiche pas. <a id="tcfPdfLink" href="#" target="_blank" style="color:var(--blue);font-weight:700">Ouvrir dans un onglet →</a>
               </div>
             </div>
-          </div>
-
-          <div class="tcf-info-card">
-            <div class="entretien-title"><i data-lucide="info"></i> Comprendre le TCF</div>
-            <div class="tcf-fact-list">
-              <div class="tcf-fact"><span class="tcf-fact-k">Niveau visé</span><span class="tcf-fact-v">B2 minimum recommandé</span></div>
-              <div class="tcf-fact"><span class="tcf-fact-k">Validité</span><span class="tcf-fact-v">2 ans à partir de la date de passage</span></div>
-              <div class="tcf-fact"><span class="tcf-fact-k">Épreuves</span><span class="tcf-fact-v">Compréhension orale, structures, compréhension écrite</span></div>
-              <div class="tcf-fact"><span class="tcf-fact-k">Durée préparation</span><span class="tcf-fact-v">15j/1mois minimum conseillés</span></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="tcf-tips-row">
-          <div class="entretien-card">
-            <div class="entretien-title"><i data-lucide="target"></i> Plan de révision recommandé</div>
-            <div class="tips-list">
-              <div class="tip"><span class="tip-ico"><i data-lucide="calendar-check"></i></span><span><strong>Semaines 1-2 :</strong> diagnostic de ton niveau actuel avec une annale officielle complète</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="book-open"></i></span><span><strong>Semaines 3-5 :</strong> travail ciblé sur tes points faibles, vocabulaire et grammaire quotidiens</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="headphones"></i></span><span><strong>Semaines 6-7 :</strong> entraînement intensif à la compréhension orale en conditions réelles de chronométrage</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="flag"></i></span><span><strong>Semaine 8 :</strong> annales blanches complètes pour t'habituer au rythme de l'épreuve</span></div>
-            </div>
-          </div>
-          <div class="entretien-card">
-            <div class="entretien-title"><i data-lucide="triangle-alert"></i> Erreurs fréquentes</div>
-            <div class="tips-list">
-              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Réviser uniquement la grammaire sans s'entraîner à l'oral - c'est souvent l'épreuve la plus mal préparée</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>S'inscrire à l'examen sans avoir fait au moins une annale complète chronométrée avant</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Attendre le dernier moment pour s'inscrire - les places aux sessions Campus France Algérie partent vite</span></div>
-            </div>
+            <button class="tcf-done-btn" id="tcfDoneBtn" onclick="toggleTcfDone()">
+              <i data-lucide="check-circle-2"></i><span id="tcfDoneBtnLabel">Marquer comme fait</span>
+            </button>
           </div>
         </div>
-      </div>
 
-      <!-- ══════════════════
-           RESSOURCES
-      ══════════════════ -->
-      <div class="section-block tab-section" id="ressources">
-        <span class="section-eyebrow">Documents officiels</span>
-        <h2 class="section-title">Ressources téléchargeables</h2>
-        <p class="section-sub">Tous les documents pour ta procédure. Mis à jour régulièrement.</p>
-        <div class="ressources-grid">
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-pdf"><i data-lucide="file-text"></i></div>
-              <span class="tag-essential">Essentiel</span>
-            </div>
-            <div class="ressource-name">Guide Campus France complet</div>
-            <div class="ressource-desc">Toutes les étapes de A à Z. Le guide que Rayan aurait voulu avoir.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">PDF</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-pdf"><i data-lucide="clipboard-list"></i></div>
-            </div>
-            <div class="ressource-name">Checklist documents visa</div>
-            <div class="ressource-desc">La liste complète des pièces consulaires avec les pièges à éviter.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">PDF</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-word"><i data-lucide="file-pen-line"></i></div>
-              <span class="tag-new"><i data-lucide="sparkles"></i> New</span>
-            </div>
-            <div class="ressource-name">Modèle lettre de motivation</div>
-            <div class="ressource-desc">Le modèle utilisé par les étudiants accompagnés avec succès.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">Word</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-word"><i data-lucide="user"></i></div>
-            </div>
-            <div class="ressource-name">Modèle CV format français</div>
-            <div class="ressource-desc">Adapté au système éducatif français, prêt à personnaliser.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">Word</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-xls"><i data-lucide="table"></i></div>
-            </div>
-            <div class="ressource-name">Tableau de suivi des candidatures</div>
-            <div class="ressource-desc">Pour suivre chaque candidature, les dates et les réponses.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">Excel</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-          <div class="ressource-card">
-            <div class="ressource-top">
-              <div class="ressource-ico ico-cal"><i data-lucide="calendar-days"></i></div>
-            </div>
-            <div class="ressource-name">Calendrier Campus France 2025-2026</div>
-            <div class="ressource-desc">Toutes les dates : ouverture Pastel, clôtures, résultats, visa.</div>
-            <div class="ressource-foot">
-              <span class="ressource-size">PDF</span>
-              <span class="btn-soon"><i data-lucide="clock"></i> Bientôt</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- ══════════════════
            MODÈLES
       ══════════════════ -->
       <div class="section-block tab-section" id="modeles">
-        <span class="section-eyebrow">Templates</span>
-        <h2 class="section-title">Modèles à personnaliser</h2>
-        <p class="section-sub">Des structures éprouvées. Remplace les parties en bleu par tes informations.</p>
+        <span class="section-eyebrow">Documents</span>
+        <h2 class="section-title">Tous tes documents</h2>
+        <p class="section-sub">Clique pour ouvrir dans un nouvel onglet. Depuis chaque page, utilise le bouton "Imprimer / PDF" pour le sauvegarder.</p>
 
-        <div class="modele-card">
-          <div class="modele-header">
-            <div class="modele-ico-wrap"><i data-lucide="mail"></i></div>
-            <div>
-              <div class="modele-title">Lettre de motivation : structure type</div>
-              <div class="modele-sub">Pour ta candidature Campus France via Pastel</div>
+        <div class="doc-section-title">
+          <i data-lucide="list-todo" style="width:12px;height:12px;"></i>
+          Procedure Campus France
+        </div>
+        <div class="doc-grid">
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="list-checks"></i></div>
+              <div class="doc-card-name">Checklist Campus France</div>
             </div>
+            <div class="doc-card-desc">29 taches, 6 phases. Du TCF jusqu'au visa, dans le bon ordre.</div>
+            <span class="doc-card-tag">Etape par etape</span>
+            <a href="checklist-campus-france.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
           </div>
-          <div class="modele-body">
-            <strong>Objet :</strong> Candidature en <em>[Licence 1 / Master]</em> pour <em>[Filière]</em><br><br>
-            <strong>Introduction (3-4 lignes)</strong><br>
-            Présentation courte : qui tu es, d'où tu viens, ce que tu fais actuellement. Le lien avec la France ou la filière.<br><br>
-            <hr>
-            <strong>Pourquoi cette filière ?</strong><br>
-            Ce qui t'a amené à choisir cette discipline. Expériences concrètes, cours suivis, projets personnels.<br><br>
-            <hr>
-            <strong>Pourquoi la France ?</strong><br>
-            Qualité des formations, système LMD, débouchés. Sois spécifique - évite les formules vagues.<br><br>
-            <hr>
-            <strong>Pourquoi cette université ?</strong><br>
-            Montre que tu connais l'établissement. Un point précis du programme, un labo, un partenariat.<br><br>
-            <hr>
-            <strong>Projet professionnel</strong><br>
-            Ce que tu veux faire après les études. <em>Mentionne ton retour en Algérie</em> et comment ces études t'y aident.<br><br>
-            <hr>
-            <strong>Conclusion</strong><br>
-            Formule de politesse professionnelle.
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="book-open"></i></div>
+              <div class="doc-card-name">Guide preparation TCF / DELF</div>
+            </div>
+            <div class="doc-card-desc">Plan 8 semaines, niveaux requis, ressources gratuites.</div>
+            <span class="doc-card-tag">Etape 1</span>
+            <a href="guide-tcf-delf.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
           </div>
-          <span class="btn-soon"><i data-lucide="clock"></i> Télécharger Word (bientôt)</span>
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="mic"></i></div>
+              <div class="doc-card-name">Guide entretien Campus France</div>
+            </div>
+            <div class="doc-card-desc">15 questions, bonnes reponses et erreurs a eviter.</div>
+            <span class="doc-card-tag">Etape 3</span>
+            <a href="guide-entretien.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
         </div>
 
-        <div class="modele-card">
-          <div class="modele-header">
-            <div class="modele-ico-wrap"><i data-lucide="user"></i></div>
-            <div>
-              <div class="modele-title">CV format français - Structure type</div>
-              <div class="modele-sub">Adapté aux candidatures universitaires françaises</div>
+        <div class="doc-section-title">
+          <i data-lucide="file-pen" style="width:12px;height:12px;"></i>
+          Modeles de documents
+        </div>
+        <div class="doc-grid">
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="mail"></i></div>
+              <div class="doc-card-name">Lettre de motivation Pastel</div>
             </div>
+            <div class="doc-card-desc">Structure 5 parties, zones a remplir, conseils.</div>
+            <span class="doc-card-tag">Dossier Pastel</span>
+            <a href="lettre-motivation.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
           </div>
-          <div class="modele-body">
-            <strong><em>[PRÉNOM NOM]</em></strong><br>
-            <em>[Ville, Algérie]</em> · <em>[Email pro]</em> · <em>[+213 xxx]</em><br><br>
-            <hr>
-            <strong>FORMATION</strong><br>
-            <em>[Année]</em> - <em>[Diplôme en cours]</em>, <em>[Université, Ville]</em><br>
-            <em>[Année]</em> - Baccalauréat <em>[Série]</em>, mention <em>[mention]</em><br><br>
-            <hr>
-            <strong>EXPÉRIENCES / PROJETS</strong><br>
-            <em>[Si pas d'expérience pro : projets académiques, associations, activités]</em><br><br>
-            <hr>
-            <strong>COMPÉTENCES</strong><br>
-            Langues : Arabe (natif), Français (B2/C1), Anglais (<em>[niveau]</em>)<br>
-            Informatique : <em>[logiciels, langages si pertinents]</em><br><br>
-            <hr>
-            <strong>CENTRES D'INTÉRÊT</strong><br>
-            <em>[2-3 max, en lien avec ta filière si possible]</em>
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="user"></i></div>
+              <div class="doc-card-name">Modele CV etudiant</div>
+            </div>
+            <div class="doc-card-desc">CV deux colonnes adapte aux candidatures françaises.</div>
+            <span class="doc-card-tag">Dossier Pastel</span>
+            <a href="modele-cv.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
           </div>
-          <span class="btn-soon"><i data-lucide="clock"></i> Télécharger Word - Bientôt</span>
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico"><i data-lucide="banknote"></i></div>
+              <div class="doc-card-name">Lettre de prise en charge financiere</div>
+            </div>
+            <div class="doc-card-desc">Modele garant Algerie, tableau par situation professionnelle.</div>
+            <span class="doc-card-tag">Dossier visa</span>
+            <a href="lettre-financement.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
+        </div>
+
+        <div class="doc-section-title" style="color:var(--amber);border-color:rgba(250,204,21,0.25);">
+          <i data-lucide="crown" style="width:12px;height:12px;"></i>
+          Documents exclusifs Premium
+        </div>
+        <div class="doc-grid">
+          <div class="doc-card" style="border-color:rgba(250,204,21,0.25);background:rgba(250,204,21,0.03);">
+            <div class="doc-card-top">
+              <div class="doc-card-ico" style="background:rgba(250,204,21,0.1);border-color:rgba(250,204,21,0.3);color:var(--amber);"><i data-lucide="shield-check"></i></div>
+              <div class="doc-card-name">Guide dossier visa consulaire</div>
+            </div>
+            <div class="doc-card-desc">4 parties : Papiers, Hebergement, Finances 7 500EUR, Garanties. 6 erreurs qui causent les refus. Plan apres refus.</div>
+            <span class="doc-card-tag" style="background:rgba(250,204,21,0.1);color:var(--amber);border-color:rgba(250,204,21,0.3);">Capago / Visa</span>
+            <a href="guide-visa-consulaire.html" target="_blank" class="doc-card-btn" style="background:var(--amber);color:#1a1a1a;">
+              <i data-lucide="external-link"></i> Ouvrir
+            </a>
+          </div>
+          <div class="doc-card" style="border-color:rgba(250,204,21,0.25);background:rgba(250,204,21,0.03);">
+            <div class="doc-card-top">
+              <div class="doc-card-ico" style="background:rgba(250,204,21,0.1);border-color:rgba(250,204,21,0.3);color:var(--amber);"><i data-lucide="file-pen"></i></div>
+              <div class="doc-card-name">Lettre de motivation consulaire</div>
+            </div>
+            <div class="doc-card-desc">S'adresse au consul, pas a l'universite. 4 lettres complementaires incluses : hebergement, fonds, parente.</div>
+            <span class="doc-card-tag" style="background:rgba(250,204,21,0.1);color:var(--amber);border-color:rgba(250,204,21,0.3);">Dossier visa</span>
+            <a href="lettre-motivation-consulaire.html" target="_blank" class="doc-card-btn" style="background:var(--amber);color:#1a1a1a;">
+              <i data-lucide="external-link"></i> Ouvrir
+            </a>
+          </div>
+        </div>
+
+        <div class="doc-section-title">
+          <i data-lucide="plane" style="width:12px;height:12px;"></i>
+          Arrivee en France
+        </div>
+        <div class="doc-grid">
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico green"><i data-lucide="home"></i></div>
+              <div class="doc-card-name">Guide logement en France</div>
+            </div>
+            <div class="doc-card-desc">CROUS, colocation, APL, documents pour le dossier visa.</div>
+            <span class="doc-card-tag green">Apres l'admission</span>
+            <a href="guide-logement.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico green"><i data-lucide="map-pin"></i></div>
+              <div class="doc-card-name">Guide arrivee en France</div>
+            </div>
+            <div class="doc-card-desc">VLS-TS ANEF, compte bancaire, budget mensuel, Secu etudiante.</div>
+            <span class="doc-card-tag green">Apres le visa</span>
+            <a href="guide-arrivee-france.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
         </div>
       </div>
+
       <!-- ══════════════════
            ENTRETIEN
       ══════════════════ -->
       <div class="section-block tab-section" id="entretien">
-        <span class="section-eyebrow">Préparation</span>
+        <span class="section-eyebrow">Preparation</span>
         <h2 class="section-title">L'entretien Campus France</h2>
-        <p class="section-sub">Les vraies questions, les bonnes réponses, et les pièges que Rayan a lui-même vécus.</p>
-        <div class="entretien-grid">
+        <p class="section-sub">L'entretien dure 20 a 40 minutes. L'agent n'est pas la pour te pieger. Il veut verifier que ton projet est coherent et que tu peux financer ton sejour.</p>
+
+        <!-- 4 stats rapides -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.6rem;margin-bottom:1.5rem;">
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:0.875rem;">
+            <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);margin-bottom:4px;">Duree</div>
+            <div style="font-size:1.1rem;font-weight:800;color:var(--text);">20-40 min</div>
+            <div style="font-size:0.72rem;color:var(--text-2);margin-top:2px;">Arrive 15 min en avance</div>
+          </div>
+          <div style="background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:0.875rem;">
+            <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);margin-bottom:4px;">Ce qu'on verifie</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--text);">Projet coherent</div>
+            <div style="font-size:0.72rem;color:var(--text-2);margin-top:2px;">Lettre = ce que tu dis</div>
+          </div>
+          <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:0.875rem;">
+            <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(239,68,68,0.6);margin-bottom:4px;">Question decisive</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--text);">Apres tes etudes ?</div>
+            <div style="font-size:0.72rem;color:var(--text-2);margin-top:2px;">Toujours citer le retour</div>
+          </div>
+          <div style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:0.875rem;">
+            <div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(34,197,94,0.6);margin-bottom:4px;">Piege n1</div>
+            <div style="font-size:0.82rem;font-weight:700;color:var(--text);">Pas connaitre sa fac</div>
+            <div style="font-size:0.72rem;color:var(--text-2);margin-top:2px;">Lis le programme avant</div>
+          </div>
+        </div>
+
+        <!-- Conseils detailles -->
+        <div class="tcf-tips-row" style="margin-bottom:1.5rem;">
           <div class="entretien-card">
-            <div class="entretien-title"><i data-lucide="circle-help"></i> Questions fréquentes</div>
-            <div class="qa-list">
-              <div>
-                <div class="qa-q">Pourquoi vous voulez étudier en France ?</div>
-                <div class="qa-a">Cite un aspect précis du système français - double diplôme, spécialisation, partenariat. Pas de réponse vague.</div>
-              </div>
-              <div>
-                <div class="qa-q">Qu'est-ce que vous ferez après vos études ?</div>
-                <div class="qa-a">Toujours mentionner un projet de retour en Algérie. Le consulat veut s'assurer que tu ne resteras pas illégalement. Cite quelque chose de concret.</div>
-              </div>
-              <div>
-                <div class="qa-q">Parlez-moi de votre projet d'études.</div>
-                <div class="qa-a">Connais ta filière par cœur. Cite des matières précises du programme. Montre que tu as vraiment cherché.</div>
-              </div>
-              <div>
-                <div class="qa-q">Comment allez-vous financer vos études ?</div>
-                <div class="qa-a">Réponds clairement avec des chiffres : famille, bourse, économies. Montre que tu as planifié.</div>
-              </div>
+            <div class="entretien-title"><i data-lucide="message-circle"></i> Comment se presenter</div>
+            <div class="tips-list">
+              <div class="tip"><span class="tip-ico"><i data-lucide="user"></i></span><span><strong>Ne pas reciter ton CV.</strong> Dis qui tu es en 2-3 phrases, puis oriente directement vers ton projet. Maximum 2 minutes.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="building-2"></i></span><span><strong>Connais ton universite par coeur.</strong> Cite un cours precis, un labo, une specialisation. Les agents testent systematiquement ca.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="map-pin"></i></span><span><strong>Projet de retour obligatoire.</strong> "Je veux travailler dans [domaine] en Algerie" avec un exemple concret. C'est la question la plus importante pour le visa ensuite.</span></div>
             </div>
           </div>
           <div class="entretien-card">
-            <div class="entretien-title"><i data-lucide="lightbulb"></i> Conseils de Rayan</div>
+            <div class="entretien-title"><i data-lucide="triangle-alert"></i> Erreurs qui font echouer</div>
             <div class="tips-list">
-              <div class="tip"><span class="tip-ico"><i data-lucide="mic"></i></span><span>L'entretien dure 20-30 min. C'est une conversation, pas un interrogatoire. Reste naturel.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="book-open"></i></span><span>Connais le contenu précis de chaque formation choisie. Les conseillers testent souvent ça.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="handshake"></i></span><span>La cohérence entre ta lettre et tes réponses est cruciale. Ce que tu écris et ce que tu dis doit être identique.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="file-text"></i></span><span>Arrive avec tous tes documents originaux en plus des copies. On peut te les demander sur place.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="triangle-alert"></i></span><span>Le piège le plus courant : ne pas savoir pourquoi tu as choisi cette université précisément. Travaille ça.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="clock"></i></span><span>Arrive 15 minutes avant. Tenue correcte, ni trop décontractée ni trop formelle.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Etre incoherent entre ta lettre de motivation et tes reponses orales. L'agent a ton dossier devant lui.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Dire que tu veux rester en France apres tes etudes. Meme si c'est vrai, ne le dis jamais a l'entretien.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Ne pas connaitre le contenu de sa formation. "Je sais pas exactement ce qu'on etudie" = signal d'alarme.</span></div>
+              <div class="tip"><span class="tip-ico"><i data-lucide="x-circle"></i></span><span>Donner des reponses trop longues. Sois concis, precis, et laisse l'agent te poser la question suivante.</span></div>
             </div>
           </div>
         </div>
+
+        <!-- Card guide entretien -->
+        <div class="doc-grid" style="grid-template-columns:1fr;">
+          <div class="doc-card horizontal">
+            <div class="doc-card-ico" style="width:48px;height:48px;border-radius:12px;flex-shrink:0;"><i data-lucide="mic"></i></div>
+            <div style="flex:1;min-width:0;">
+              <div class="doc-card-name">Guide entretien complet - 15 questions preparees</div>
+              <div class="doc-card-desc" style="margin-top:4px;">Chaque question avec la reponse ideale, les formulations a eviter, et les astuces pour convaincre. A lire avant le jour J.</div>
+            </div>
+            <a href="guide-entretien.html" target="_blank" class="doc-card-btn">
+              <i data-lucide="external-link"></i> Ouvrir le guide
+            </a>
+          </div>
+        </div>
+
       </div>
 
       <!-- ══════════════════
@@ -1900,7 +2393,7 @@
       ══════════════════ -->
       <div class="section-block tab-section" id="videos">
         <span class="section-eyebrow">Contenu exclusif</span>
-        <h2 class="section-title">Vidéos de Rayan</h2>
+        <h2 class="section-title">Videos NextStage</h2>
         <p class="section-sub">Les vidéos TikTok organisées par thème. Ajoute tes fichiers .mp4 dans un dossier <code style="background:var(--bg-3);padding:1px 5px;border-radius:4px;font-size:0.8em">videos/</code> à côté de ce fichier.</p>
         <div class="videos-note">
           <i data-lucide="info"></i>
@@ -1998,41 +2491,37 @@
         <div class="contact-card">
           <div class="contact-left">
             <h3>Écris directement à Rayan</h3>
-            <p>En tant que membre Premium, tu bénéficies d'un accès WhatsApp prioritaire pour toutes tes questions sur ta procédure.</p>
-            <span class="contact-note"><i data-lucide="zap"></i> Réponse prioritaire sous 24h</span>
+            <p>En tant que membre Standard, tu peux me contacter sur WhatsApp pour des questions sur ta procédure.</p>
+            <span class="contact-note"><i data-lucide="clock"></i> Réponse sous 48h maximum</span>
           </div>
-          <a href="https://wa.me/33759804462?text=Salam Rayan, je suis membre Premium et j'ai une question." target="_blank" class="btn-wa">
+          <a href="https://wa.me/33759804462?text=Salut Rayan, je suis membre Standard et j'ai une question." target="_blank" class="btn-wa">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.99 0C5.369 0 0 5.369 0 11.99c0 2.133.563 4.13 1.543 5.861L.057 23.994l6.304-1.654C7.926 23.358 9.912 24 11.99 24 18.61 24 24 18.631 24 12.01 24 5.369 18.61 0 11.99 0z"/></svg>
             WhatsApp →
           </a>
         </div>
 
-        <div class="premium-status-card">
-          <div class="premium-status-ico"><i data-lucide="badge-check"></i></div>
-          <div class="premium-status-body">
-            <h3>Ton accompagnement Premium est actif</h3>
-            <p>Revue de dossier, simulation d'entretien et suivi prioritaire - tout est disponible dans le menu à gauche. Rayan suit ton dossier personnellement jusqu'à l'obtention de ton visa.</p>
+        <div class="upsell-card">
+          <div class="upsell-card-left">
+            <span class="upsell-card-tag"><i data-lucide="crown"></i> Premium</span>
+            <h3>Tu veux que Rayan corrige ton dossier en personne ?</h3>
+            <p>Passe au pack Premium : revue complète de ton dossier, simulation d'entretien, et WhatsApp prioritaire avec Rayan jusqu'à l'obtention de ton visa.</p>
           </div>
+          <a href="https://nextstagefr.com/paiement.html?pack=premium" class="btn-premium">Découvrir le Premium →</a>
         </div>
       </div>
 
-      <!-- ══════════════════
-           COMMUNAUTÉ
-      ══════════════════ -->
+
       <div class="section-block tab-section" id="communaute">
         <span class="section-eyebrow">Groupe privé</span>
-        <h2 class="section-title">La communauté Premium</h2>
-        <p class="section-sub">Un groupe WhatsApp privé réservé aux membres Premium uniquement. Moins de monde, plus de qualité. Rayan y répond en priorité.</p>
-
-        <div class="contact-card" style="border-color:rgba(250,204,21,0.25);background:linear-gradient(135deg,rgba(250,204,21,0.04),var(--bg-2));">
+        <h2 class="section-title">La communauté Standard</h2>
+        <p class="section-sub">Rejoins le groupe WhatsApp privé des membres Standard. Pose tes questions, partage tes avancées, et échange avec d'autres étudiants algériens qui font la même procédure que toi. Rayan est présent dans le groupe.</p>
+        <div class="contact-card" style="border-color:rgba(37,99,235,0.25);">
           <div class="contact-left">
-            <h3>Groupe WhatsApp Premium</h3>
-            <p>Un espace privé réservé aux membres Premium. Questions sur le visa, retours d'expérience, et suivi collectif avec Rayan. Accès plus direct et plus intime qu'un grand groupe.</p>
-            <span class="contact-note" style="color:var(--amber);background:rgba(250,204,21,0.08);border-color:rgba(250,204,21,0.2);">
-              <i data-lucide="crown"></i> Accès réservé aux membres Premium uniquement
-            </span>
+            <h3>Groupe WhatsApp Standard</h3>
+            <p>Un espace privé réservé aux membres Standard. Entraide, questions, et retours d'expérience entre étudiants.</p>
+            <span class="contact-note"><i data-lucide="shield-check"></i> Accès réservé aux membres Standard uniquement</span>
           </div>
-          <a href="https://chat.whatsapp.com/I7ZuSB3nGAhHiWEkLPDuon" target="_blank" class="btn-wa" style="background:var(--amber);color:#1a1a1a;box-shadow:0 4px 20px rgba(250,204,21,0.25);">
+          <a href="https://chat.whatsapp.com/LIEN_STANDARD_TEMPORAIRE" target="_blank" class="btn-wa">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.99 0C5.369 0 0 5.369 0 11.99c0 2.133.563 4.13 1.543 5.861L.057 23.994l6.304-1.654C7.926 23.358 9.912 24 11.99 24 18.61 24 24 18.631 24 12.01 24 5.369 18.61 0 11.99 0z"/></svg>
             Rejoindre le groupe →
           </a>
@@ -2172,7 +2661,12 @@ function loadName() {
   document.getElementById('greetName').textContent = name ? `Salut ${name}` : 'Salut';
   updateProfileButtonState();
   if (!name) {
-    setTimeout(() => editProfile(true), 400);
+    // Attendre que l'app soit visible avant d'ouvrir le modal
+    setTimeout(() => {
+      if (document.getElementById('app').classList.contains('active')) {
+        editProfile(true);
+      }
+    }, 500);
   }
 }
 
@@ -2187,31 +2681,7 @@ function updateProfileButtonState() {
   renderIcons();
 }
 
-function editProfile(isFirstTime = false) {
-  const currentName = localStorage.getItem(NAME_KEY) || '';
-  const nameMsg = isFirstTime ? 'Bienvenue ! Quel est ton prénom ?' : 'Ton prénom ?';
-  const name = prompt(nameMsg, currentName);
-  if (name && name.trim()) {
-    localStorage.setItem(NAME_KEY, name.trim());
-    loadName();
-    if (!isFirstTime) showToast('Prénom mis à jour', 'success');
-  }
-
-  const currentWa = localStorage.getItem(WHATSAPP_KEY) || '';
-  const waMsg = 'Ton numéro WhatsApp ? (avec indicatif, ex: +213...)\nUtile pour que Rayan te reconnaisse dans tes demandes.';
-  setTimeout(() => {
-    const wa = prompt(waMsg, currentWa);
-    if (wa && wa.trim()) {
-      const changed = wa.trim() !== currentWa;
-      localStorage.setItem(WHATSAPP_KEY, wa.trim());
-      updateProfileButtonState();
-      if (changed) {
-        initPremiumFeatures();
-        if (!isFirstTime) showToast('WhatsApp mis à jour', 'success');
-      }
-    }
-  }, isFirstTime ? 300 : 0);
-}
+function editProfile(isFirstTime) { openProfileModal(isFirstTime || false); }
 
 function getStudentInfo() {
   return {
@@ -2251,23 +2721,28 @@ function togglePhase(header) {
 
 /* ════ CHECKLIST ════ */
 const CHECKS = {
-  tcf:        ['tcf-1','tcf-2','tcf-3','tcf-4','tcf-5'],
-  pastel:     ['pastel-1','pastel-2','pastel-3','pastel-4','pastel-5','pastel-6','pastel-7'],
-  entretien:  ['ent-1','ent-2','ent-3','ent-4','ent-5'],
-  admissions: ['adm-1','adm-2','adm-3','adm-4'],
-  visa:       ['visa-1','visa-2','visa-3','visa-4','visa-5','visa-6','visa-7','visa-8'],
+  prep: ['prep-1','prep-2','prep-3','prep-4','prep-5','prep-6'],
+  tcf: ['tcf-1','tcf-2','tcf-3','tcf-4','tcf-5','tcf-6','tcf-7'],
+  pastel: ['pastel-1','pastel-2','pastel-3','pastel-4','pastel-5','pastel-6','pastel-7','pastel-8'],
+  ent: ['ent-1','ent-2','ent-3','ent-4','ent-5','ent-6','ent-7','ent-8'],
+  adm: ['adm-1','adm-2','adm-3','adm-4','adm-5','adm-6'],
+  visa: ['visa-1','visa-2','visa-3','visa-4','visa-5','visa-6','visa-7','visa-8','visa-9','visa-10','visa-11','visa-12'],
+  arr: ['arr-1','arr-2','arr-3','arr-4','arr-5','arr-6','arr-7','arr-8'],
 };
 const PHASE_LABELS = {
-  tcf: 'Phase 1 - TCF / DELF',
-  pastel: 'Phase 2 - Dossier Pastel',
-  entretien: 'Phase 3 - Entretien',
-  admissions: 'Phase 4 - Admissions',
-  visa: 'Phase 5 - Visa',
+  prep: 'Phase 1 - Preparation initiale',
+  tcf: 'Phase 2 - TCF / DELF',
+  pastel: 'Phase 3 - Dossier Pastel',
+  ent: 'Phase 4 - Entretien',
+  adm: 'Phase 5 - Admissions',
+  visa: 'Phase 6 - Visa consulaire',
+  arr: 'Phase 7 - Arrivee en France',
 };
 const PHASE_ICONS = {
-  tcf: 'languages', pastel: 'monitor', entretien: 'mic', admissions: 'graduation-cap', visa: 'plane-takeoff',
+  prep: 'clipboard-list', tcf: 'languages', pastel: 'monitor', ent: 'mic',
+  adm: 'graduation-cap', visa: 'plane-takeoff', arr: 'home',
 };
-const TOTAL = Object.values(CHECKS).flat().length;
+const TOTAL = 55;
 const RING_CIRCUMFERENCE = 364.4;
 
 function loadChecklist() {
@@ -2879,6 +3354,115 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+/* ════ PROFILE MODAL ════ */
+function openProfileModal(isFirstTime) {
+  isFirstTime = isFirstTime || false;
+  document.getElementById('profileModalTitle').textContent = isFirstTime ? 'Bienvenue 👋' : 'Mon profil';
+  document.getElementById('profileModalDesc').textContent = isFirstTime
+    ? "Pour personnaliser ton espace, dis-nous comment tu t'appelles et ton numéro WhatsApp."
+    : 'Modifie ton prénom et ton numéro WhatsApp.';
+  document.getElementById('profileSkipBtn').style.display = isFirstTime ? 'none' : 'block';
+  document.getElementById('profileInputName').value = localStorage.getItem(NAME_KEY) || '';
+  document.getElementById('profileInputWa').value = localStorage.getItem(WHATSAPP_KEY) || '';
+  document.getElementById('profileModalBg').classList.add('open');
+  setTimeout(function(){ document.getElementById('profileInputName').focus(); }, 100);
+}
+function closeProfileModal() {
+  document.getElementById('profileModalBg').classList.remove('open');
+}
+function saveProfileModal() {
+  var name = document.getElementById('profileInputName').value.trim();
+  var wa   = document.getElementById('profileInputWa').value.trim();
+  if (name) localStorage.setItem(NAME_KEY, name);
+  if (wa)   localStorage.setItem(WHATSAPP_KEY, wa);
+  closeProfileModal();
+  loadName();
+  showToast('Profil mis \u00e0 jour', 'success');
+}
+
+/* ════ TCF ════ */
+const TCF_DONE_KEY = 'ns_tcf_done';
+let currentTcfIdx = null;
+const BASE_TCF = 'https://xrxlteycmcmztdqscfeq.supabase.co/storage/v1/object/public/tcf-annales/';
+const TCF_DATA = [
+  { num:1,  name:'Annale 1',  pdf:'https://drive.google.com/file/d/1fnRABPqmEx1hRWG08C1LrXw5QvayMRDz/view?usp=drive_link', audio:BASE_TCF+'annale-01.mp3' },
+  { num:2,  name:'Annale 2',  pdf:'https://drive.google.com/file/d/1NdSLEYFIFMcPe9kofRrR-68-RHYNtuz4/view?usp=drive_link', audio:BASE_TCF+'annale-02.mp3' },
+  { num:3,  name:'Annale 3',  pdf:'https://drive.google.com/file/d/1Zf0LqYOjwLPkISDsH2qJS5aK57X3jClU/view?usp=drive_link', audio:BASE_TCF+'annale-03.mp3' },
+  { num:4,  name:'Annale 4',  pdf:'https://drive.google.com/file/d/10VNakRYYxTMmb3lxZe_VbbiplTLSKp1j/view?usp=drive_link', audio:BASE_TCF+'annale-04.mp3' },
+  { num:5,  name:'Annale 5',  pdf:'https://drive.google.com/file/d/1nlzm4cTUXMAT5qE3QOsMfPvP4Am1xVDv/view?usp=drive_link', audio:BASE_TCF+'annale-05.mp3' },
+  { num:6,  name:'Annale 6',  pdf:'https://drive.google.com/file/d/18ER8MiHLjQnZc8MuUp-DQ1KKr8KJPSgL/view?usp=drive_link', audio:BASE_TCF+'annale-06.mp3' },
+  { num:7,  name:'Annale 7',  pdf:'https://drive.google.com/file/d/1El22_XxwNROUQnnEat9LzLtvRYwkjqcA/view?usp=drive_link', audio:BASE_TCF+'annale-07.mp3' },
+  { num:8,  name:'Annale 8',  pdf:'https://drive.google.com/file/d/1pnEgRFfJcKu2J_Pjjv4LDs5Gq7Z1onvs/view?usp=drive_link', audio:BASE_TCF+'annale-08.mp3' },
+  { num:9,  name:'Annale 9',  pdf:'https://drive.google.com/file/d/1qvriiKcIIiVvqz7ufJciC35oESGEnC7F/view?usp=drive_link', audio:BASE_TCF+'annale-09.mp3' },
+  { num:10, name:'Annale 10', pdf:'https://drive.google.com/file/d/19UJCNJxheZ83dPss_q47V_I-gCA0PQ9t/view?usp=drive_link', audio:BASE_TCF+'annale-10.mp3' },
+  { num:11, name:'Annale 11', pdf:'https://drive.google.com/file/d/1Psakn-whc-o49VMPiTG8A9GEHb7Rc_Ko/view?usp=drive_link', audio:BASE_TCF+'annale-11.mp3' },
+  { num:12, name:'Annale 12', pdf:'https://drive.google.com/file/d/17E0-v_M-EPF5nF8SVbE7W50MyaS5-5_F/view?usp=drive_link', audio:BASE_TCF+'annale-12.mp3' },
+  { num:13, name:'Annale 13', pdf:'https://drive.google.com/file/d/1gg6XNRMtW5tXdOMkLTyhUqPtJldnJUBo/view?usp=drive_link', audio:BASE_TCF+'annale-13.mp3' },
+  { num:14, name:'Annale 14', pdf:'https://drive.google.com/file/d/1xtnWRPB_SfcHrl1XZ1zfPb0FaWljTIiF/view?usp=drive_link', audio:BASE_TCF+'annale-14.mp3' },
+  { num:15, name:'Annale 15', pdf:'https://drive.google.com/file/d/1xI19m7WOOpmbHeQuUM2AQKdae_iP09KB/view?usp=drive_link', audio:BASE_TCF+'annale-15.mp3' },
+  { num:16, name:'Annale 16', pdf:'https://drive.google.com/file/d/1KmbDTxwcn7v-a2wx6A5XS1AVavtspYqI/view?usp=drive_link', audio:BASE_TCF+'annale-16.mp3' },
+  { num:17, name:'Annale 17', pdf:'https://drive.google.com/file/d/1mHM6kC8YGtG4yINxRCDDxxzjgJ2stHgr/view?usp=drive_link', audio:BASE_TCF+'annale-17.mp3' },
+];
+function getTcfDone() { try { return JSON.parse(localStorage.getItem(TCF_DONE_KEY)||'[]'); } catch { return []; } }
+function saveTcfDone(a) { localStorage.setItem(TCF_DONE_KEY, JSON.stringify(a)); }
+function updateTcfProgress() {
+  const done=getTcfDone(), pct=Math.round(done.length/TCF_DATA.length*100);
+  const f=document.getElementById('tcfProgressFill'), l=document.getElementById('tcfProgressLabel');
+  if(f) f.style.width=pct+'%';
+  if(l) l.textContent=done.length+' / '+TCF_DATA.length+' faites';
+}
+function renderTcfAnnales() {
+  const grid=document.getElementById('tcfAnnalesGrid');
+  if(!grid) return;
+  const done=getTcfDone();
+  grid.innerHTML=TCF_DATA.map(a => {
+    const isDone=done.includes(a.num);
+    return '<div class="tcf-annale-card '+(isDone?'done-card':'')+'" id="tcfCard'+(a.num-1)+'" onclick="openTcfPlayer('+(a.num-1)+')">'
+      +'<div class="tcf-done-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>'
+      +'<div class="tcf-annale-num">'+String(a.num).padStart(2,'0')+'</div>'
+      +'<div class="tcf-annale-name">'+a.name+'</div>'
+      +'<div class="tcf-annale-tags">'
+      +(a.audio!='#'?'<span class="tcf-annale-tag">Audio</span>':'')
+      +(a.pdf!='#'?'<span class="tcf-annale-tag red">PDF</span>':'')
+      +(isDone?'<span class="tcf-annale-tag green">Fait</span>':'')
+      +'</div></div>';
+  }).join('');
+  updateTcfProgress(); renderIcons();
+}
+function openTcfPlayer(idx) {
+  const a=TCF_DATA[idx];
+  if(currentTcfIdx!==null){const o=document.getElementById('tcfCard'+currentTcfIdx);if(o)o.classList.remove('active-card');}
+  currentTcfIdx=idx;
+  const card=document.getElementById('tcfCard'+idx); if(card) card.classList.add('active-card');
+  document.getElementById('tcfPlayerTitle').textContent=a.name;
+  const audio=document.getElementById('tcfAudio'); audio.pause(); audio.src=a.audio; audio.load();
+  const iframe=document.getElementById('tcfPdfIframe'), fallback=document.getElementById('tcfPdfFallback'), pdfLink=document.getElementById('tcfPdfLink');
+  if(a.pdf!='#'){const m=a.pdf.match(/\/d\/([^\/]+)\//);if(m){iframe.src='https://drive.google.com/file/d/'+m[1]+'/preview';iframe.style.display='block';fallback.style.display='none';pdfLink.href=a.pdf;}}
+  else{iframe.src='';iframe.style.display='none';fallback.style.display='block';}
+  const done=getTcfDone(),isDone=done.includes(a.num);
+  const btn=document.getElementById('tcfDoneBtn'),lbl=document.getElementById('tcfDoneBtnLabel');
+  if(btn){btn.classList.toggle('marked',isDone);lbl.textContent=isDone?'Annale faite \u2713':'Marquer comme fait';}
+  const player=document.getElementById('tcfPlayer'); player.classList.add('open');
+  player.scrollIntoView({behavior:'smooth',block:'nearest'}); renderIcons();
+}
+function toggleTcfDone() {
+  if(currentTcfIdx===null) return;
+  const a=TCF_DATA[currentTcfIdx]; let done=getTcfDone();
+  done=done.includes(a.num)?done.filter(n=>n!==a.num):[...done,a.num];
+  saveTcfDone(done);
+  const isDone=done.includes(a.num);
+  const btn=document.getElementById('tcfDoneBtn'),lbl=document.getElementById('tcfDoneBtnLabel');
+  if(btn){btn.classList.toggle('marked',isDone);lbl.textContent=isDone?'Annale faite \u2713':'Marquer comme fait';}
+  renderTcfAnnales();
+  const card=document.getElementById('tcfCard'+currentTcfIdx); if(card) card.classList.add('active-card');
+}
+function closeTcfPlayer() {
+  document.getElementById('tcfPlayer').classList.remove('open');
+  const audio=document.getElementById('tcfAudio'); audio.pause(); audio.src='';
+  if(currentTcfIdx!==null){const c=document.getElementById('tcfCard'+currentTcfIdx);if(c)c.classList.remove('active-card');currentTcfIdx=null;}
+}
+renderTcfAnnales();
+
 /* ════ TOAST ════ */
 function showToast(msg, type = '') {
   const t = document.getElementById('toast');
@@ -2889,5 +3473,25 @@ function showToast(msg, type = '') {
 }
 </script>
 
+<!-- PROFILE MODAL -->
+<div class="profile-modal-bg" id="profileModalBg">
+  <div class="profile-modal">
+    <div class="profile-modal-logo">Next<em>Stage</em></div>
+    <h3 id="profileModalTitle">Bienvenue &#128075;</h3>
+    <p id="profileModalDesc">Pour personnaliser ton espace, dis-nous comment tu t'appelles et ton num&#233;ro WhatsApp.</p>
+    <div class="profile-field">
+      <label>Ton pr&#233;nom</label>
+      <input type="text" id="profileInputName" placeholder="Ex : Yacine" autocomplete="given-name">
+    </div>
+    <div class="profile-field">
+      <label>Ton WhatsApp</label>
+      <input type="tel" id="profileInputWa" placeholder="+213 6XX XXX XXX" autocomplete="tel">
+    </div>
+    <div class="profile-modal-actions">
+      <button class="btn-skip" id="profileSkipBtn" onclick="closeProfileModal()">Plus tard</button>
+      <button class="btn-save" onclick="saveProfileModal()">Enregistrer &#8594;</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

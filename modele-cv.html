@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Modele CV - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.success { background:#f0fdf4; border-left:3px solid #22c55e; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.success strong { color:#15803d; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.lettre-block { background:#fafafa; border:1px solid #e5e7eb; border-radius:10px; padding:1.5rem; margin:1rem 0; font-size:0.875rem; line-height:1.9; color:#1f2937; }
+/* CV specifique */
+.cv-page { max-width:700px; }
+.cv-header-block { background:#1E3A8A; color:#fff; padding:2rem; border-radius:12px; margin-bottom:1.5rem; }
+.cv-name { font-size:1.6rem; font-weight:800; margin-bottom:0.25rem; }
+.cv-titre { font-size:0.95rem; color:rgba(255,255,255,0.8); margin-bottom:1rem; }
+.cv-contacts { display:flex; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:rgba(255,255,255,0.9); }
+.cv-contact-item { display:flex; align-items:center; gap:0.4rem; }
+.cv-body { display:grid; grid-template-columns:1fr 2fr; gap:1.5rem; }
+.cv-col-left { }
+.cv-col-right { }
+.cv-section-title { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; border-bottom:2px solid #2563EB; padding-bottom:4px; margin:1.25rem 0 0.75rem; }
+.cv-item { margin-bottom:1rem; }
+.cv-item-title { font-size:0.88rem; font-weight:700; color:#1f2937; }
+.cv-item-sub { font-size:0.78rem; color:#2563EB; font-weight:600; margin-bottom:2px; }
+.cv-item-date { font-size:0.72rem; color:#6B7280; margin-bottom:4px; }
+.cv-item-desc { font-size:0.78rem; color:#374151; line-height:1.6; }
+.cv-skill-bar { margin-bottom:0.6rem; }
+.cv-skill-name { font-size:0.78rem; color:#374151; margin-bottom:3px; font-weight:600; }
+.cv-skill-track { background:#e5e7eb; height:5px; border-radius:99px; overflow:hidden; }
+.cv-skill-fill { height:100%; background:#2563EB; border-radius:99px; }
+.cv-tag { display:inline-block; background:#eff6ff; color:#2563EB; border:1px solid #bfdbfe; border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; margin:2px; }
+.cv-lang-item { display:flex; justify-content:space-between; font-size:0.78rem; margin-bottom:4px; }
+.cv-lang-level { color:#2563EB; font-weight:600; }
+@media print { .print-btn { display:none; } body { padding:1rem; } }
+
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:760px; margin:0 auto; padding:1.5rem; background:#fff; color:#1f2937; }
+</style></head>
+<body>
+<button class="print-btn" onclick="window.print()">Imprimer / PDF</button>
+
+<div class="conseil" style="margin-bottom:1.5rem">
+  <strong>Comment utiliser ce modele de CV :</strong> Ce CV est adapte pour les candidatures Campus France. Il doit etre en francais, maximum 1 page, sans photo obligatoire. Les zones en <span class="ph">[bleu]</span> sont a remplacer. Personnalise chaque section selon ton parcours reel.
+</div>
+
+<!-- EN-TETE CV -->
+<div class="cv-header-block">
+  <div class="cv-name"><span class="ph">[PRENOM NOM]</span></div>
+  <div class="cv-titre"><span class="ph">[Etudiant(e) en [Filiere actuelle] - Candidature Campus France [Annee]]</span></div>
+  <div class="cv-contacts">
+    <div class="cv-contact-item">📍 <span class="ph">[Wilaya, Algerie]</span></div>
+    <div class="cv-contact-item">📱 <span class="ph">[+213 6XX XXX XXX]</span></div>
+    <div class="cv-contact-item">✉️ <span class="ph">[email@exemple.com]</span></div>
+    <div class="cv-contact-item">🎂 <span class="ph">[Date de naissance]</span></div>
+  </div>
+</div>
+
+<!-- CORPS DU CV -->
+<div class="cv-body">
+
+  <!-- COLONNE GAUCHE -->
+  <div class="cv-col-left">
+
+    <div class="cv-section-title">Competences</div>
+    <div class="cv-skill-bar"><div class="cv-skill-name"><span class="ph">[Mathematiques]</span></div><div class="cv-skill-track"><div class="cv-skill-fill" style="width:90%"></div></div></div>
+    <div class="cv-skill-bar"><div class="cv-skill-name"><span class="ph">[Informatique / Python]</span></div><div class="cv-skill-track"><div class="cv-skill-fill" style="width:75%"></div></div></div>
+    <div class="cv-skill-bar"><div class="cv-skill-name"><span class="ph">[Redaction en francais]</span></div><div class="cv-skill-track"><div class="cv-skill-fill" style="width:85%"></div></div></div>
+    <div class="cv-skill-bar"><div class="cv-skill-name"><span class="ph">[Autre competence]</span></div><div class="cv-skill-track"><div class="cv-skill-fill" style="width:70%"></div></div></div>
+
+    <div class="cv-section-title">Langues</div>
+    <div class="cv-lang-item"><span>Arabe</span><span class="cv-lang-level">Langue maternelle</span></div>
+    <div class="cv-lang-item"><span>Francais</span><span class="cv-lang-level"><span class="ph">[B2 / TCF : XX pts]</span></span></div>
+    <div class="cv-lang-item"><span>Anglais</span><span class="cv-lang-level"><span class="ph">[Intermediaire / A2]</span></span></div>
+
+    <div class="cv-section-title">Centres d'interet</div>
+    <div><span class="ph">[<span class='cv-tag'>Interet 1</span>]</span> <span class="ph">[<span class='cv-tag'>Interet 2</span>]</span> <span class="ph">[<span class='cv-tag'>Interet 3</span>]</span></div>
+
+    <div class="cv-section-title">Qualites</div>
+    <div><span class="cv-tag">Rigoureux</span> <span class="cv-tag">Curieux</span> <span class="cv-tag">Autonome</span> <span class="cv-tag"><span class="ph">[Autre]</span></span></div>
+
+  </div>
+
+  <!-- COLONNE DROITE -->
+  <div class="cv-col-right">
+
+    <div class="cv-section-title">Formation</div>
+
+    <div class="cv-item">
+      <div class="cv-item-title"><span class="ph">[Niveau actuel - ex: L2 Mathematiques-Informatique]</span></div>
+      <div class="cv-item-sub"><span class="ph">[Universite / Lycee - Ville]</span></div>
+      <div class="cv-item-date"><span class="ph">[2023 - Aujourd'hui]</span></div>
+      <div class="cv-item-desc"><span class="ph">[Mention / Moyenne / Points forts. Ex: Mention Bien (15,8/20). Points forts : Analyse, Algebre lineaire, Programmation.]</span></div>
+    </div>
+
+    <div class="cv-item">
+      <div class="cv-item-title"><span class="ph">[Baccalaureat - Filiere - Mention]</span></div>
+      <div class="cv-item-sub"><span class="ph">[Lycee - Ville]</span></div>
+      <div class="cv-item-date"><span class="ph">[Annee d'obtention - ex: Juin 2023]</span></div>
+      <div class="cv-item-desc"><span class="ph">[Moyenne : XX/20. Mention : Tres Bien / Bien / Assez Bien. Matiere forte : Mathematiques XX/20.]</span></div>
+    </div>
+
+    <div class="cv-section-title">Experiences (si applicable)</div>
+
+    <div class="cv-item">
+      <div class="cv-item-title"><span class="ph">[Stage / Projet / Activite - ex: Stage en entreprise]</span></div>
+      <div class="cv-item-sub"><span class="ph">[Nom de l'entreprise ou organisme - Ville]</span></div>
+      <div class="cv-item-date"><span class="ph">[Mois Annee - Mois Annee]</span></div>
+      <div class="cv-item-desc"><span class="ph">[Decris ce que tu as fait : taches, outils utilises, ce que tu as appris. 2 a 3 lignes maximum. Si pas de stage, mets un projet personnel, une competition, du benevolat.]</span></div>
+    </div>
+
+    <div class="cv-item">
+      <div class="cv-item-title"><span class="ph">[Projet academique ou personnel - ex: Projet de fin d'annee]</span></div>
+      <div class="cv-item-sub"><span class="ph">[Dans le cadre de [cours / initiative personnelle]]</span></div>
+      <div class="cv-item-date"><span class="ph">[Annee]</span></div>
+      <div class="cv-item-desc"><span class="ph">[Description courte du projet, technologies ou methodes utilisees, resultat obtenu.]</span></div>
+    </div>
+
+    <div class="cv-section-title">Realisations et distinctions</div>
+
+    <div class="cv-item">
+      <div class="cv-item-desc">
+        <ul style="margin-left:1rem">
+          <li><span class="ph">[Ex: Classement dans le top 5% de la promotion - Universite de [ville] - 2024]</span></li>
+          <li><span class="ph">[Ex: Participation a l'Olympiade de Mathematiques de wilaya - 2023]</span></li>
+          <li><span class="ph">[Ex: Certification ou formation en ligne - Coursera / edX - 2024]</span></li>
+          <li><span class="ph">[Supprimer cette ligne si tu n'as pas de realisation particuliere]</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="doc-footer" style="margin-top:1.5rem">
+  <span>nextstagefr.com</span>
+  <span>Modele CV Campus France - Ne pas copier mot pour mot</span>
+  <span>NextStage 2026</span>
+</div>
+</body></html>
