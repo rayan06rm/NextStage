@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Campus France : 6 étapes pour réussir - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { padding-top:3.5rem; font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+.ph { background:#dbeafe; padding:1px 6px; border-radius:4px; font-family:monospace; color:#1d4ed8; font-size:0.82rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.success { background:#f0fdf4; border-left:3px solid #22c55e; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.success strong { color:#15803d; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:1px; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:1px; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+.sub-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#2563EB; color:#fff; padding:4px 10px; border-radius:5px; margin:0.875rem 0 0.5rem; display:inline-block; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+
+
+@page { margin:1.2cm; size:A4; }
+@media print {
+  #downloadBtn, .print-btn { display:none !important; }
+  body { background:#fff !important; }
+  * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+}</style></head>
+<body><button class="print-btn" id="downloadBtn" onclick="downloadPDF()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:5px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Telecharger en PDF</button>
+
+<div class="doc-header">
+  <div class="doc-logo">Next<em>Stage</em></div>
+  <div class="doc-meta"><div class="doc-title">Campus France : 6 étapes pour réussir</div><div class="doc-sub">Édition mise à jour · Campagne Études en France pour la rentrée 2027</div></div>
+</div>
+
+<div class="conseil"><strong>Où on en est en ce moment (août 2026) :</strong> la campagne Études en France pour la rentrée 2026 est déjà terminée (dossiers, entretiens et choix définitifs se sont joués entre octobre 2025 et mai 2026). Si tu prépares ton dossier maintenant, tu vises la <strong>rentrée 2027</strong>, la plateforme etudes-en-france.fr rouvre le <strong>1er octobre 2026</strong>. Les dates limites précises (soumission, entretien) sont publiées par Campus France Algérie chaque année en septembre, vérifie-les sur algerie.campusfrance.org dès qu'elles sortent. Ce guide te donne la logique et l'ordre des 6 étapes, valables d'une campagne à l'autre.</div>
+
+<div class="alerte"><strong>Changements importants entrés en vigueur en 2026, à connaître avant de bâtir ton budget :</strong> le montant des ressources financières exigé pour le visa/titre de séjour étudiant a augmenté (615€ à 877,50€/mois depuis le 1er août 2026), l'APL n'est plus accessible de droit commun aux étudiants non-boursiers hors UE/EEE depuis le 1er juillet 2026 (sauf exception, voir étape 6), et les frais de scolarité différenciés pour les étudiants extra-européens s'appliquent désormais dans la grande majorité des universités, en licence comme en master. Tout ça est détaillé dans les étapes 4 et 6 ci-dessous. Ces règles peuvent encore évoluer, recroise toujours avec service-public.fr et algerie.campusfrance.org avant de figer ton budget.</div>
+
+<!-- ETAPE 1 -->
+<span class="phase-title">Étape 1 - TCF / DELF & Boîte Pastel</span>
+
+<p>Le TCF (Test de Connaissance du Français) ou le DELF permet d'évaluer ton niveau de français, exigé pour le dossier Campus France. La Boîte Pastel, aujourd'hui la plateforme <strong>Études en France</strong> (etudes-en-france.fr), est l'endroit où tu crées ton dossier, ajoutes tes documents, choisis tes formations et suis l'avancement de ta candidature.</p>
+
+<table>
+<tr><th>Critère</th><th>TCF DAP</th><th>TCF Tout Public</th><th>DELF</th></tr>
+<tr><td><strong>Pour qui</strong></td><td>Inscription en L1</td><td>L2, L3, M1, M2</td><td>Tous niveaux</td></tr>
+<tr><td><strong>Épreuves</strong></td><td>4 (oral, écrit, structures, expression écrite)</td><td>3 (oral, écrit, structures)</td><td>4 selon niveau</td></tr>
+<tr><td><strong>Validité</strong></td><td>2 ans</td><td>2 ans</td><td>À vie</td></tr>
+<tr><td><strong>Où passer</strong></td><td>Institut Français d'Algérie</td><td>Institut Français d'Algérie</td><td>Institut Français / centre agréé</td></tr>
+</table>
+
+<div class="important"><strong>Niveau requis :</strong> un niveau <strong>B1</strong> est le minimum accepté pour déposer un dossier Campus France, mais la <strong>grande majorité des établissements exigent un B2</strong>. Pour les filières de sciences humaines et sociales, un <strong>C1</strong> est fortement recommandé. Vise large, plus ton score est élevé, plus tu sécurises tes chances face aux formations sélectives.</div>
+
+<div class="conseil"><strong>Où t'inscrire au TCF :</strong> sur le site de l'Institut Français d'Algérie (institutfrancais-algerie.com), selon les sessions disponibles dans ta ville (Alger, Oran, Annaba, Constantine, Tlemcen, Béjaïa...). Les places partent vite, inscris-toi dès l'ouverture des sessions, souvent 2 mois à l'avance.</div>
+
+<!-- ETAPE 2 -->
+<span class="phase-title">Étape 2 - Préparer tes documents essentiels</span>
+
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Passeport</strong><span class="note">Vérifie qu'il reste valide bien au-delà de ton départ prévu, les prestataires recommandent une marge large (12 à 15 mois), pas seulement quelques mois</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Diplômes, relevés de notes et certificat de scolarité</strong><span class="note">Pour L1 : diplôme du Bac + relevés du Bac + relevés des 3 années de lycée + certificat de scolarité + CV. Pour L2 et plus : diplôme du Bac + relevés du Bac + relevés universitaires + certificat de scolarité + CV</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Traduction des documents</strong><span class="note">Tout document en arabe doit être traduit en français par un traducteur officiel agréé, une traduction non assermentée est refusée</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Recommandations de professeurs</strong><span class="note">Utile pour renforcer ton dossier, surtout pour les formations sélectives</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Autres documents utiles</strong><span class="note">Attestations de stage, expériences professionnelles ou bénévolat</span></div></div>
+
+<!-- ETAPE 3 -->
+<span class="phase-title">Étape 3 - Choisir tes formations & rédiger tes lettres de motivation</span>
+
+<p>Analyse ton projet et identifie les filières qui correspondent à tes compétences et intérêts. Vérifie les prérequis de chaque formation et prépare une liste de choix principaux et d'options alternatives, varie les villes et le niveau de sélectivité (1 ambitieuse, 3 réalistes, 2 à 3 sûres). Pour L1, tu peux sélectionner <strong>3 formations maximum</strong> ; pour L2 et plus, <strong>7 formations maximum</strong>.</p>
+
+<div class="conseil"><strong>Structure de la lettre de motivation Pastel :</strong> parcours scolaire, puis projet d'études, puis pourquoi la France, puis pourquoi cette université, puis projet professionnel. Personnalise-la pour chaque formation, cite des éléments précis trouvés sur le site de l'université (cours, laboratoire, spécialisation), et relis attentivement avant de soumettre.</div>
+
+<!-- ETAPE 4 -->
+<span class="phase-title">Étape 4 - Valider tes choix & payer les frais</span>
+
+<p>Une fois tes formations et lettres prêtes, vérifie que toutes les informations saisies sont correctes (formations, coordonnées, documents) avant de valider, <strong>impossible de modifier après soumission</strong>.</p>
+
+<div class="alerte"><strong>Délai de paiement critique :</strong> une fois ton dossier soumis, tu dois régler les frais de dossier <strong>dans les 48 heures</strong>. Passé ce délai, le dossier est automatiquement annulé, sans possibilité de récupérer les démarches déjà faites. Prépare ton moyen de paiement avant de soumettre ton dossier.</div>
+
+<table>
+<tr><th>Détail</th><th>Information</th></tr>
+<tr><td>Montant des frais (Algérie)</td><td>20 000 DA</td></tr>
+<tr><td>Délai de paiement</td><td>48h après soumission du dossier</td></tr>
+<tr><td>Lien de paiement</td><td>paiement.if-algerie.com</td></tr>
+<tr><td>Cas de dispense</td><td>Vérifie la grille de dispense actualisée dans ton espace Études en France avant de payer</td></tr>
+</table>
+
+<div class="important"><strong>Ne soumets pas au dernier moment :</strong> la plateforme sature systématiquement dans les 2 à 3 derniers jours avant chaque clôture, avec des pannes déjà documentées. Soumets dès l'ouverture de la campagne (1er octobre) plutôt qu'en fin de période.</div>
+
+<!-- ETAPE 5 -->
+<span class="phase-title">Étape 5 - Préparer ton entretien</span>
+
+<p>L'entretien Campus France dure 20 à 40 minutes. L'agent vérifie 3 choses : ton projet est cohérent, ton français est suffisant, tu peux financer ton séjour, et de plus en plus, que tu as un vrai projet de retour en Algérie.</p>
+
+<div class="sub-title">Connaître ton projet et ton parcours</div>
+<p>Sois capable de présenter clairement ton parcours scolaire et tes choix d'études. Explique pourquoi tu as choisi cette formation et cette université en particulier, pas de généralités, cite un élément concret (un cours, un partenariat, une spécialisation).</p>
+
+<div class="sub-title">Questions fréquentes à préparer</div>
+<ul>
+<li>Pourquoi choisir la France pour tes études ?</li>
+<li>Pourquoi cette formation et cette université en particulier ?</li>
+<li>Quel est ton projet professionnel après tes études ?</li>
+<li>Comptes-tu rentrer en Algérie après tes études ? <em>(la question la plus décisive, prépare une réponse précise et crédible)</em></li>
+<li>Comment comptes-tu financer tes études et ton séjour ?</li>
+<li>Où vas-tu loger en France ?</li>
+</ul>
+
+<div class="important"><strong>Le jour J :</strong> arrive 15 minutes en avance, tenue soignée, apporte passeport + relevés originaux + lettre de motivation imprimée. Parle lentement, sois clair et concis, évite les réponses trop longues ou hésitantes.</div>
+
+<!-- ETAPE 6 -->
+<span class="phase-title">Étape 6 - Demander ton visa étudiant & préparer ton départ</span>
+
+<p>Une fois ta pré-inscription obtenue, le dépôt du dossier visa en Algérie se fait via le prestataire <strong>Capago</strong> (pas directement au consulat). Prends rendez-vous sur capago.eu dès que possible.</p>
+
+<div class="alerte"><strong>Ressources financières : le montant a changé au 1er août 2026.</strong> Le seuil minimum de ressources exigé pour un visa ou un titre de séjour étudiant est désormais indexé sur le SMIC (décret n°2026-526, article R.422-2 du CESEDA) : <strong>877,50€/mois</strong>, soit environ <strong>10 530€ pour l'année</strong>, contre 615€/mois (7 380€/an) auparavant. Ce montant est révisé chaque fois que le SMIC évolue, donc vérifie le chiffre exact au moment où tu prépares ton dossier. Si tu avais préparé ton dossier avec les anciens repères (615€ ou 7 500€), mets-les à jour : ton garant ou ton attestation de virement irrévocable (AVI) doit couvrir ce nouveau montant.</div>
+
+<table>
+<tr><th>Document</th><th>Détail</th></tr>
+<tr><td>Passeport</td><td>Valide largement au-delà de la date de départ prévue</td></tr>
+<tr><td>Attestation Campus France (EEF)</td><td>Ton admission définitive validée sur la plateforme</td></tr>
+<tr><td>Ressources financières</td><td>Environ 877,50€/mois, soit environ 10 530€/an, via garant, attestation de virement irrévocable (AVI) ou compte bloqué</td></tr>
+<tr><td>Justificatif de logement</td><td>CROUS, bail, ou attestation d'hébergement</td></tr>
+<tr><td>Lettre de motivation consulaire</td><td>Différente de celle de Pastel, rédigée pour convaincre le consul</td></tr>
+</table>
+
+<div class="conseil"><strong>Lettre de prise en charge financière :</strong> si un garant (parent, proche) finance ton séjour, il doit joindre une lettre expliquant la provenance réelle des fonds, accompagnée des justificatifs selon sa situation (salarié, commerçant, profession libérale, retraité...). Le consulat est vigilant sur les fonds « empruntés » temporairement, la lettre explicative est indispensable.</div>
+
+<div class="section-bar"><div class="section-num">!</div><div class="section-label">Budget en France : ce qui a changé pour la rentrée 2026-2027</div></div>
+
+<div class="important"><strong>APL : conditionnée à la bourse, sauf si tu travailles.</strong> Depuis le 1er juillet 2026, un étudiant extra-européen non boursier ne peut plus toucher l'APL de droit commun. Mais le décret prévoit une exception importante : si tu es en <strong>contrat d'apprentissage ou de professionnalisation</strong>, ou si tu exerces une <strong>activité salariée</strong> en parallèle de tes études (même un job étudiant de quelques heures par semaine), tu restes éligible à l'APL. Concrètement : décroche un petit job étudiant ou une alternance dès que possible en France, ça conditionne à la fois ton droit à l'APL et complète ton budget. Garde toujours un contrat ou une fiche de paie comme justificatif à fournir à la CAF.</div>
+
+<div class="important"><strong>Frais de scolarité : l'exonération n'est plus automatique.</strong> Les universités publiques appliquent des droits d'inscription différenciés aux étudiants extra-européens depuis 2019 (2 895€/an en licence, 3 941€/an en master pour l'année 2025-2026, montants 2026-2027 fixés par arrêté), mais jusqu'ici la plupart des universités exonéraient massivement leurs étudiants étrangers (parfois 80 à 100%). Un décret plafonne désormais ces exonérations discrétionnaires : <strong>30% maximum des étudiants extra-UE pour 2026-2027</strong>, puis 25% en 2027-2028, puis 20% à partir de 2028-2029. Concrètement, la grande majorité des étudiants algériens sans motif d'exonération automatique (mention au bac, accord bilatéral, boursier du gouvernement français, réfugié) devront payer le tarif complet, en licence comme en master. Renseigne-toi précisément auprès de chaque université visée sur sa politique d'exonération avant de faire tes choix.</div>
+
+<table>
+<tr><th>Poste de dépense</th><th>Paris</th><th>Ville moyenne</th></tr>
+<tr><td>Logement (sans APL si non-boursier et sans activité salariée)</td><td>500 à 900 euros</td><td>250 à 500 euros</td></tr>
+<tr><td>Nourriture</td><td>200 à 300 euros</td><td>150 à 250 euros</td></tr>
+<tr><td>Transport</td><td>50 à 90 euros</td><td>30 à 60 euros</td></tr>
+<tr><td>Divers</td><td>100 à 200 euros</td><td>50 à 100 euros</td></tr>
+</table>
+
+<div class="conseil"><strong>Le CROUS reste la meilleure option pour commencer :</strong> loyer réduit (150 à 400€/mois). Inscris-toi sur messervices.etudiant.gouv.fr dès ton admission confirmée, les places partent en quelques jours. Et dès que possible sur place, cherche un job étudiant ou une alternance : ça sécurise à la fois ton budget et ton accès à l'APL.</div>
+
+<div class="section-bar"><div class="section-num">✓</div><div class="section-label">Après l'obtention du visa</div></div>
+
+<div class="check-item"><div class="check-box"></div><div class="check-text">Valider ton visa VLS-TS sur le site ANEF dans les 3 mois après ton arrivée<span class="note">administration-etrangers-en-france.fr, obligatoire, sous peine d'irrégularité</span></div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire administrativement à l'université</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Ouvrir un compte bancaire français et y déposer les fonds attestés</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">S'inscrire à la Sécurité sociale étudiante</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Chercher un job étudiant ou une alternance dès que possible, pour ton budget et pour rester éligible à l'APL si tu n'es pas boursier</div></div>
+<div class="check-item"><div class="check-box"></div><div class="check-text">Vérifier ton éligibilité à l'APL sur caf.fr avant de compter dessus dans ton budget</div></div>
+
+<div class="alerte"><strong>En cas de refus de visa :</strong> ce n'est pas une fin. Demande le motif par écrit, analyse chaque point, corrige le dossier et redépose. Contacte-moi directement pour analyser les raisons du refus.</div>
+
+<div class="doc-footer">
+  <span>nextstagefr.com</span>
+  <span>Modèle à personnaliser, infos vérifiées août 2026, à recroiser avec algerie.campusfrance.org</span>
+  <span>© NextStage 2026</span>
+</div>
+
+
+<script>
+function downloadPDF() {
+  var btn = document.getElementById('downloadBtn');
+  btn.style.display = 'none';
+  window.print();
+  setTimeout(function() { btn.style.display = ''; }, 500);
+}
+</script>
+</body></html>

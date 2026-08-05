@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lettre de motivation - NextStage</title>
+<style>
+/* À remplacer par ton design */
+body { padding-top:3.5rem; font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
+.print-btn { position: fixed; top: 1rem; right: 1rem; background: #2563EB; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+.placeholder { background: #dbeafe; padding: 1px 6px; border-radius: 4px; font-family: monospace; color: #1d4ed8; }
+.conseil { background: #eff6ff; border-left: 3px solid #2563EB; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.85rem; color: #374151; }
+.alerte { background: #fef2f2; border-left: 3px solid #ef4444; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.85rem; color: #374151; }
+.section-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #2563EB; font-weight: 700; margin: 1.5rem 0 0.4rem; }
+p { font-size: 0.9rem; line-height: 1.75; color: #1f2937; margin-bottom: 0.75rem; }
+hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.5rem 0; }
+
+
+@page { margin:1.2cm; size:A4; }
+@media print {
+  #downloadBtn, .print-btn { display:none !important; }
+  body { background:#fff !important; }
+  * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+}</style>
+</head>
+<body>
+<button class="print-btn" id="downloadBtn" onclick="downloadPDF()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:5px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Telecharger en PDF</button>
+
+<p><span class="placeholder">[Prénom NOM]</span><br>
+<span class="placeholder">[Ville]</span>, Algérie<br>
+<span class="placeholder">[email@gmail.com]</span><br>
+<span class="placeholder">[+213 6XX XXX XXX]</span></p>
+
+<p><strong>Objet :</strong> Candidature en <span class="placeholder">[Licence 1 / Master 1]</span> - <span class="placeholder">[Filière]</span></p>
+
+<p><span class="placeholder">[Ville]</span>, le <span class="placeholder">[date]</span></p>
+
+<hr>
+
+<div class="conseil">Conseil : entre 400 et 600 mots, une seule page. Écris avec tes propres mots. Évite les formules génériques que tout le monde utilise.</div>
+
+<div class="section-title">Introduction</div>
+<p>Actuellement <span class="placeholder">[étudiant(e) en / diplômé(e) de]</span> <span class="placeholder">[ta filière]</span> à <span class="placeholder">[ton université / école]</span>, je me permets de vous adresser ma candidature pour intégrer <span class="placeholder">[la Licence / le Master]</span> <span class="placeholder">[mention exacte]</span> au sein de votre établissement pour l'année universitaire <span class="placeholder">[2026-2027]</span>.</p>
+
+<p>Mon intérêt pour <span class="placeholder">[le domaine]</span> s'est manifesté <span class="placeholder">[décris comment : un cours, un projet, une expérience personnelle concrète]</span>. C'est cette motivation qui m'a conduit à envisager de poursuivre mes études en France.</p>
+
+<div class="section-title">Pourquoi cette filière ?</div>
+<p><span class="placeholder">[La filière choisie]</span> correspond directement à <span class="placeholder">[une compétence, un intérêt ou un objectif professionnel précis]</span>. Au cours de ma formation en Algérie, j'ai notamment <span class="placeholder">[cite un cours, un projet ou une réalisation concrète en lien avec la filière]</span>.</p>
+
+<p>Je souhaite approfondir ces compétences dans un cadre universitaire français, reconnu pour <span class="placeholder">[une caractéristique précise : approche pratique, niveau des enseignements, ouverture internationale]</span>.</p>
+
+<div class="section-title">Pourquoi la France ?</div>
+<p>Le système LMD français et <span class="placeholder">[une raison précise : la reconnaissance internationale des diplômes / les partenariats avec des entreprises / la qualité de l'encadrement]</span> répondent directement à mes objectifs académiques et professionnels.</p>
+
+<p>La France entretient également des liens étroits avec l'Algérie dans le domaine de <span class="placeholder">[ta filière]</span>, ce qui facilitera la valorisation de mon diplôme à mon retour.</p>
+
+<div class="section-title">Pourquoi cette université ?</div>
+<p>J'ai porté mon choix sur <span class="placeholder">[nom de l'université]</span> notamment pour <span class="placeholder">[une raison très précise : un cours spécifique du programme, un laboratoire, une spécialisation, un partenariat]</span>.</p>
+
+<p>La qualité du programme <span class="placeholder">[nom du programme]</span> et particulièrement <span class="placeholder">[cite un élément que tu as vraiment trouvé sur leur site]</span> m'ont convaincu(e) que cet établissement est le cadre idéal pour mon projet.</p>
+
+<div class="alerte">Erreur fréquente : ne dis pas "la France a un excellent système éducatif". Tout le monde l'écrit. Mentionne quelque chose de précis sur cette université que tu as trouvé sur son site.</div>
+
+<div class="section-title">Projet professionnel et retour en Algérie</div>
+<p>À l'issue de ma formation, je souhaite <span class="placeholder">[décrire ton projet professionnel : un secteur, un type de poste, un projet concret]</span>.</p>
+
+<p>L'Algérie connaît actuellement une forte demande dans le domaine de <span class="placeholder">[ta filière]</span>. Mon objectif est de revenir après l'obtention de mon diplôme pour <span class="placeholder">[contribuer à ce secteur / intégrer une entreprise / développer un projet]</span>. Un diplôme français de niveau <span class="placeholder">[Licence / Master]</span> en <span class="placeholder">[filière]</span> me donnera les outils nécessaires pour y parvenir.</p>
+
+<div class="alerte">Point critique pour le visa : tu dois démontrer une intention crédible de retour en Algérie. Sans ça, le consulat peut refuser le visa même avec des admissions universitaires.</div>
+
+<div class="section-title">Conclusion</div>
+<p>Convaincu(e) que votre établissement représente le cadre idéal pour concrétiser mon projet académique, je reste disponible pour tout entretien ou complément d'information.</p>
+
+<p>Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+
+<p style="margin-top:2rem"><span class="placeholder">[Prénom NOM]</span></p>
+
+
+
+<script>
+function downloadPDF() {
+  var btn = document.getElementById('downloadBtn');
+  btn.style.display = 'none';
+  window.print();
+  setTimeout(function() { btn.style.display = ''; }, 500);
+}
+</script>
+</body>
+</html>
