@@ -238,16 +238,16 @@
     /* FORM */
     .field { margin-bottom: 1.25rem; }
     .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
-    .field input, .field select, .field textarea {
+    .field input, .field select:not(.phone-prefix-select), .field textarea {
       width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border-2);
       border-radius: 10px; font-size: 0.9rem; font-family: inherit;
       color: var(--text); background: var(--bg-subtle); transition: border-color .2s, box-shadow .2s; outline: none;
     }
-    .field input::placeholder, .field select { color: var(--text-dim); }
-    .field input:focus, .field select:focus, .field textarea:focus {
+    .field input::placeholder, .field select:not(.phone-prefix-select) { color: var(--text-dim); }
+    .field input:focus, .field select:not(.phone-prefix-select):focus, .field textarea:focus {
       border-color: var(--copper); box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
     }
-    .field input.error, .field select.error { border-color: var(--red); }
+    .field input.error, .field select:not(.phone-prefix-select).error { border-color: var(--red); }
     .field-hint { font-size: 0.75rem; color: var(--text-2); margin-top: 4px; }
     .field-error { font-size: 0.75rem; color: var(--red); margin-top: 4px; display: none; }
     .field input.error + .field-error, .field select.error + .field-error,
@@ -331,6 +331,51 @@
     .form-privacy .lucide { width: 0.85rem; height: 0.85rem; vertical-align: -0.1em; opacity: 0.7; }
     .upload-icon .lucide { width: 2rem; height: 2rem; vertical-align: middle; opacity: 0.6; }
     .success-circle .lucide { width: 2rem; height: 2rem; vertical-align: middle; }
+
+    /* ── PHONE PREFIX ── */
+    .phone-field { display:flex; gap:0.5rem; }
+    .phone-prefix-select {
+      padding:0.75rem 0.5rem !important; border-radius:10px !important;
+      background:var(--bg-subtle) !important; border:1.5px solid var(--border-2) !important;
+      font-size:0.85rem !important; font-family:inherit !important; color:var(--text) !important;
+      outline:none !important; cursor:pointer; flex-shrink:0; min-width:105px;
+      transition:border-color .2s; width:auto !important; height:auto !important;
+    }
+    .phone-prefix-select:focus { border-color:var(--copper); }
+    .phone-number-input {
+      flex:1; padding:0.75rem 1rem !important; border-radius:10px !important;
+      background:var(--bg-subtle) !important; border:1.5px solid var(--border-2) !important;
+      font-size:0.9rem !important; font-family:inherit !important; color:var(--text) !important;
+      outline:none; transition:border-color .2s; width:auto !important;
+    }
+    .phone-number-input:focus { border-color:var(--copper); box-shadow:0 0 0 3px rgba(203,90,50,0.12); }
+    .phone-number-input::placeholder { color:var(--text-dim); }
+    .phone-number-input.error { border-color:var(--red); }
+
+
+    /* ── RESPONSIVE MOBILE ── */
+    @media(max-width:600px) {
+      .page { padding:1.5rem 1rem 4rem; }
+      .page-title { font-size:1.5rem; }
+      .pack-options { gap:0.5rem; }
+      .pack-option { padding:0.875rem; }
+      .pack-price { font-size:1.3rem; }
+      .card { padding:1.25rem; }
+      .phone-field { gap:0.4rem; }
+      .phone-prefix-select { min-width:90px; font-size:0.78rem; padding:0.7rem 0.35rem; }
+      .phone-number-input { font-size:0.85rem; padding:0.7rem 0.75rem; }
+      .rip-box { padding:1rem; }
+      .rip-num { font-size:0.8rem; letter-spacing:0.04em; }
+      .steps-list { gap:0.6rem; }
+      .submit-btn { padding:0.875rem; font-size:0.9rem; }
+      .success-screen { padding:2rem 1rem; }
+      .success-circle svg { width:48px; height:48px; }
+    }
+    @media(max-width:380px) {
+      .phone-prefix-select { min-width:80px; font-size:0.72rem; }
+      .phone-number-input { font-size:0.8rem; }
+    }
+
   </style>
 </head>
 <body>
@@ -458,7 +503,7 @@
       </div>
 
       <div class="alert alert-info">
-        <i data-lucide="message-circle"></i> Une question sur le paiement ? <a href="https://wa.me/33759804462?text=Salut Rayan, j'ai une question sur le paiement NextStage" target="_blank" style="font-weight:700">Écris sur WhatsApp →</a>
+        <i data-lucide="message-circle"></i> Une question sur le paiement ? <a href="https://wa.me/33759804462?text=Salam, j'ai une question sur le paiement NextStage" target="_blank" style="font-weight:700">Écris sur WhatsApp →</a>
       </div>
 
     </div>
@@ -477,10 +522,26 @@
           </div>
 
           <div class="field">
-            <label>Ton WhatsApp (avec +213) *</label>
-            <input type="tel" name="whatsapp" placeholder="+213 6XX XXX XXX" required>
+            <label>Ton WhatsApp *</label>
+            <div class="phone-field">
+              <select class="phone-prefix-select" id="waPrefix">
+                <option value="+213" selected>🇩🇿 +213</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+216">🇹🇳 +216</option>
+                <option value="+212">🇲🇦 +212</option>
+                <option value="+32">🇧🇪 +32</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+971">🇦🇪 +971</option>
+              </select>
+              <input type="tel" class="phone-number-input" id="waNumber" placeholder="6XX XXX XXX" autocomplete="tel">
+            </div>
             <div class="field-hint">On te contacte ici pour confirmer ton accès</div>
-            <div class="field-error">Ce champ est requis</div>
+            <div class="field-error" id="waError">Ce champ est requis</div>
           </div>
 
           <div class="field">
@@ -525,13 +586,13 @@
           <h2>Confirmation reçue !</h2>
           <p>Je vais vérifier ton virement et t'envoyer ton accès sur WhatsApp sous <strong>24h maximum</strong>.</p>
           <div class="success-steps">
-            <div class="success-step"><div class="ss-dot"></div><span>Tu recevras un message WhatsApp de Rayan pour confirmer</span></div>
+            <div class="success-step"><div class="ss-dot"></div><span>Tu recevras un message WhatsApp de NextStage pour confirmer</span></div>
             <div class="success-step"><div class="ss-dot"></div><span>Ton accès sera activé dès validation du paiement</span></div>
             <div class="success-step"><div class="ss-dot"></div><span>Les ressources arriveront par email</span></div>
           </div>
           <a href="https://wa.me/33759804462" target="_blank" class="btn-wa">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
-            Écrire à Rayan sur WhatsApp
+            Ecrire a NextStage sur WhatsApp
           </a>
         </div>
 
@@ -700,6 +761,29 @@ function processFile(file) {
 /* ═══════════════════════════════════
    FORM SUBMIT
 ═══════════════════════════════════ */
+
+/* ═══════════════════════════════════
+   SÉCURITÉ - Rate limiting
+═══════════════════════════════════ */
+const SUBMIT_KEY = 'ns_payment_submit';
+function canSubmit() {
+  try {
+    const data = JSON.parse(localStorage.getItem(SUBMIT_KEY) || '{"count":0,"ts":0}');
+    const elapsed = Date.now() - data.ts;
+    if (elapsed > 3600000) { localStorage.removeItem(SUBMIT_KEY); return true; } // reset après 1h
+    return data.count < 5; // max 5 soumissions par heure
+  } catch { return true; }
+}
+function recordSubmit() {
+  try {
+    const data = JSON.parse(localStorage.getItem(SUBMIT_KEY) || '{"count":0,"ts":0}');
+    if (Date.now() - data.ts > 3600000) { data.count = 0; }
+    data.count += 1;
+    data.ts = Date.now();
+    localStorage.setItem(SUBMIT_KEY, JSON.stringify(data));
+  } catch {}
+}
+
 document.getElementById('paymentForm').addEventListener('submit', async e => {
   e.preventDefault();
   if (currentPack === 'essentiel') return;
@@ -708,12 +792,29 @@ document.getElementById('paymentForm').addEventListener('submit', async e => {
   const btn = document.getElementById('submitBtn');
   let valid = true;
 
-  // Validation
+  // Validation champs requis
   form.querySelectorAll('input[required]').forEach(el => {
     const empty = !el.value.trim();
     el.classList.toggle('error', empty);
     if (empty) { valid = false; }
   });
+
+  // Validation WhatsApp
+  const waNum = document.getElementById('waNumber').value.trim().replace(/^0+/, '');
+  if (!waNum || waNum.length < 7) {
+    document.getElementById('waNumber').classList.add('error');
+    document.getElementById('waError').style.display = 'block';
+    valid = false;
+  } else {
+    document.getElementById('waNumber').classList.remove('error');
+    document.getElementById('waError').style.display = 'none';
+  }
+
+  // Rate limiting
+  if (!canSubmit()) {
+    alert('Trop de soumissions. Réessaie dans une heure ou contacte-nous sur WhatsApp.');
+    return;
+  }
 
   // Validation email simple
   const emailEl = form.querySelector('[name=email]');
@@ -740,7 +841,7 @@ document.getElementById('paymentForm').addEventListener('submit', async e => {
 
   const payload = {
     prenom:    form.querySelector('[name=prenom]').value.trim(),
-    whatsapp:  form.querySelector('[name=whatsapp]').value.trim(),
+    whatsapp:  (document.getElementById('waPrefix')?.value || '+213') + document.getElementById('waNumber').value.trim().replace(/^0+/, ''),
     email:     form.querySelector('[name=email]').value.trim(),
     reference: form.querySelector('[name=reference]').value.trim(),
     pack:      currentPack,
@@ -774,6 +875,7 @@ document.getElementById('paymentForm').addEventListener('submit', async e => {
       body: JSON.stringify({ type: 'payment', record: payload })
     }).catch(() => {});
 
+    recordSubmit();
     // Afficher succès
     form.style.display = 'none';
     document.getElementById('successScreen').classList.add('active');

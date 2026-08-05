@@ -885,6 +885,25 @@
 .student-page .profile-modal-actions .btn-save:hover { background:#1d4ed8; }
 .student-page .profile-modal-actions .btn-skip { background:transparent; border:1.5px solid var(--border-2); border-radius:10px; padding:0.8rem 1.1rem; font-size:0.85rem; font-weight:600; color:var(--text-2); cursor:pointer; font-family:var(--font); transition:all .15s; }
 .student-page .profile-modal-actions .btn-skip:hover { border-color:var(--blue); color:var(--text); }
+
+    /* ── PHONE PREFIX ── */
+    .student-page .phone-field { display:flex; gap:0.5rem; }
+    .student-page .phone-prefix-select {
+      padding:0.75rem 0.5rem; border-radius:10px;
+      background:var(--bg-3); border:1.5px solid var(--border-2);
+      font-size:0.85rem; font-family:inherit; color:var(--text);
+      outline:none; cursor:pointer; flex-shrink:0; min-width:105px;
+    }
+    .student-page .phone-prefix-select:focus { border-color:var(--blue); }
+    .student-page .phone-number-input {
+      flex:1; padding:0.75rem 1rem; border-radius:10px;
+      background:var(--bg-3); border:1.5px solid var(--border-2);
+      font-size:0.9rem; font-family:inherit; color:var(--text);
+      outline:none; transition:border-color .2s;
+    }
+    .student-page .phone-number-input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(37,99,235,0.14); z-index:2; }
+    .student-page .phone-number-input::placeholder { color:var(--text-dim); }
+
   </style>
 </head>
 <body class="student-page">
@@ -895,23 +914,43 @@
 <div class="login-page" id="loginPage">
   <div class="login-box">
     <div class="login-logo">Next<em>Stage</em></div>
-    <div class="login-pack-badge"><span>Pack Standard</span></div>
-    <div class="login-label">Espace membre privé - accès réservé</div>
+    <div class="login-pack-badge"><span >Pack Standard</span></div>
+    <div class="login-label">Espace membre prive - acces reserve</div>
+
     <div class="login-field">
-      <label>Mot de passe</label>
+      <label>Ton numero WhatsApp</label>
+      <div class="phone-field" style="margin-bottom:0;">
+        <select class="phone-prefix-select" id="loginPrefix" style="border-radius:11px 0 0 11px;">
+          <option value="+213" selected>🇩🇿 +213</option>
+          <option value="+33">🇫🇷 +33</option>
+          <option value="+216">🇹🇳 +216</option>
+          <option value="+212">🇲🇦 +212</option>
+          <option value="+32">🇧🇪 +32</option>
+          <option value="+41">🇨🇭 +41</option>
+          <option value="+1">🇺🇸 +1</option>
+          <option value="+44">🇬🇧 +44</option>
+        </select>
+        <input type="tel" class="phone-number-input" id="loginWa" placeholder="6XX XXX XXX" autocomplete="tel" style="border-radius:0 11px 11px 0;" onkeydown="if(event.key==='Enter')document.getElementById('loginInput').focus()">
+      </div>
+      <div style="font-size:0.7rem;color:var(--text-dim);margin-top:0.4rem;">Utilise le meme numero que celui envoye a NextStage</div>
+    </div>
+
+    <div class="login-field">
+      <label>Code d'acces</label>
       <input type="password" id="loginInput" placeholder="••••••••••" onkeydown="if(event.key==='Enter')doLogin()" autocomplete="current-password">
     </div>
+
     <button class="login-btn" onclick="doLogin()">
-      Accéder à mon espace
+      Acceder a mon espace
       <i data-lucide="arrow-right"></i>
     </button>
     <div class="login-error" id="loginError">
       <i data-lucide="circle-x"></i>
-      <span>Mot de passe incorrect. Vérifie ton message WhatsApp de Rayan.</span>
+      <span id="loginErrorMsg">Code incorrect ou numero WhatsApp manquant.</span>
     </div>
     <div class="login-footer">
-      Tu n'as pas reçu ton accès ?
-      <a href="https://wa.me/33759804462" style="color:var(--blue)">Contacte Rayan →</a>
+      Tu n'as pas recu ton acces ?
+      <a href="https://wa.me/33759804462" style="color:var(--blue)">Contacter NextStage →</a>
     </div>
   </div>
 </div>
@@ -933,7 +972,26 @@
       </div>
       <div class="onboard-field">
         <label>Ton WhatsApp (avec +213)</label>
-        <input type="tel" id="onboardWhatsapp" placeholder="+213 6XX XXX XXX" autocomplete="tel">
+        <div class="phone-field">
+              <select class="phone-prefix-select" id="onboardPrefix">
+                <option value="+213" selected>🇩🇿 +213</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+216">🇹🇳 +216</option>
+                <option value="+212">🇲🇦 +212</option>
+                <option value="+32">🇧🇪 +32</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+20">🇪🇬 +20</option>
+              </select>
+              <input type="tel" class="phone-number-input" id="onboardWhatsapp" placeholder="6XX XXX XXX" autocomplete="tel">
+            </div>
       </div>
       <button class="onboard-btn" onclick="saveOnboarding()">
         Accéder à mon espace →
@@ -1760,9 +1818,9 @@
           <div class="entretien-card">
             <div class="entretien-title"><i data-lucide="target"></i> Plan de revision 8 semaines</div>
             <div class="tips-list">
-              <div class="tip"><span class="tip-ico"><i data-lucide="circle-1"></i></span><span><strong>Semaines 1-2 :</strong> annales 1 a 4 en diagnostic. Identifie tes points faibles sans te juger.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="circle-2"></i></span><span><strong>Semaines 3-5 :</strong> travail cible sur tes lacunes. 2 a 3 annales par semaine maximum.</span></div>
-              <div class="tip"><span class="tip-ico"><i data-lucide="circle-3"></i></span><span><strong>Semaines 6-7 :</strong> entrainement intensif en conditions reelles. Minuteur, silence, aucune aide.</span></div>
+              <div class="tip"><span class="tip-ico" style="font-weight:800;color:var(--blue);font-size:0.82rem;">1.</span><span><strong>Semaines 1-2 :</strong> annales 1 a 4 en diagnostic. Identifie tes points faibles sans te juger.</span></div>
+              <div class="tip"><span class="tip-ico" style="font-weight:800;color:var(--blue);font-size:0.82rem;">2.</span><span><strong>Semaines 3-5 :</strong> travail cible sur tes lacunes. 2 a 3 annales par semaine maximum.</span></div>
+              <div class="tip"><span class="tip-ico" style="font-weight:800;color:var(--blue);font-size:0.82rem;">3.</span><span><strong>Semaines 6-7 :</strong> entrainement intensif en conditions reelles. Minuteur, silence, aucune aide.</span></div>
               <div class="tip"><span class="tip-ico"><i data-lucide="flag"></i></span><span><strong>Semaine 8 :</strong> pas de nouvelle matiere. Consolide, dors bien les 2 nuits avant l'examen.</span></div>
             </div>
           </div>
@@ -1992,94 +2050,101 @@
       <!-- ══════════════════
            VIDÉOS
       ══════════════════ -->
-      <div class="section-block tab-section" id="videos">
-        <span class="section-eyebrow">Contenu exclusif</span>
-        <h2 class="section-title">Videos NextStage</h2>
-        <p class="section-sub">Les vidéos TikTok organisées par thème. Ajoute tes fichiers .mp4 dans un dossier <code style="background:var(--bg-3);padding:1px 5px;border-radius:4px;font-size:0.8em">videos/</code> à côté de ce fichier.</p>
-        <div class="videos-note">
-          <i data-lucide="info"></i>
-          <span>Pour ajouter une vidéo : remplace <code>&lt;!-- video1.mp4 --&gt;</code> par <code>&lt;video src="videos/video1.mp4" controls playsinline&gt;&lt;/video&gt;</code></span>
-        </div>
-        <div class="videos-grid">
-          <div class="video-card">
+            <div class="section-block tab-section" id="videos">
+        <span class="section-eyebrow">Tutoriels</span>
+        <h2 class="section-title">Tutoriels pas a pas</h2>
+        <p class="section-sub">Des tutoriels video pour t'accompagner sur les demarches les plus importantes. Nouvelles videos ajoutees regulierement.</p>
+
+        <div class="videos-grid" id="videosGrid">
+
+          <div class="video-card" data-cat="pastel">
             <div class="video-thumb">
-              <!-- Remplace par : <video src="videos/video1.mp4" controls playsinline></video> -->
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video1.mp4</p>
-              </div>
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Comment creer son compte Boite Pastel</p></div>
             </div>
             <div class="video-info">
               <span class="video-cat">Pastel</span>
-              <div class="video-title">Créer son dossier Pastel</div>
-              <div class="video-sub">Les étapes et erreurs à éviter</div>
+              <div class="video-title">Creer et remplir son dossier Pastel</div>
+              <div class="video-sub">De la creation du compte a la soumission du dossier</div>
             </div>
           </div>
-          <div class="video-card">
+
+          <div class="video-card" data-cat="tcf">
             <div class="video-thumb">
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video2.mp4</p>
-              </div>
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Comment prendre un RDV TCF</p></div>
             </div>
             <div class="video-info">
-              <span class="video-cat">Entretien</span>
-              <div class="video-title">Réussir l'entretien Campus France</div>
-              <div class="video-sub">Questions réelles + mes réponses</div>
+              <span class="video-cat">TCF</span>
+              <div class="video-title">Prendre un rendez-vous TCF en Algerie</div>
+              <div class="video-sub">Sur le site de l'Institut Francais, etape par etape</div>
             </div>
           </div>
-          <div class="video-card">
+
+          <div class="video-card" data-cat="visa">
             <div class="video-thumb">
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video3.mp4</p>
-              </div>
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Remplir le formulaire France-Visas</p></div>
             </div>
             <div class="video-info">
               <span class="video-cat">Visa</span>
-              <div class="video-title">Mon refus de visa</div>
-              <div class="video-sub">Analyse honnête de mes erreurs</div>
+              <div class="video-title">Remplir le formulaire France-Visas</div>
+              <div class="video-sub">VLS-TS etudiant - chaque champ explique</div>
             </div>
           </div>
-          <div class="video-card">
+
+          <div class="video-card" data-cat="visa">
             <div class="video-thumb">
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video4.mp4</p>
-              </div>
-            </div>
-            <div class="video-info">
-              <span class="video-cat">Candidatures</span>
-              <div class="video-title">Bien choisir ses universités</div>
-              <div class="video-sub">Stratégie selon ton profil</div>
-            </div>
-          </div>
-          <div class="video-card">
-            <div class="video-thumb">
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video5.mp4</p>
-              </div>
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Prendre un RDV Capago</p></div>
             </div>
             <div class="video-info">
               <span class="video-cat">Visa</span>
-              <div class="video-title">Le dossier financier pour le visa</div>
-              <div class="video-sub">Combien ? Quels documents ?</div>
+              <div class="video-title">Prendre un rendez-vous sur Capago</div>
+              <div class="video-sub">Le depot de dossier visa en Algerie</div>
             </div>
           </div>
-          <div class="video-card">
+
+          <div class="video-card" data-cat="france">
             <div class="video-thumb">
-              <div class="video-placeholder">
-                <i data-lucide="film"></i>
-                <p>videos/video6.mp4</p>
-              </div>
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Faire une demande APL</p></div>
             </div>
             <div class="video-info">
-              <span class="video-cat">Arrivée</span>
-              <div class="video-title">Arriver en France</div>
-              <div class="video-sub">OFII, logement, inscription</div>
+              <span class="video-cat">En France</span>
+              <div class="video-title">Faire sa demande APL sur caf.fr</div>
+              <div class="video-sub">Aide au logement - jusqu'a 200€/mois</div>
             </div>
           </div>
+
+          <div class="video-card" data-cat="france">
+            <div class="video-thumb">
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Valider le VLS-TS sur ANEF</p></div>
+            </div>
+            <div class="video-info">
+              <span class="video-cat">En France</span>
+              <div class="video-title">Valider son visa VLS-TS sur ANEF</div>
+              <div class="video-sub">Obligatoire dans les 3 mois apres l'arrivee</div>
+            </div>
+          </div>
+
+          <div class="video-card" data-cat="france">
+            <div class="video-thumb">
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Ouvrir un compte bancaire</p></div>
+            </div>
+            <div class="video-info">
+              <span class="video-cat">En France</span>
+              <div class="video-title">Ouvrir un compte bancaire en France</div>
+              <div class="video-sub">Revolut, BNP, Societe Generale - comparaison</div>
+            </div>
+          </div>
+
+          <div class="video-card" data-cat="pastel">
+            <div class="video-thumb">
+              <div class="video-placeholder"><i data-lucide="monitor-play"></i><p>Rediger sa lettre de motivation Pastel</p></div>
+            </div>
+            <div class="video-info">
+              <span class="video-cat">Pastel</span>
+              <div class="video-title">Rediger sa lettre de motivation Pastel</div>
+              <div class="video-sub">Structure, erreurs a eviter, exemple concret</div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -2167,13 +2232,151 @@
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script>
+/* ════ SUPABASE STUDENT DATA SYNC ════
+   Sauvegarde : prenom, whatsapp, rentree, checks, tcf_done
+   dans la table student_data liee au numero WhatsApp.
+   Charge automatiquement au login pour restaurer sur n'importe quel appareil.
+*/
+const _SB_URL = 'https://xrxlteycmcmztdqscfeq.supabase.co';
+const _SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhyeGx0ZXljbWNtenRkcXNjZmVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyMDk5NDUsImV4cCI6MjA5Njc4NTk0NX0.nW_isNhNwAjWdzahAsccVE6kPsAJR2_ZBdTT6iDFh-s';
+const _SB_HEADS = {
+  'apikey': _SB_KEY,
+  'Authorization': 'Bearer ' + _SB_KEY,
+  'Content-Type': 'application/json',
+  'Prefer': 'resolution=merge-duplicates'
+};
+
+async function syncSaveToSupabase() {
+  try {
+    const identity = getStudentIdentity();
+    if (!identity?.whatsapp) return; // pas de WA = pas de sync
+    const checks   = JSON.parse(localStorage.getItem(CHECKS_KEY) || '{}');
+    const tcfDone  = JSON.parse(localStorage.getItem(TCF_KEY)    || '[]');
+    await fetch(_SB_URL + '/rest/v1/student_data', {
+      method: 'POST',
+      headers: _SB_HEADS,
+      body: JSON.stringify({
+        whatsapp:   identity.whatsapp,
+        prenom:     identity.name || '',
+        rentree:    identity.rentree || '',
+        checks:     checks,
+        tcf_done:   tcfDone,
+        updated_at: new Date().toISOString()
+      })
+    });
+  } catch(e) { console.warn('[sync] save error', e.message); }
+}
+
+async function syncLoadFromSupabase(whatsapp) {
+  try {
+    const wa = whatsapp.replace(/\D/g, '');
+    // chercher avec et sans indicatif
+    const r = await fetch(
+      _SB_URL + '/rest/v1/student_data?whatsapp=ilike.*' + wa.slice(-9) + '*&limit=1',
+      { headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY } }
+    );
+    if (!r.ok) return null;
+    const data = await r.json();
+    if (!Array.isArray(data) || !data.length) return null;
+    return data[0];
+  } catch(e) { console.warn('[sync] load error', e.message); return null; }
+}
+
+async function syncRestoreSession(whatsapp) {
+  const remote = await syncLoadFromSupabase(whatsapp);
+  if (!remote) return;
+  // Restaurer le profil
+  if (remote.prenom) {
+    const identity = getStudentIdentity() || {};
+    identity.name    = remote.prenom;
+    identity.whatsapp = remote.whatsapp || whatsapp;
+    identity.rentree = remote.rentree || identity.rentree || '';
+    localStorage.setItem(STUDENT_KEY, JSON.stringify(identity));
+    localStorage.setItem(NAME_KEY, remote.prenom);
+  }
+  // Restaurer la checklist
+  if (remote.checks && Object.keys(remote.checks).length > 0) {
+    localStorage.setItem(CHECKS_KEY, JSON.stringify(remote.checks));
+  }
+  // Restaurer TCF
+  if (remote.tcf_done && remote.tcf_done.length > 0) {
+    localStorage.setItem(TCF_KEY, JSON.stringify(remote.tcf_done));
+  }
+}
+
 /* ════ AUTH ════
    Code d'accès partagé donné par Rayan par WhatsApp après validation
    du paiement (voir admin → "Valider"). Pour changer le code :
    1. Calcule le SHA-256 du nouveau code (ex: sha256.online)
    2. Remplace ACCESS_HASH ci-dessous
    Code par défaut : NEXTSTAGE-2026 */
-const ACCESS_HASH = 'c4c0af1dae3146cdf1c782bb3eddd7646437eb34fec7b4f8f5363fcec9bfe88b';
+const ACCESS_HASH = 'd35c236f82c78a4e2396470d1f2053b34a7eb71e7f40f3365afd8582f27d6830';
+
+/* ════ SECURITY — Rate limiting + Supabase WA check ════ */
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MS   = 15 * 60 * 1000; // 15 minutes
+const ATTEMPT_KEY  = 'ns_login_attempts';
+
+function getAttempts() {
+  try { return JSON.parse(localStorage.getItem(ATTEMPT_KEY) || '{"count":0,"ts":0}'); }
+  catch { return {count:0, ts:0}; }
+}
+function incAttempts() {
+  const a = getAttempts();
+  a.count += 1; a.ts = Date.now();
+  localStorage.setItem(ATTEMPT_KEY, JSON.stringify(a));
+  return a.count;
+}
+function resetAttempts() {
+  localStorage.removeItem(ATTEMPT_KEY);
+}
+function isLockedOut() {
+  const a = getAttempts();
+  if (a.count >= MAX_ATTEMPTS) {
+    const elapsed = Date.now() - a.ts;
+    if (elapsed < LOCKOUT_MS) return Math.ceil((LOCKOUT_MS - elapsed) / 60000);
+    resetAttempts(); // lockout expiré
+  }
+  return 0;
+}
+
+async function checkWaInSupabase(whatsapp) {
+  try {
+    const normalize = (n) => n.replace(/\D/g, '');
+    const input = normalize(whatsapp);
+    if (input.length < 8) return false;
+
+    const url = _SB_URL + '/rest/v1/payments?status=eq.validated&pack=eq.standard&select=whatsapp';
+    const r = await fetch(url, {
+      headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY }
+    });
+
+    if (!r.ok) return false; // Supabase erreur = on refuse
+
+    const data = await r.json();
+    if (!Array.isArray(data) || data.length === 0) return false;
+
+    return data.some(p => {
+      if (!p.whatsapp) return false;
+      const stored = normalize(p.whatsapp);
+      // Correspondance exacte
+      if (stored === input) return true;
+      // Meme suffixe (9 chiffres) ET meme indicatif
+      const inputSuffix  = input.slice(-9);
+      const storedSuffix = stored.slice(-9);
+      if (inputSuffix !== storedSuffix) return false;
+      const inputPrefix  = input.slice(0, input.length - 9);
+      const storedPrefix = stored.slice(0, stored.length - 9);
+      // Si les deux ont un indicatif et qu'ils sont differents → refus
+      if (inputPrefix && storedPrefix && inputPrefix !== storedPrefix) return false;
+      return true;
+    });
+  } catch(e) {
+    console.warn('[checkWa]', e.message);
+    return false; // erreur reseau = on refuse
+  }
+}
+
 const SESSION_KEY = 'ns_standard_v2';
 const NAME_KEY = 'ns_student_name';
 const WHATSAPP_KEY = 'ns_student_whatsapp';
@@ -2186,22 +2389,83 @@ async function sha256(msg) {
 function hasSession() {
   try {
     const s = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
-    return s && Date.now() - s.ts < 30 * 86400000;
+    return !!s;
   } catch { return false; }
 }
 async function doLogin() {
-  const input = document.getElementById('loginInput');
-  const hash  = await sha256(input.value.trim());
+  const errorEl = document.getElementById('loginError');
+  const msgEl   = document.getElementById('loginErrorMsg');
 
-  if (hash === ACCESS_HASH) {
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() }));
-    document.getElementById('loginError').style.display = 'none';
-    showApp();
-  } else {
-    input.classList.add('shake');
-    document.getElementById('loginError').style.display = 'flex';
-    setTimeout(() => input.classList.remove('shake'), 500);
+  // Rate limiting
+  const lockMins = isLockedOut();
+  if (lockMins > 0) {
+    msgEl.textContent = `Trop de tentatives. Reessaie dans ${lockMins} minute${lockMins > 1 ? 's' : ''}.`;
+    errorEl.style.display = 'flex';
+    return;
   }
+
+  const input    = document.getElementById('loginInput');
+  const prefix   = document.getElementById('loginPrefix')?.value || '+213';
+  const waRaw    = (document.getElementById('loginWa')?.value || '').trim().replace(/^0+/, '');
+  const whatsapp = waRaw ? prefix + waRaw : '';
+  const hash     = await sha256(input.value.trim());
+
+  // 1. Valider le numero WhatsApp
+  if (!waRaw || waRaw.length < 7) {
+    document.getElementById('loginWa')?.classList.add('shake');
+    msgEl.textContent = 'Entre ton numero WhatsApp.';
+    errorEl.style.display = 'flex';
+    setTimeout(() => document.getElementById('loginWa')?.classList.remove('shake'), 500);
+    return;
+  }
+
+  // 2. Valider le code d'acces
+  if (hash !== ACCESS_HASH) {
+    incAttempts();
+    const rem = MAX_ATTEMPTS - getAttempts().count;
+    input.classList.add('shake');
+    msgEl.textContent = rem > 0
+      ? `Code incorrect. ${rem} tentative${rem > 1 ? 's' : ''} restante${rem > 1 ? 's' : ''}.`
+      : 'Compte bloque 15 minutes.';
+    errorEl.style.display = 'flex';
+    setTimeout(() => input.classList.remove('shake'), 500);
+    return;
+  }
+
+  // 3. Verifier le WhatsApp dans Supabase
+  msgEl.textContent = 'Verification en cours...';
+  errorEl.style.display = 'flex';
+  errorEl.style.background = 'rgba(37,99,235,0.08)';
+  errorEl.style.borderColor = 'rgba(37,99,235,0.2)';
+  errorEl.style.color = '#93c5fd';
+
+  const waOk = await checkWaInSupabase(whatsapp);
+  if (!waOk) {
+    incAttempts();
+    errorEl.style.background = '';
+    errorEl.style.borderColor = '';
+    errorEl.style.color = '';
+    input.classList.add('shake');
+    document.getElementById('loginWa')?.classList.add('shake');
+    msgEl.textContent = 'Numero WhatsApp non reconnu. Utilise le numero avec lequel tu as paye.';
+    setTimeout(() => {
+      input.classList.remove('shake');
+      document.getElementById('loginWa')?.classList.remove('shake');
+    }, 500);
+    return;
+  }
+
+  // 4. Tout est correct
+  resetAttempts();
+  errorEl.style.display = 'none';
+  errorEl.style.background = '';
+  errorEl.style.borderColor = '';
+  errorEl.style.color = '';
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now(), whatsapp }));
+  const existing = getStudentIdentity() || {};
+  existing.whatsapp = whatsapp;
+  localStorage.setItem(STUDENT_KEY, JSON.stringify(existing));
+  showApp();
 }
 function doLogout() { localStorage.removeItem(SESSION_KEY); location.reload(); }
 
@@ -2217,6 +2481,10 @@ function showApp() {
   loadChecklist();
   loadName();
   startCountdown();
+  // Restaurer depuis Supabase si possible
+  const _sess = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+  const _wa = _sess?.whatsapp || getStudentIdentity()?.whatsapp;
+  if (_wa) syncRestoreSession(_wa).then(() => { loadChecklist(); loadName(); renderIcons(); });
   renderIcons();
 
   // Afficher la modale d'onboarding si c'est la première connexion
@@ -2248,14 +2516,17 @@ function saveOnboarding() {
   document.getElementById('onboardOverlay').style.display = 'none';
   loadName();
   showToast('Bienvenue ' + prenom + ' !', 'success');
+  syncSaveToSupabase();
 }
-if (hasSession()) showApp();
-
 /* ════ ICONS ════ */
 function renderIcons() {
   if (typeof lucide !== 'undefined') lucide.createIcons();
 }
-renderIcons();
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderIcons();
+  if (hasSession()) showApp();
+});
 
 /* ════ SIDEBAR ════ */
 function openSidebar() {
@@ -2617,7 +2888,9 @@ function closeProfileModal() {
 }
 function saveProfileModal() {
   var name = document.getElementById('profileInputName').value.trim();
-  var wa   = document.getElementById('profileInputWa').value.trim();
+  var waPrefix = document.getElementById('profilePrefix')?.value || '+213';
+  var waRaw = document.getElementById('profileInputWa').value.trim().replace(/^0+/,'');
+  var wa = waRaw ? waPrefix + waRaw : '';
   if (name) {
     localStorage.setItem(NAME_KEY, name);
     const identity = { prenom: name, whatsapp: wa };
@@ -2733,7 +3006,26 @@ function showToast(msg, type = '') {
     </div>
     <div class="profile-field">
       <label>Ton WhatsApp</label>
-      <input type="tel" id="profileInputWa" placeholder="+213 6XX XXX XXX" autocomplete="tel">
+      <div class="phone-field">
+              <select class="phone-prefix-select" id="profilePrefix">
+                <option value="+213" selected>🇩🇿 +213</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+216">🇹🇳 +216</option>
+                <option value="+212">🇲🇦 +212</option>
+                <option value="+32">🇧🇪 +32</option>
+                <option value="+41">🇨🇭 +41</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+20">🇪🇬 +20</option>
+              </select>
+              <input type="tel" class="phone-number-input" id="profileInputWa" placeholder="6XX XXX XXX" autocomplete="tel">
+            </div>
     </div>
     <div class="profile-modal-actions">
       <button class="btn-skip" id="profileSkipBtn" onclick="closeProfileModal()">Plus tard</button>
