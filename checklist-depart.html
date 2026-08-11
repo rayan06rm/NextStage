@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checklist Depart Algerie - France - NextStage</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Arial,sans-serif; max-width:820px; margin:0 auto; padding:2.5rem 2rem; background:#fff; color:#1f2937; }
+.print-btn { position:fixed; top:1rem; right:1rem; background:#2563EB; color:white; border:none; padding:0.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600; z-index:99; box-shadow:0 2px 12px rgba(37,99,235,0.3); }
+.print-btn:hover { background:#1d4ed8; }
+.doc-header { display:flex; align-items:flex-start; justify-content:space-between; padding-bottom:1rem; border-bottom:3px solid #2563EB; margin-bottom:1.75rem; }
+.doc-logo { font-size:1.25rem; font-weight:800; color:#1f2937; }
+.doc-logo em { color:#2563EB; font-style:normal; }
+.doc-meta { text-align:right; }
+.doc-meta .doc-title { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; margin-bottom:2px; }
+.doc-meta .doc-sub { font-size:0.7rem; color:#6B7280; font-style:italic; }
+.doc-footer { margin-top:2.5rem; padding-top:0.875rem; border-top:1px solid #e5e7eb; display:flex; justify-content:space-between; font-size:0.68rem; color:#9CA3AF; }
+.section-bar { display:flex; align-items:center; gap:0.6rem; margin:1.5rem 0 0.75rem; }
+.section-num { width:24px; height:24px; background:#2563EB; color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:800; flex-shrink:0; }
+.section-label { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#2563EB; }
+p { font-size:0.875rem; line-height:1.8; color:#1f2937; margin-bottom:0.75rem; }
+hr { border:none; border-top:1px solid #e5e7eb; margin:1.25rem 0; }
+.conseil { background:#eff6ff; border-left:3px solid #2563EB; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.conseil strong { color:#1d4ed8; }
+.alerte { background:#fef2f2; border-left:3px solid #ef4444; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.alerte strong { color:#dc2626; }
+.important { background:#fffbeb; border-left:3px solid #f59e0b; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.important strong { color:#b45309; }
+.success { background:#f0fdf4; border-left:3px solid #22c55e; padding:0.75rem 1rem; margin:0.875rem 0; font-size:0.82rem; color:#374151; line-height:1.65; border-radius:0 6px 6px 0; }
+.success strong { color:#15803d; }
+.check-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.55rem 0; border-bottom:1px solid #f3f4f6; }
+.check-item:last-child { border-bottom:none; }
+.check-box { width:17px; height:17px; border:2px solid #D1D5DB; border-radius:4px; flex-shrink:0; margin-top:2px; }
+.check-box.urgent { border-color:#ef4444; }
+.check-text { font-size:0.85rem; color:#374151; line-height:1.5; flex:1; }
+.check-text .note { display:block; font-size:0.75rem; color:#6B7280; margin-top:2px; }
+.tag-urgent { display:inline-block; background:#fef2f2; color:#dc2626; border:1px solid #fecaca; border-radius:4px; padding:1px 7px; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-left:0.5rem; vertical-align:middle; }
+.phase-title { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:#1E3A8A; color:#fff; padding:5px 12px; border-radius:6px; margin:1.25rem 0 0.5rem; display:inline-block; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:0 1.5rem; }
+table { width:100%; border-collapse:collapse; font-size:0.82rem; margin:0.875rem 0; }
+th { background:#1E3A8A; color:#fff; padding:0.6rem 0.875rem; text-align:left; font-size:0.75rem; font-weight:700; }
+td { padding:0.55rem 0.875rem; border-bottom:1px solid #e5e7eb; color:#374151; vertical-align:top; }
+tr:nth-child(even) td { background:#f9fafb; }
+ul { margin:0.5rem 0 0.75rem 1.25rem; }
+ul li { font-size:0.85rem; color:#374151; margin-bottom:0.3rem; line-height:1.6; }
+.barre-progression { display:flex; height:6px; border-radius:99px; overflow:hidden; margin-bottom:1.5rem; gap:2px; }
+.barre-seg { flex:1; border-radius:3px; }
+@page { margin:1.2cm; size:A4; }
+@media print {
+  #downloadBtn, .print-btn { display:none !important; }
+  body { background:#fff !important; }
+  * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  .two-col { grid-template-columns:1fr 1fr; }
+}
+</style></head>
+<body>
+<button class="print-btn" id="downloadBtn" onclick="downloadPDF()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:5px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Telecharger en PDF</button>
+
+<div class="doc-header">
+  <div class="doc-logo">Next<em>Stage</em></div>
+  <div class="doc-meta">
+    <div class="doc-title">Checklist Depart Algerie - France</div>
+    <div class="doc-sub">Espace Standard - A completer 1 mois avant le depart</div>
+  </div>
+</div>
+
+<div class="conseil"><strong>Comment utiliser cette checklist :</strong> Coche chaque case au fur et a mesure. Les items marques <span class="tag-urgent">URGENT</span> sont prioritaires. Fais 3 copies de chaque document et garde une version numerique sur Google Drive ou email.</div>
+
+<div class="barre-progression">
+  <div class="barre-seg" style="background:#2563EB;"></div>
+  <div class="barre-seg" style="background:#60A5FA;"></div>
+  <div class="barre-seg" style="background:#F59E0B;"></div>
+  <div class="barre-seg" style="background:#10B981;"></div>
+  <div class="barre-seg" style="background:#6B7280;"></div>
+  <div class="barre-seg" style="background:#8B5CF6;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — DOCUMENTS OBLIGATOIRES
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">1</div><div class="section-label">Documents obligatoires - a emporter absolument</div></div>
+
+<div class="alerte"><strong>Ne mets jamais tous tes documents dans le meme sac.</strong> Repartis-les entre ton bagage cabine et ta valise en soute. Garde des scans sur Google Drive et envoie-les a un proche en Algerie.</div>
+
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Passeport original valide <span class="tag-urgent">urgent</span><span class="note">Doit etre valide 8 mois apres ton arrivee. 2 photocopies.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Visa etudiant (3 mois) <span class="tag-urgent">urgent</span><span class="note">Imprime + version PDF sur ton telephone. Les Algeriens obtiennent generalement un visa de 3 mois.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Lettre d'admission universitaire <span class="tag-urgent">urgent</span><span class="note">Original + 2 copies. Obligatoire pour l'inscription.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Email fin de procedure Campus France <span class="tag-urgent">urgent</span><span class="note">Imprime et sauvegarde sur telephone.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Acte de naissance + traduction officielle<span class="note">Original certifie + traduction par traducteur assermente.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Casier judiciaire vierge<span class="note">Datant de moins de 3 mois.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Diplome du Bac + releves de notes<span class="note">Originaux + traductions. Apostille si demandee.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Attestation TCF ou DELF<span class="note">Original + copie.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Carte nationale d'identite algerienne<span class="note">Valide de preference. Utile comme piece de secours.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Permis de conduire algerien<span class="note">Original + traduction si tu prevois de conduire en France.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Carnet de vaccination a jour<span class="note">Utile pour le medecin et la Securite sociale.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Attestation d'hebergement<span class="note">Attribution CROUS ou contrat de bail signe.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">10 photos d'identite format francais<span class="note">35x45mm, fond blanc, recentes. Pour les demarches administratives.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Attestation d'assurance sante<span class="note">Souscrite avant le depart, valable en France.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — ARGENT ET BANQUE
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">2</div><div class="section-label">Argent et finances - ne pas arriver les mains vides</div></div>
+
+<div class="alerte"><strong>Apporte minimum 1 000 a 1 500 EUR en especes.</strong> Tu ne pourras pas ouvrir un compte bancaire le jour de ton arrivee. Les premiers jours tu as besoin d'argent liquide pour le transport, la nourriture et les petites urgences.</div>
+
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Especes en euros (1 000 - 1 500 EUR) <span class="tag-urgent">urgent</span><span class="note">Repartis dans plusieurs poches et bagages.</span></div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Preparer le bordereau de retrait des 7 500 EUR <span class="tag-urgent">urgent</span><span class="note">Montant atteste dans le dossier visa. Tu devras presenter ce bordereau a l'administration si demande.</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Carte bancaire algerienne (CIB / Dahabia)<span class="note">Pour paiements en ligne depuis l'Algerie si besoin.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Releves bancaires des 3 derniers mois<span class="note">En cas de controle a la douane ou a l'administration.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Note du numero de compte CCP du garant<span class="note">Pour recevoir des virements depuis l'Algerie si besoin.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Budget mensuel etabli par ecrit<span class="note">Loyer + nourriture + transport + frais divers = minimum 700 EUR/mois.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Justificatif de l'origine des fonds<span class="note">Si tu transportes plus de 10 000 EUR en especes (declaration douane obligatoire).</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — BAGAGES ET AFFAIRES
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">3</div><div class="section-label">Bagages et affaires a emporter</div></div>
+
+<div class="important"><strong>Prevois des vetements chauds meme si tu pars en septembre.</strong> La France est beaucoup plus froide que l'Algerie des le mois d'octobre. Un manteau chaud est indispensable. Mieux vaut en avoir un que de l'acheter en urgence a prix eleve en France.</div>
+
+<div class="phase-title">Vetements et equipement</div>
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Veste chaude ou manteau d'hiver <span class="tag-urgent">urgent</span><span class="note">Indispensable des octobre. Cher a acheter en France.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Vetements pour toutes les saisons<span class="note">Pluie, froid, ete. La meteo change vite.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Chaussures de marche confortables<span class="note">Tu vas marcher beaucoup. Privilege le confort.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Parapluie compact<span class="note">Il pleut souvent en France. Essentiel.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Serviettes de bain (2 minimum)<span class="note">Pas toujours fourni en residence universitaire.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Draps et taie d'oreiller<span class="note">Verifier aupres du CROUS si fourni ou non.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Produits d'hygiene pour 1 mois<span class="note">Evite les achats urgents et couteux a l'arrivee.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Quelques aliments algeriens<span class="note">Epices, the, gateau... ca fait du bien les premiers jours.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-title">Electronique et materiel</div>
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Ordinateur portable + chargeur <span class="tag-urgent">urgent</span><span class="note">Obligatoire pour les cours et les demarches en ligne.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Adaptateur secteur (prise francaise)<span class="note">Si tes appareils ont des prises differentes.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Chargeur universel ou multiprise<span class="note">Tres utile en colocation et a la bibliotheque.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Disque dur externe<span class="note">Pour sauvegarder tes documents et cours.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Casque audio ou ecouteurs<span class="note">Pour les cours en ligne et les annales TCF.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Telephone debloque (toutes cartes SIM)<span class="note">Pour mettre une carte SIM francaise a l'arrivee.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="phase-title">Sante et pharmacie</div>
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Medicaments habituels (3 mois de stock)<span class="note">Avec ordonnance traduite en francais. Certains medicaments n'existent pas en France.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Pharmacie de base<span class="note">Doliprane, Spasfon, Imodium, Strepsils, Advil.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Lunettes de vue ou lentilles (reserve)<span class="note">Ordonnance a jour. Optique plus chere en France.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Carnet de sante ou resume medical<span class="note">Allergies, traitements en cours, groupe sanguin.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — DEMARCHES AVANT LE DEPART
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">4</div><div class="section-label">Demarches a faire avant de quitter l'Algerie</div></div>
+
+<div class="conseil"><strong>Fais ces demarches 2 a 4 semaines avant le depart.</strong> Certaines prennent du temps et il vaut mieux ne pas se retrouver en urgence la veille du vol.</div>
+
+<div class="two-col">
+  <div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Confirmer ton inscription universitaire <span class="tag-urgent">urgent</span><span class="note">Verifier la date, les pieces a fournir, le lieu.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-text">Souscrire une assurance sante <span class="tag-urgent">urgent</span><span class="note">Valable en France, avant l'inscription a la Securite sociale.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Creer un compte services-public.fr<span class="note">Identite numerique francaise. Utile pour toutes les demarches.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Prevenir ta banque algerienne<span class="note">Que tu pars a l'etranger pour eviter le blocage de ta carte.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Faire une procuration a un proche<span class="note">Pour gerer tes affaires administratives en Algerie a distance.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Telecharger les applications utiles<span class="note">SNCF Connect, Citymapper, Ameli, Doctolib, Google Maps hors ligne.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Scanner et sauvegarder tous tes documents<span class="note">Google Drive ou email. Accessible depuis n'importe ou.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Partager ton itineraire avec ta famille<span class="note">Numero de vol, heure d'arrivee, adresse du logement.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Enregistrer les contacts d'urgence<span class="note">Ambassade d'Algerie a Paris : 01 53 96 43 00. SAMU : 15. Police : 17.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Confirmer avec ton garant le virement<span class="note">Date et montant prevus pour deposer les 7 500 EUR sur ton compte.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Acheter une carte SIM internationale<span class="note">Pour les premieres heures a l'aeroport avant d'avoir une SIM francaise.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — PREMIERS JOURS EN FRANCE
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">5</div><div class="section-label">Premiers jours en France - dans l'ordre</div></div>
+
+<div class="alerte"><strong>Les etudiants algeriens ne valident pas le VLS-TS.</strong> Avec un visa de 3 mois, tu dois faire une demande de titre de sejour etudiant directement aupres de la prefecture de ton lieu de residence. A faire avant l'expiration de ton visa.</div>
+
+<div class="check-item">
+  <div class="check-box urgent"></div>
+  <div class="check-text">Faire une demande de titre de sejour etudiant <span class="tag-urgent">urgent</span><span class="note">Aupres de la prefecture de ton lieu de residence. Avant l'expiration de ton visa de 3 mois. Pieces : passeport, visa, lettre admission, justificatif logement, photos.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box urgent"></div>
+  <div class="check-text">S'inscrire administrativement a l'universite <span class="tag-urgent">urgent</span><span class="note">Apporter : passeport + visa, lettre admission, photos, justificatif logement, releves de notes.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box urgent"></div>
+  <div class="check-text">Ouvrir un compte bancaire francais <span class="tag-urgent">urgent</span><span class="note">BNP, Societe Generale ou La Banque Postale. Apporter passeport + visa + justificatif de domicile.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box urgent"></div>
+  <div class="check-text">Garder le bordereau de retrait des 7 500 EUR <span class="tag-urgent">urgent</span><span class="note">Document atteste dans le dossier visa. A conserver precieusement et a presenter si l'administration te le demande.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box urgent"></div>
+  <div class="check-text">Faire la demande APL sur caf.fr <span class="tag-urgent">urgent</span><span class="note">Des l'emmenagement. Jusqu'a 200 EUR/mois selon la ville et le loyer. Ne pas attendre.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">Obtenir la carte etudiante<span class="note">Aupres du service de scolarite. Obligatoire pour les reductions.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">Souscrire a la carte Navigo ou abonnement transport<span class="note">50% de reduction avec carte etudiante en Ile-de-France. Autres villes : renseignes-toi aupres du reseau local.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">Verifier son affiliation a la Securite sociale etudiante<span class="note">Automatique via l'inscription universitaire. Verifier sur ameli.fr que les droits sont ouverts.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">S'inscrire au restaurant universitaire (RU)<span class="note">Repas a 1 EUR avec la carte etudiante. S'inscrire via le CROUS de ta ville.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">Acheter une carte SIM francaise<span class="note">LycaMobile recommande : environ 10 EUR/mois (hors frais de la puce). Disponible en bureau de tabac.</span></div>
+</div>
+<div class="check-item">
+  <div class="check-box"></div>
+  <div class="check-text">Rejoindre les groupes etudiants algeriens de ta ville<span class="note">Facebook, WhatsApp, Telegram. Precieux pour les bons plans, les collocations, les conseils.</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 — BONS REFLEXES
+══════════════════════════════════════════ -->
+<div class="section-bar"><div class="section-num">6</div><div class="section-label">Bons reflexes a adopter des l'arrivee</div></div>
+
+<div class="success"><strong>Ces reflexes font la difference entre galerer les premiers mois et bien demarrer.</strong> Ils viennent de l'experience d'etudiants algeriens qui ont vecu exactement ce que tu vas vivre.</div>
+
+<table>
+  <thead><tr><th>Reflexe</th><th>Pourquoi c'est important</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Cuisiner a la maison le plus possible</strong></td><td>Un repas au restaurant = 12 a 20 EUR. Cuisiner soi-meme = 2 a 4 EUR par repas. La difference sur un mois est enorme.</td></tr>
+    <tr><td><strong>Garder tous tes releves bancaires</strong></td><td>La CAF, la Secu et certaines administrations peuvent te les demander. Ne jette rien.</td></tr>
+    <tr><td><strong>Toujours avoir 50 EUR en liquide sur toi</strong></td><td>Certains endroits n'acceptent pas la carte. Les urgences arrivent toujours au mauvais moment.</td></tr>
+    <tr><td><strong>Ne pas hésiter a demander de l'aide</strong></td><td>Les services universitaires (BVE, CROUS) existent pour ca. Les etudiants francais aussi peuvent aider.</td></tr>
+    <tr><td><strong>Explorer les epiceries asiatiques et maghrebines</strong></td><td>Produits halal moins chers que les grandes surfaces. Il y en a dans toutes les grandes villes.</td></tr>
+    <tr><td><strong>S'inscrire rapidement aux cours et groupes etudiants</strong></td><td>Les informations importantes circulent dans ces groupes. Ne pas manquer la rentree.</td></tr>
+    <tr><td><strong>Garder des preuves de tous tes paiements</strong></td><td>Loyer, CAF, assurance : garde les recus numeriques et papier pendant au moins 2 ans.</td></tr>
+    <tr><td><strong>Contacter NextStage si tu as des questions</strong></td><td>On est disponibles sur WhatsApp pour t'aider tout au long de ton installation.</td></tr>
+  </tbody>
+</table>
+
+<div class="conseil"><strong>Rappel important :</strong> WhatsApp NextStage : <strong>+33 7 59 80 44 62</strong> - Email : <strong>nextsttage@gmail.com</strong> - nextstagefr.com</div>
+
+<div class="doc-footer">
+  <span>NextStage - nextstagefr.com</span>
+  <span>Checklist Depart Algerie - France</span>
+  <span>nextsttage@gmail.com</span>
+</div>
+
+<script>
+function downloadPDF() {
+  var btn = document.getElementById('downloadBtn');
+  btn.style.display = 'none';
+  window.print();
+  setTimeout(function() { btn.style.display = ''; }, 500);
+}
+</script>
+</body>
+</html>

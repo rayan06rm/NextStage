@@ -257,7 +257,7 @@ if (form) {
       ville:          form.querySelector('input[name="ville"]')?.value || '',
       campus_france:  form.querySelector('select[name="campus_france"]')?.value || '',
       prenom:         form.querySelector('input[name="prenom"]')?.value || '',
-      whatsapp:       form.querySelector('input[name="whatsapp"]')?.value || '',
+      whatsapp:       (document.getElementById('diagPrefix')?.value || '+213') + (document.getElementById('diagWaNumber')?.value || '').trim().replace(/^0+/, ''),
       email:          form.querySelector('input[name="email"]')?.value || '',
     };
 

@@ -3,19 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextStage</title>
-  <meta name="description" content="NextStage accompagne les étudiants algériens dans leur procédure Campus France. Checklist, modèles, guide entretien, simulation visa. De l'Algérie à la France.">
+  <title>NextStage - Campus France Algérie 2026 | Accompagnement étudiant</title>
   <link rel="icon" type="image/png" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <meta name="description" content="NextStage accompagne les étudiants algériens dans leur procédure Campus France. Guide complet, checklist, modèles de documents, simulation d'entretien, suivi visa.">
-  <meta name="keywords" content="Campus France Algérie, visa étudiant France, procédure Campus France, étudiant algérien France">
-  <meta property="og:title" content="NextStage - Campus France pour étudiants algériens">
-  <meta property="og:description" content="Accompagnement Campus France par un étudiant algérien qui a tout vécu. 3 admissions, visa obtenu après refus.">
+  <meta name="description" content="NextStage accompagne les étudiants algériens dans la procédure Campus France 2026. Checklist 55 étapes, 17 annales TCF, modèles de documents, simulation entretien, suivi visa. Par un étudiant algérien qui a tout vécu.">
+  <meta name="keywords" content="Campus France Algérie 2026, visa étudiant France, procédure Campus France, étudiant algérien France, Boite Pastel Algérie, TCF Algérie, entretien Campus France, dossier visa France, étudier en France depuis Algérie, accompagnement Campus France">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="NextStage - Campus France Algérie 2026 | Guide complet">
+  <meta property="og:description" content="Accompagnement Campus France par un étudiant algérien qui a tout vécu. 3 admissions, refus de visa, visa obtenu. Checklist, TCF, modèles de documents, simulation entretien.">
   <meta property="og:url" content="https://nextstagefr.com">
   <meta property="og:image" content="https://nextstagefr.com/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NextStage - Campus France Algérie 2026">
+  <meta name="twitter:description" content="Accompagnement Campus France par un étudiant algérien. Checklist 55 étapes, TCF, modèles de documents, simulation entretien.">
+  <meta name="twitter:image" content="https://nextstagefr.com/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "NextStage",
+    "url": "https://nextstagefr.com",
+    "description": "Accompagnement Campus France pour étudiants algériens. Checklist, guides, modèles de documents, simulation entretien Campus France.",
+    "email": "nextsttage@gmail.com",
+    "sameAs": ["https://www.tiktok.com/@nextsttage", "https://www.instagram.com/nextsttage/"],
+    "offers": [
+      {"@type": "Offer", "name": "Pack Standard", "price": "9950", "priceCurrency": "DZD", "url": "https://nextstagefr.com/paiement.html"},
+      {"@type": "Offer", "name": "Pack Premium", "price": "29950", "priceCurrency": "DZD", "url": "https://nextstagefr.com/paiement.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Comment faire la procédure Campus France depuis l'Algérie ?", "acceptedAnswer": {"@type": "Answer", "text": "La procédure Campus France en Algérie se fait via la Boite Pastel (etudes-en-france.fr). Il faut passer le TCF, créer un dossier sur Pastel, passer un entretien Campus France, obtenir les admissions et déposer le dossier visa chez Capago."}},
+      {"@type": "Question", "name": "Quel niveau de TCF faut-il pour étudier en France ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour une Licence 1, il faut le TCF DAP avec un minimum de B2 (400 points recommandé). Pour les Licence 2 et plus, le TCF Tout Public est accepté."}},
+      {"@type": "Question", "name": "Peut-on obtenir un visa étudiant France après un refus ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le fondateur de NextStage a lui-même obtenu son visa après un premier refus, en corrigeant les erreurs du dossier consulaire."}}
+    ]
+  }
+  </script>
   <link rel="canonical" href="https://nextstagefr.com">
 </head>
 <body>
@@ -735,8 +765,24 @@
               <input type="text" name="prenom" placeholder="Ton prénom" required>
             </div>
             <div class="field-wrap">
-              <label class="field-label">WhatsApp (avec indicatif +213)</label>
-              <input type="tel" name="whatsapp" placeholder="+213 XXX XXX XXX" required>
+              <label class="field-label">Ton WhatsApp</label>
+              <div class="phone-field">
+                <select class="phone-prefix-select" id="diagPrefix">
+                  <option value="+213" selected>🇩🇿 +213</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+216">🇹🇳 +216</option>
+                  <option value="+212">🇲🇦 +212</option>
+                  <option value="+32">🇧🇪 +32</option>
+                  <option value="+41">🇨🇭 +41</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+90">🇹🇷 +90</option>
+                  <option value="+966">🇸🇦 +966</option>
+                  <option value="+971">🇦🇪 +971</option>
+                </select>
+                <input type="tel" id="diagWaNumber" class="phone-number-input" placeholder="6XX XXX XXX" autocomplete="tel">
+              </div>
             </div>
             <div class="field-wrap">
               <label class="field-label">Email (pour recevoir les ressources)</label>
@@ -856,7 +902,7 @@
           <p class="offre-pitch">Pour comprendre la procédure et démarrer avec les bonnes bases.</p>
         </div>
         <ul class="offre-feats">
-          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide Campus France complet — 6 étapes (PDF)</li>
+          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide Campus France complet - 6 étapes (PDF)</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Checklist des documents par niveau (L1, L2+)</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Vidéos TikTok NextStage · +2,2M vues</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Diagnostic personnalisé de ta situation</li>
@@ -874,9 +920,9 @@
         </div>
         <ul class="offre-feats">
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Tout l'Essentiel inclus</li>
-          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Checklist complète — 29 tâches dans le bon ordre</li>
+          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Checklist complète - 29 tâches dans le bon ordre</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> 17 annales TCF avec audio + PDF</li>
-          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide entretien — 15 questions préparées</li>
+          <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide entretien - 15 questions préparées</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Modèle CV · Lettre de motivation · Lettre financement</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide préparation TCF/DELF</li>
           <li><span class="feat-check"><i data-lucide="check-circle"></i></span> Guide logement en France + APL</li>
@@ -945,7 +991,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>Campus France est l'organisme officiel qui gère les candidatures des étudiants étrangers souhaitant étudier en France. Pour les Algériens, la procédure passe par la plateforme Pastel : tu crées ton dossier en ligne, tu choisis tes formations, tu passes un entretien avec un responsable Campus France, puis tu déposes ta demande de visa VLS-TS au consulat français. La procédure dure en général entre 6 et 10 mois. Chaque étape a ses pièges — NextStage les a tous vécus et documentés pour toi.</p>
+          <p>Campus France est l'organisme officiel qui gère les candidatures des étudiants étrangers souhaitant étudier en France. Pour les Algériens, la procédure passe par la plateforme Pastel : tu crées ton dossier en ligne, tu choisis tes formations, tu passes un entretien avec un responsable Campus France, puis tu déposes ta demande de visa VLS-TS au consulat français. La procédure dure en général entre 6 et 10 mois. Chaque étape a ses pièges - NextStage les a tous vécus et documentés pour toi.</p>
         </div>
       </div>
 
@@ -965,7 +1011,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>Non. Un refus de visa n'est pas une fin, c'est une information. J'ai moi-même reçu un refus du consulat, malgré 3 admissions universitaires. L'équipe NextStage a analysé les raisons du refus, corrigé chaque point faible, et obtenu le visa la même année lors d'une deuxième demande. Si tu as eu un refus, la première étape c'est de comprendre pourquoi — c'est exactement ce que propose le pack Premium.</p>
+          <p>Non. Un refus de visa n'est pas une fin, c'est une information. J'ai moi-même reçu un refus du consulat, malgré 3 admissions universitaires. L'équipe NextStage a analysé les raisons du refus, corrigé chaque point faible, et obtenu le visa la même année lors d'une deuxième demande. Si tu as eu un refus, la première étape c'est de comprendre pourquoi - c'est exactement ce que propose le pack Premium.</p>
         </div>
       </div>
 
@@ -975,7 +1021,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>Le pack Standard te donne toutes les ressources pour avancer seul : checklist 29 étapes, 17 annales TCF, modèles de documents (CV, lettre de motivation, lettre de financement), guide entretien, guides logement et arrivée en France. Tu travailles à ton rythme avec les bons outils. Le pack Premium c'est un accompagnement complet — NextStage lit et corrige ton dossier, tu passes une simulation d'entretien, ton dossier visa est relu avant le dépôt chez Capago, et tu as accès à un suivi WhatsApp jusqu'à l'obtention de ton visa. Le Premium est limité à 10 étudiants par rentrée.</p>
+          <p>Le pack Standard te donne toutes les ressources pour avancer seul : checklist 29 étapes, 17 annales TCF, modèles de documents (CV, lettre de motivation, lettre de financement), guide entretien, guides logement et arrivée en France. Tu travailles à ton rythme avec les bons outils. Le pack Premium c'est un accompagnement complet - NextStage lit et corrige ton dossier, tu passes une simulation d'entretien, ton dossier visa est relu avant le dépôt chez Capago, et tu as accès à un suivi WhatsApp jusqu'à l'obtention de ton visa. Le Premium est limité à 10 étudiants par rentrée.</p>
         </div>
       </div>
 
@@ -985,7 +1031,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>Tout est pensé pour la réalité algérienne. Le paiement se fait via BaridiMob ou virement CCP — pas besoin de carte internationale. Tu vires le montant exact sur le RIP NextStage, tu envoies une capture du reçu via la page de paiement, et l'accès est validé sous 24h. Ton espace membre t'est ouvert immédiatement après validation.</p>
+          <p>Tout est pensé pour la réalité algérienne. Le paiement se fait via BaridiMob ou virement CCP - pas besoin de carte internationale. Tu vires le montant exact sur le RIP NextStage, tu envoies une capture du reçu via la page de paiement, et l'accès est validé sous 24h. Ton espace membre t'est ouvert immédiatement après validation.</p>
         </div>
       </div>
 
@@ -995,7 +1041,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>Non — les décisions finales appartiennent aux universités et au consulat, et personne ne peut garantir un résultat. Ce que NextStage garantit : un dossier préparé sérieusement, une méthode basée sur une vraie expérience terrain, et une préparation qui maximise tes chances. 3 admissions sur 3 candidatures, c'est le résultat de cette méthode. Inch'allah tu feras pareil.</p>
+          <p>Non - les décisions finales appartiennent aux universités et au consulat, et personne ne peut garantir un résultat. Ce que NextStage garantit : un dossier préparé sérieusement, une méthode basée sur une vraie expérience terrain, et une préparation qui maximise tes chances. 3 admissions sur 3 candidatures, c'est le résultat de cette méthode. Inch'allah tu feras pareil.</p>
         </div>
       </div>
 
@@ -1005,7 +1051,7 @@
           <span class="faq-icon"></span>
         </button>
         <div class="faq-body">
-          <p>NextStage n'est pas une agence qui lit des procédures sur internet. C'est une plateforme créée par un étudiant algérien qui a vécu exactement ce que tu vis — procédure Campus France depuis Béjaïa, 3 admissions universitaires, refus de visa, correction du dossier, visa obtenu la même année. Aujourd'hui en Licence Informatique à Sorbonne Paris Nord. NextStage rassemble cette expérience réelle et la rend accessible à tous les étudiants algériens qui veulent étudier en France.</p>
+          <p>NextStage n'est pas une agence qui lit des procédures sur internet. C'est une plateforme créée par un étudiant algérien qui a vécu exactement ce que tu vis - procédure Campus France depuis Béjaïa, 3 admissions universitaires, refus de visa, correction du dossier, visa obtenu la même année. Aujourd'hui en Licence Informatique à Sorbonne Paris Nord. NextStage rassemble cette expérience réelle et la rend accessible à tous les étudiants algériens qui veulent étudier en France.</p>
         </div>
       </div>
 
@@ -1063,6 +1109,12 @@
         <a href="https://www.tiktok.com/@nextsttage" target="_blank" rel="noopener">TikTok · +12 000 abonnés</a>
         <a href="https://www.instagram.com/nextsttage/" target="_blank" rel="noopener">Instagram</a>
       </div>
+      <div class="footer-col">
+        <span class="footer-col-title">Légal</span>
+        <button class="footer-legal-btn" onclick="openLegal('mentions')">Mentions légales</button>
+        <button class="footer-legal-btn" onclick="openLegal('cgv')">CGV</button>
+        <button class="footer-legal-btn" onclick="openLegal('privacy')">Confidentialité</button>
+      </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 NextStage · nextstagefr.com · Tous droits réservés</p>
@@ -1072,5 +1124,131 @@
 
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="main.js"></script>
+
+<!-- ════ MODALES LÉGALES ════ -->
+<div class="legal-overlay" id="legalOverlay" onclick="closeLegal()"></div>
+
+<div class="legal-modal" id="legalModal">
+  <div class="legal-modal-header">
+    <h2 class="legal-modal-title" id="legalTitle"></h2>
+    <button class="legal-modal-close" onclick="closeLegal()" aria-label="Fermer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="legal-modal-body" id="legalBody"></div>
+</div>
+
+<script>
+const LEGAL = {
+  mentions: {
+    title: 'Mentions légales',
+    html: `
+      <div class="lblock">
+        <div class="lblock-title">Editeur du site</div>
+        <p><strong>NextStage</strong> est un service d'accompagnement Campus France édité par Rayan Remili, étudiant-entrepreneur.</p>
+        <p>
+          <span class="lrow"><span class="lrow-k">Email</span><span class="lrow-v">nextsttage@gmail.com</span></span>
+          <span class="lrow"><span class="lrow-k">WhatsApp</span><span class="lrow-v">+33 7 59 80 44 62</span></span>
+          <span class="lrow"><span class="lrow-k">TikTok</span><span class="lrow-v">@nextsttage (+12 000 abonnés)</span></span>
+        </p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Hébergement</div>
+        <p>Le site est hébergé par <strong>Vercel Inc.</strong> - 440 N Barranca Ave #4133, Covina, CA 91723, USA · <a href="https://vercel.com" target="_blank">vercel.com</a></p>
+        <p>Les données sont stockées sur <strong>Supabase</strong> (Supabase Inc., San Francisco, USA) · <a href="https://supabase.com" target="_blank">supabase.com</a></p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Propriété intellectuelle</div>
+        <p>Tous les contenus du site (textes, guides, modèles de documents, vidéos, charte graphique) sont la propriété exclusive de NextStage. Toute reproduction sans autorisation expresse est interdite.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Responsabilité</div>
+        <p>Les informations fournies sont à titre indicatif et pédagogique. NextStage ne peut être tenu responsable des décisions prises par les utilisateurs. Les procédures Campus France et visa étant susceptibles d'évoluer, il est conseillé de vérifier les informations auprès des sources officielles : <a href="https://www.campusfrance.org" target="_blank">campusfrance.org</a> · <a href="https://france-visas.gouv.fr" target="_blank">france-visas.gouv.fr</a></p>
+      </div>
+    `
+  },
+  cgv: {
+    title: 'Conditions Générales de Vente',
+    html: `
+      <div class="lblock">
+        <div class="lblock-title">Services proposés</div>
+        <p><strong>Pack Standard - 9 950 DA</strong><br>Accès à vie : checklist 55 étapes, 17 annales TCF, modèles de documents, guides, tutoriels vidéo.</p>
+        <p><strong>Pack Premium - 29 950 DA</strong><br>Tout le Standard + revue de dossier, simulation d'entretien Campus France en visio, vérification dossier visa, suivi WhatsApp prioritaire jusqu'au visa.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Paiement</div>
+        <p>Paiement par virement <strong>BaridiMob ou CCP</strong> uniquement (Algérie).</p>
+        <p><strong>Compte CCP :</strong> 007 99999 0042707371 58</p>
+        <p>Une capture d'écran du virement est requise pour valider la commande. L'accès est activé manuellement sous <strong>24 à 48 heures ouvrables</strong> après vérification.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Code d'accès</div>
+        <p>Après validation, le client reçoit par WhatsApp un <strong>code d'accès personnel et unique</strong> lié à son numéro. Ce code est strictement confidentiel. Tout partage peut entraîner la suspension immédiate de l'accès sans remboursement.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Remboursement</div>
+        <p>Aucun remboursement après activation de l'accès, en raison de la nature numérique du service. En cas de non-activation dans les délais, remboursement intégral sur demande.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Durée et support</div>
+        <p>Accès <strong>à vie</strong>, mises à jour incluses. Support disponible par WhatsApp (+33 7 59 80 44 62) et email (nextsttage@gmail.com), réponse sous 24-48h.</p>
+      </div>
+    `
+  },
+  privacy: {
+    title: 'Politique de confidentialité',
+    html: `
+      <div class="lblock">
+        <div class="lblock-title">Données collectées</div>
+        <ul class="llist">
+          <li><strong>Prénom</strong> - personnalisation des communications</li>
+          <li><strong>Numéro WhatsApp</strong> - identifiant d'accès au service</li>
+          <li><strong>Email</strong> - confirmations et newsletters</li>
+          <li><strong>Ville, rentrée, filière</strong> - personnalisation de l'accompagnement</li>
+          <li><strong>Progression checklist</strong> - sauvegardée dans l'espace membre</li>
+          <li><strong>Référence de virement</strong> - validation du paiement</li>
+        </ul>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Prestataires tiers</div>
+        <p>
+          <span class="lrow"><span class="lrow-k">Supabase</span><span class="lrow-v">Stockage des données · <a href="https://supabase.com/privacy" target="_blank">supabase.com</a></span></span>
+          <span class="lrow"><span class="lrow-k">Brevo</span><span class="lrow-v">Emails · <a href="https://www.brevo.com/fr/politique-de-confidentialite/" target="_blank">brevo.com</a></span></span>
+          <span class="lrow"><span class="lrow-k">Resend</span><span class="lrow-v">Notifications · <a href="https://resend.com/privacy" target="_blank">resend.com</a></span></span>
+          <span class="lrow"><span class="lrow-k">Vercel</span><span class="lrow-v">Hébergement · <a href="https://vercel.com/legal/privacy-policy" target="_blank">vercel.com</a></span></span>
+        </p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Conservation et sécurité</div>
+        <p>Données conservées pendant toute la durée d'accès + 3 ans. Protégées par HTTPS, code d'accès unique par client et politiques de sécurité sur la base de données (RLS).</p>
+        <p>Aucun cookie de tracking. Le stockage local (localStorage) est utilisé uniquement pour maintenir la session et sauvegarder la progression.</p>
+      </div>
+      <div class="lblock">
+        <div class="lblock-title">Vos droits (RGPD)</div>
+        <p>Vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données. Pour exercer ces droits : <a href="mailto:nextsttage@gmail.com">nextsttage@gmail.com</a></p>
+      </div>
+    `
+  }
+};
+
+function openLegal(type) {
+  const d = LEGAL[type];
+  if (!d) return;
+  document.getElementById('legalTitle').textContent = d.title;
+  document.getElementById('legalBody').innerHTML = d.html;
+  document.getElementById('legalOverlay').classList.add('active');
+  document.getElementById('legalModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLegal() {
+  document.getElementById('legalOverlay').classList.remove('active');
+  document.getElementById('legalModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLegal(); });
+</script>
+
 </body>
 </html>

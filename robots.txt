@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
+Disallow: /gestion-ns-7x9k2.html
 Disallow: /admin.html
+Disallow: /standard.html
+Disallow: /premium.html
+
+# Permettre les crawlers importants
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://nextstagefr.com/sitemap.xml

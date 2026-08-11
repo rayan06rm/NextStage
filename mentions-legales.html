@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mentions légales - NextStage</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090b; --bg-2: #111318; --border: rgba(255,255,255,0.08);
+      --text: #F9FAFB; --text-2: #9CA3AF; --text-dim: #6B7280;
+      --blue: #2563EB;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.75; }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    /* Header */
+    .site-header { text-align: center; padding: 2rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+    .site-logo { font-size: 1.6rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+    .site-logo em { color: var(--blue); font-style: normal; }
+    .site-header-sub { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* Nav tabs */
+    .legal-tabs { display: flex; gap: 0.4rem; margin-bottom: 2.5rem; background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 0.35rem; }
+    .legal-tab { flex: 1; padding: 0.6rem 0.5rem; border: none; background: none; color: var(--text-dim); font-size: 0.8rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all .15s; font-family: inherit; text-align: center; }
+    .legal-tab.active { background: var(--blue); color: #fff; }
+    .legal-tab:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    /* Sections */
+    .legal-section { display: none; }
+    .legal-section.active { display: block; }
+
+    .legal-eyebrow { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue); margin-bottom: 0.5rem; }
+    .legal-title { font-size: 1.6rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; line-height: 1.2; }
+    .legal-date { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 2rem; }
+
+    .legal-block { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+    .legal-block h3 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .legal-block h3::before { content: ''; display: inline-block; width: 3px; height: 14px; background: var(--blue); border-radius: 2px; flex-shrink: 0; }
+    .legal-block p { font-size: 0.85rem; color: var(--text-2); margin-bottom: 0.6rem; }
+    .legal-block p:last-child { margin-bottom: 0; }
+    .legal-block ul { padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-2); }
+    .legal-block ul li { margin-bottom: 0.4rem; }
+    .legal-block a { color: var(--blue); text-decoration: none; }
+    .legal-block a:hover { text-decoration: underline; }
+    .legal-block strong { color: var(--text); font-weight: 600; }
+
+    .highlight-block { background: rgba(37,99,235,0.06); border: 1px solid rgba(37,99,235,0.2); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--text-2); }
+    .highlight-block strong { color: #93c5fd; }
+
+    /* Footer */
+    .legal-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; }
+    .legal-footer p { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 0.4rem; }
+    .legal-footer a { color: var(--blue); text-decoration: none; }
+    .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; color: var(--text-2); font-size: 0.82rem; font-weight: 600; text-decoration: none; margin-bottom: 2rem; transition: all .15s; }
+    .back-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+    @media (max-width: 480px) {
+      .legal-tabs { flex-direction: column; }
+      .legal-title { font-size: 1.3rem; }
+      .page { padding: 2rem 1rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="site-header">
+    <a href="index.html" class="site-logo">Next<em>Stage</em></a>
+    <p class="site-header-sub">Informations légales</p>
+  </div>
+
+  <a href="index.html" class="back-btn">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour au site
+  </a>
+
+  <!-- TABS -->
+  <div class="legal-tabs">
+    <button class="legal-tab active" onclick="showTab('mentions')">Mentions légales</button>
+    <button class="legal-tab" onclick="showTab('cgv')">CGV</button>
+    <button class="legal-tab" onclick="showTab('privacy')">Confidentialite</button>
+  </div>
+
+  <!-- MENTIONS LÉGALES -->
+  <div class="legal-section active" id="tab-mentions">
+    <p class="legal-eyebrow">Informations légales</p>
+    <h1 class="legal-title">Mentions légales</h1>
+    <p class="legal-date">Dernière mise à jour : août 2026</p>
+
+    <div class="legal-block">
+      <h3>Editeur du site</h3>
+      <p><strong>NextStage</strong> est un service d'accompagnement Campus France édité par Rayan Remili, étudiant-entrepreneur basé en France.</p>
+      <p><strong>Email :</strong> nextsttage@gmail.com<br>
+      <strong>WhatsApp :</strong> +33 7 59 80 44 62<br>
+      <strong>Site :</strong> nextstagefr.com<br>
+      <strong>TikTok :</strong> @nextsttage</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>Hebergement</h3>
+      <p>Le site nextstagefr.com est hébergé par <strong>Vercel Inc.</strong><br>
+      440 N Barranca Ave #4133, Covina, CA 91723, États-Unis<br>
+      <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></p>
+    </div>
+
+    <div class="legal-block">
+      <h3>Base de données</h3>
+      <p>Les données utilisateurs sont stockées sur <strong>Supabase</strong> (Supabase Inc., San Francisco, CA, États-Unis).<br>
+      <a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a></p>
+    </div>
+
+    <div class="legal-block">
+      <h3>Propriété intellectuelle</h3>
+      <p>L'ensemble des contenus du site (textes, guides, modèles de documents, vidéos, charte graphique) sont la propriété exclusive de NextStage. Toute reproduction, représentation, modification ou exploitation sans autorisation expresse est interdite et constitue une contrefaçon.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>Limitation de responsabilité</h3>
+      <p>Les informations fournies sur ce site sont à titre indicatif et pédagogique. NextStage ne peut être tenu responsable des décisions prises par les utilisateurs sur la base de ces informations.</p>
+      <p>Les procédures Campus France et visa étant soumises à des règles officielles susceptibles d'évoluer, il est conseillé de vérifier les informations auprès des sources officielles :<br>
+      <a href="https://www.campusfrance.org" target="_blank" rel="noopener">campusfrance.org</a> · <a href="https://france-visas.gouv.fr" target="_blank" rel="noopener">france-visas.gouv.fr</a></p>
+    </div>
+  </div>
+
+  <!-- CGV -->
+  <div class="legal-section" id="tab-cgv">
+    <p class="legal-eyebrow">Conditions générales</p>
+    <h1 class="legal-title">Conditions Générales de Vente</h1>
+    <p class="legal-date">Dernière mise à jour : août 2026</p>
+
+    <div class="legal-block">
+      <h3>1. Objet</h3>
+      <p>Les présentes CGV régissent les ventes de services d'accompagnement Campus France proposés par NextStage (nextstagefr.com) aux étudiants algériens souhaitant étudier en France.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>2. Services proposes</h3>
+      <p><strong>Pack Standard (9 950 DA)</strong><br>
+      Accès à vie à l'espace membre comprenant : checklist 55 étapes sur 7 phases, 17 annales TCF avec audio + PDF, modèles de documents (CV, lettres, financement), guides logement/arrivée/entretien, tutoriels vidéo.</p>
+      <p><strong>Pack Premium (29 950 DA)</strong><br>
+      Tout le contenu Standard + revue complète de dossier, simulation d'entretien Campus France en visio, vérification dossier visa avant dépôt Capago, suivi WhatsApp prioritaire jusqu'à l'obtention du visa.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>3. Prix et paiement</h3>
+      <p>Les prix sont exprimés en dinars algériens (DA) toutes taxes comprises.</p>
+      <p>Le paiement s'effectue exclusivement par virement bancaire via <strong>BaridiMob</strong> ou <strong>CCP</strong>.</p>
+      <p><strong>Numéro de compte CCP :</strong> 007 99999 0042707371 58</p>
+      <p>Une capture d'écran du virement est requise pour valider le paiement.</p>
+    </div>
+
+    <div class="highlight-block">
+      <strong>Délai d'activation :</strong> L'accès est activé manuellement par l'équipe NextStage sous <strong>24 à 48 heures ouvrables</strong> après vérification du virement.
+    </div>
+
+    <div class="legal-block">
+      <h3>4. Accès au service</h3>
+      <p>Après validation du paiement, le client reçoit par WhatsApp un <strong>code d'accès personnel et unique</strong> lié à son numéro WhatsApp. Ce code est strictement personnel et confidentiel.</p>
+      <p>Tout partage du code d'accès avec un tiers peut entraîner la <strong>suspension immédiate de l'accès</strong> sans remboursement.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>5. Politique de remboursement</h3>
+      <p>En raison de la nature numérique et immédiatement accessible des services fournis, <strong>aucun remboursement ne sera accordé</strong> après activation de l'accès.</p>
+      <p>En cas de non-activation dans le délai prévu (48h ouvrables), le client peut demander un remboursement intégral en contactant NextStage sur WhatsApp ou par email.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>6. Durée d'accès</h3>
+      <p>L'accès est accordé <strong>à vie</strong>. NextStage s'engage à maintenir le service accessible et à fournir les mises à jour du contenu sans frais supplémentaires.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>7. Support client</h3>
+      <p><strong>WhatsApp :</strong> +33 7 59 80 44 62<br>
+      <strong>Email :</strong> nextsttage@gmail.com<br>
+      <strong>Délai de réponse :</strong> 24 à 48 heures ouvrables</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>8. Droit applicable</h3>
+      <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité via WhatsApp ou email avant tout recours judiciaire.</p>
+    </div>
+  </div>
+
+  <!-- POLITIQUE DE CONFIDENTIALITÉ -->
+  <div class="legal-section" id="tab-privacy">
+    <p class="legal-eyebrow">Protection des données</p>
+    <h1 class="legal-title">Politique de confidentialite</h1>
+    <p class="legal-date">Dernière mise à jour : août 2026 - Conforme RGPD</p>
+
+    <div class="legal-block">
+      <h3>1. Données collectées</h3>
+      <ul>
+        <li><strong>Prénom</strong> - pour personnaliser les communications</li>
+        <li><strong>Numéro WhatsApp</strong> - identifiant unique d'accès au service</li>
+        <li><strong>Adresse email</strong> - pour les confirmations et newsletters</li>
+        <li><strong>Ville et rentree visée</strong> - pour personnaliser l'accompagnement</li>
+        <li><strong>Niveau et filière</strong> - pour adapter les conseils</li>
+        <li><strong>Progression checklist</strong> - sauvegardée dans l'espace membre</li>
+        <li><strong>Référence de virement</strong> - pour valider le paiement</li>
+      </ul>
+    </div>
+
+    <div class="legal-block">
+      <h3>2. Utilisation des données</h3>
+      <ul>
+        <li>Fournir et sécuriser l'accès à l'espace membre</li>
+        <li>Envoyer les confirmations de paiement et codes d'accès</li>
+        <li>Envoyer des emails d'accompagnement (séquence pédagogique)</li>
+        <li>Sauvegarder la progression de l'étudiant entre les sessions</li>
+        <li>Améliorer le service NextStage</li>
+      </ul>
+    </div>
+
+    <div class="legal-block">
+      <h3>3. Prestataires tiers</h3>
+      <p><strong>Supabase</strong> (stockage sécurisé des données) - <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com</a><br>
+      <strong>Brevo</strong> (emails transactionnels et newsletters) - <a href="https://www.brevo.com/fr/politique-de-confidentialite/" target="_blank" rel="noopener">brevo.com</a><br>
+      <strong>Resend</strong> (notifications internes) - <a href="https://resend.com/privacy" target="_blank" rel="noopener">resend.com</a><br>
+      <strong>Vercel</strong> (hébergement du site) - <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com</a></p>
+      <p>Chacun de ces prestataires dispose de sa propre politique de confidentialité conforme au RGPD.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>4. Durée de conservation</h3>
+      <p>Vos données sont conservées pendant toute la durée de votre accès au service et jusqu'à <strong>3 ans</strong> après votre dernière connexion, sauf demande de suppression de votre part.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>5. Vos droits (RGPD)</h3>
+      <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> - obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> - corriger vos données inexactes</li>
+        <li><strong>Droit à l'effacement</strong> - demander la suppression de vos données</li>
+        <li><strong>Droit à la portabilité</strong> - récupérer vos données dans un format lisible</li>
+        <li><strong>Droit d'opposition</strong> - vous opposer au traitement de vos données</li>
+      </ul>
+      <p>Pour exercer ces droits : <a href="mailto:nextsttage@gmail.com">nextsttage@gmail.com</a></p>
+    </div>
+
+    <div class="legal-block">
+      <h3>6. Cookies et stockage local</h3>
+      <p>Le site nextstagefr.com n'utilise <strong>aucun cookie de tracking</strong> ou de publicité. Le stockage local (<code>localStorage</code>) du navigateur est utilisé uniquement pour :</p>
+      <ul>
+        <li>Maintenir votre session de connexion</li>
+        <li>Sauvegarder votre progression dans la checklist</li>
+      </ul>
+      <p>Ces données restent sur votre appareil et ne sont pas partagées avec des tiers.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3>7. Sécurité des données</h3>
+      <p>Vos données sont protégées par :</p>
+      <ul>
+        <li>Connexion HTTPS (chiffrement SSL/TLS)</li>
+        <li>Code d'accès personnel et unique par client</li>
+        <li>Politiques de sécurité (RLS) sur la base de données</li>
+        <li>Accès limité aux données par l'équipe NextStage</li>
+      </ul>
+    </div>
+
+    <div class="legal-block">
+      <h3>8. Contact</h3>
+      <p>Pour toute question relative à vos données personnelles :<br>
+      <strong>Email :</strong> <a href="mailto:nextsttage@gmail.com">nextsttage@gmail.com</a><br>
+      <strong>WhatsApp :</strong> +33 7 59 80 44 62</p>
+    </div>
+  </div>
+
+  <div class="legal-footer">
+    <p>© 2026 NextStage · nextstagefr.com · Tous droits reserves</p>
+    <p><a href="index.html">Retour au site</a></p>
+  </div>
+
+</div>
+
+<script>
+function showTab(tab) {
+  document.querySelectorAll('.legal-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.legal-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

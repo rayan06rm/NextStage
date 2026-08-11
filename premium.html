@@ -1150,8 +1150,8 @@
     </div>
 
     <div class="login-field">
-      <label>Code d'acces</label>
-      <input type="password" id="loginInput" placeholder="••••••••••" onkeydown="if(event.key==='Enter')doLogin()" autocomplete="current-password">
+      <label>Ton code personnel</label>
+      <input type="password" id="loginInput" placeholder="NS-XXXX-XXXX-XXXX" onkeydown="if(event.key==='Enter')doLogin()" autocomplete="current-password">
     </div>
 
     <button class="login-btn" onclick="doLogin()">
@@ -1230,7 +1230,7 @@
       </button>
     </nav>
     <div class="sidebar-footer">
-      <a href="https://wa.me/33759804462?text=Salam Rayan, je suis membre Premium et j'ai besoin de toi." target="_blank" class="sidebar-premium-btn">
+      <a href="https://wa.me/33759804462?text=Salut Rayan, je suis membre Premium et j'ai besoin de toi." target="_blank" class="sidebar-premium-btn">
         <span class="premium-btn-ico"><i data-lucide="zap"></i></span>
         <span class="premium-btn-text">
           <span class="premium-btn-title">WhatsApp prioritaire</span>
@@ -1527,7 +1527,7 @@
             <p>Pour toute question urgente liée à ta procédure, écris directement sur WhatsApp - c'est le canal le plus rapide.</p>
             <span class="contact-note"><i data-lucide="zap"></i> Réponse prioritaire sous 24h</span>
           </div>
-          <a href="https://wa.me/33759804462?text=Salam Rayan, j'ai une urgence concernant ma procédure." target="_blank" class="btn-wa">
+          <a href="https://wa.me/33759804462?text=Salut Rayan, j'ai une urgence concernant ma procédure." target="_blank" class="btn-wa">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M11.99 0C5.369 0 0 5.369 0 11.99c0 2.133.563 4.13 1.543 5.861L.057 23.994l6.304-1.654C7.926 23.358 9.912 24 11.99 24 18.61 24 24 18.631 24 12.01 24 5.369 18.61 0 11.99 0z"/></svg>
             WhatsApp →
           </a>
@@ -2238,6 +2238,15 @@
           Procedure Campus France
         </div>
         <div class="doc-grid">
+          <div class="doc-card" style="border-color:rgba(250,204,21,0.25);background:rgba(250,204,21,0.03);">
+            <div class="doc-card-top">
+              <div class="doc-card-ico" style="background:rgba(250,204,21,0.1);border-color:rgba(250,204,21,0.3);color:var(--amber);"><i data-lucide="book-marked"></i></div>
+              <div class="doc-card-name">Guide complet Campus France 2027</div>
+            </div>
+            <div class="doc-card-desc">La procedure complete pour la rentree 2027. Toutes les etapes, les delais, les documents - mis a jour.</div>
+            <span class="doc-card-tag" style="background:rgba(250,204,21,0.1);color:var(--amber);border-color:rgba(250,204,21,0.3);">Nouveau 2027</span>
+            <a href="guide-campus-france-2027.html" target="_blank" class="doc-card-btn" style="background:var(--amber);color:#1a1a1a;"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
           <div class="doc-card">
             <div class="doc-card-top">
               <div class="doc-card-ico"><i data-lucide="list-checks"></i></div>
@@ -2352,6 +2361,15 @@
             <div class="doc-card-desc">VLS-TS ANEF, compte bancaire, budget mensuel, Secu etudiante.</div>
             <span class="doc-card-tag green">Apres le visa</span>
             <a href="guide-arrivee-france.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
+          </div>
+          <div class="doc-card">
+            <div class="doc-card-top">
+              <div class="doc-card-ico green"><i data-lucide="luggage"></i></div>
+              <div class="doc-card-name">Checklist depart Algerie - France</div>
+            </div>
+            <div class="doc-card-desc">Documents, bagages, demarches avant le depart et premiers jours en France. Tout dans l'ordre.</div>
+            <span class="doc-card-tag green">Avant le depart</span>
+            <a href="checklist-depart.html" target="_blank" class="doc-card-btn"><i data-lucide="external-link"></i> Ouvrir</a>
           </div>
         </div>
       </div>
@@ -2691,7 +2709,7 @@ async function syncRestoreSession(whatsapp) {
    sinon n'importe quel client Standard pourrait accéder au Premium. */
 const ACCESS_HASH = 'e1d435aed9fdce7ff3a15ec8fea6db64914fdce25f78d57b8fda724d5f613177';
 
-/* ════ SECURITY — Rate limiting + Supabase WA check ════ */
+/* ════ SECURITY - Rate limiting + Supabase WA check ════ */
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_MS   = 15 * 60 * 1000; // 15 minutes
 const ATTEMPT_KEY  = 'ns_login_attempts';
@@ -2719,40 +2737,41 @@ function isLockedOut() {
   return 0;
 }
 
-async function checkWaInSupabase(whatsapp) {
+async function checkWaInSupabase(whatsapp, inputCode) {
   try {
     const normalize = (n) => n.replace(/\D/g, '');
     const input = normalize(whatsapp);
     if (input.length < 8) return false;
 
-    const url = _SB_URL + '/rest/v1/payments?status=eq.validated&pack=eq.premium&select=whatsapp';
+    // Chercher le paiement avec ce numéro et ce pack
+    const url = _SB_URL + '/rest/v1/payments?status=eq.validated&pack=eq.premium&select=whatsapp,access_code';
     const r = await fetch(url, {
       headers: { 'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY }
     });
 
-    if (!r.ok) return false; // Supabase erreur = on refuse
-
+    if (!r.ok) return false;
     const data = await r.json();
     if (!Array.isArray(data) || data.length === 0) return false;
 
     return data.some(p => {
       if (!p.whatsapp) return false;
       const stored = normalize(p.whatsapp);
-      // Correspondance exacte
-      if (stored === input) return true;
-      // Meme suffixe (9 chiffres) ET meme indicatif
+
+      // Vérifier le numéro WhatsApp
       const inputSuffix  = input.slice(-9);
       const storedSuffix = stored.slice(-9);
       if (inputSuffix !== storedSuffix) return false;
       const inputPrefix  = input.slice(0, input.length - 9);
       const storedPrefix = stored.slice(0, stored.length - 9);
-      // Si les deux ont un indicatif et qu'ils sont differents → refus
       if (inputPrefix && storedPrefix && inputPrefix !== storedPrefix) return false;
-      return true;
+
+      // Vérifier le code d'accès personnel
+      if (!p.access_code || !inputCode) return false;
+      return p.access_code.trim().toUpperCase() === inputCode.trim().toUpperCase();
     });
   } catch(e) {
     console.warn('[checkWa]', e.message);
-    return false; // erreur reseau = on refuse
+    return false;
   }
 }
 
@@ -2801,7 +2820,7 @@ async function doLogin() {
   const prefix   = document.getElementById('loginPrefix')?.value || '+213';
   const waRaw    = (document.getElementById('loginWa')?.value || '').trim().replace(/^0+/, '');
   const whatsapp = waRaw ? prefix + waRaw : '';
-  const hash     = await sha256(input.value.trim());
+  const inputCode = input.value.trim();
 
   // 1. Valider le numero WhatsApp
   if (!waRaw || waRaw.length < 7) {
@@ -2812,35 +2831,37 @@ async function doLogin() {
     return;
   }
 
-  // 2. Valider le code d'acces
-  if (hash !== ACCESS_HASH) {
-    incAttempts();
-    const rem = MAX_ATTEMPTS - getAttempts().count;
+  // 2. Valider le code (non vide)
+  if (!inputCode || inputCode.length < 6) {
     input.classList.add('shake');
-    msgEl.textContent = rem > 0
-      ? `Code incorrect. ${rem} tentative${rem > 1 ? 's' : ''} restante${rem > 1 ? 's' : ''}.`
-      : 'Compte bloque 15 minutes.';
+    msgEl.textContent = 'Entre ton code personnel.';
     errorEl.style.display = 'flex';
     setTimeout(() => input.classList.remove('shake'), 500);
     return;
   }
 
-  // 3. Verifier le WhatsApp dans Supabase
+  // 3. Verifier WhatsApp + code personnel dans Supabase
   msgEl.textContent = 'Verification en cours...';
   errorEl.style.display = 'flex';
   errorEl.style.background = 'rgba(37,99,235,0.08)';
   errorEl.style.borderColor = 'rgba(37,99,235,0.2)';
   errorEl.style.color = '#93c5fd';
 
-  const waOk = await checkWaInSupabase(whatsapp);
+  const waOk = await checkWaInSupabase(whatsapp, inputCode);
+
+  errorEl.style.background = '';
+  errorEl.style.borderColor = '';
+  errorEl.style.color = '';
+
   if (!waOk) {
     incAttempts();
-    errorEl.style.background = '';
-    errorEl.style.borderColor = '';
-    errorEl.style.color = '';
+    const rem = MAX_ATTEMPTS - getAttempts().count;
     input.classList.add('shake');
     document.getElementById('loginWa')?.classList.add('shake');
-    msgEl.textContent = 'Numero WhatsApp non reconnu. Utilise le numero avec lequel tu as paye.';
+    msgEl.textContent = rem > 0
+      ? `Numero ou code incorrect. ${rem} tentative${rem > 1 ? 's' : ''} restante${rem > 1 ? 's' : ''}.`
+      : 'Compte bloque 15 minutes.';
+    errorEl.style.display = 'flex';
     setTimeout(() => {
       input.classList.remove('shake');
       document.getElementById('loginWa')?.classList.remove('shake');
@@ -2848,12 +2869,9 @@ async function doLogin() {
     return;
   }
 
-  // 4. Tout est correct
+  // 4. Tout correct
   resetAttempts();
   errorEl.style.display = 'none';
-  errorEl.style.background = '';
-  errorEl.style.borderColor = '';
-  errorEl.style.color = '';
   localStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now(), whatsapp }));
   const existing = getStudentIdentity() || {};
   existing.whatsapp = whatsapp;
@@ -3217,7 +3235,7 @@ function shareProgress() {
   });
 
   const msg = encodeURIComponent(
-    `Salam Rayan ! ${name ? `C'est ${name}. ` : ''}Voici ma progression NextStage :\n\n` +
+    `Salut Rayan ! ${name ? `C'est ${name}. ` : ''}Voici ma progression NextStage :\n\n` +
     `Avancement global : ${gPct}% (${totalDone}/${TOTAL} tâches)\n\n` +
     lines.join('\n') +
     `\n\nJ'aimerais avoir ton avis sur la suite 🙂`
@@ -3367,7 +3385,7 @@ async function submitRevue() {
   // Notifier Rayan sur WhatsApp avec le contexte (le fichier doit être envoyé manuellement par l'étudiant en pièce jointe)
   const label = REVUE_DOC_LABELS[docType] || docType;
   const msg = encodeURIComponent(
-    `Salam Rayan, je viens d'envoyer un document pour revue dans mon espace Premium.\nType : ${label}\nFichier : ${fileName}\n${note ? 'Note : ' + note : ''}\n\nJe t'envoie le fichier juste après ce message.`
+    `Salut Rayan, je viens d'envoyer un document pour revue dans mon espace Premium.\nType : ${label}\nFichier : ${fileName}\n${note ? 'Note : ' + note : ''}\n\nJe t'envoie le fichier juste après ce message.`
   );
   setTimeout(() => window.open(`https://wa.me/33759804462?text=${msg}`, '_blank'), 600);
 }
@@ -3514,7 +3532,7 @@ async function submitSimulation() {
   // Ouvrir WhatsApp avec message detaille
   const simDateFmt = slot.date ? new Date(slot.date + 'T12:00').toLocaleDateString('fr-FR', {weekday:'long', day:'2-digit', month:'long', year:'numeric'}) : slot.date;
   const simMsg = encodeURIComponent(
-    'Salam, je suis ' + (name || 'un membre Premium NextStage') + '.\n\n' +
+    'Salut, je suis ' + (name || 'un membre Premium NextStage') + '.\n\n' +
     'Je viens de confirmer ma simulation d\'entretien Campus France dans mon espace Premium.\n\n' +
     'Date : ' + simDateFmt + '\n' +
     'Heure : ' + (slot.time || '') + '\n' +
@@ -3656,9 +3674,8 @@ function closeProfileModal() {
 }
 function saveProfileModal() {
   var name = document.getElementById('profileInputName').value.trim();
-  var waPrefix = document.getElementById('profilePrefix')?.value || '+213';
-  var waRaw = document.getElementById('profileInputWa').value.trim().replace(/^0+/,'');
-  var wa = waRaw ? waPrefix + waRaw : '';
+  // WhatsApp verrouille - utiliser le WA de la session existante
+  var wa = getStudentIdentity()?.whatsapp || JSON.parse(localStorage.getItem(SESSION_KEY)||'null')?.whatsapp || '';
   if (name) localStorage.setItem(NAME_KEY, name);
   if (wa)   localStorage.setItem(WHATSAPP_KEY, wa);
   closeProfileModal();
@@ -3772,7 +3789,7 @@ function showToast(msg, type = '') {
     <div class="profile-field">
       <label>Ton WhatsApp</label>
       <div class="phone-field">
-              <select class="phone-prefix-select" id="profilePrefix">
+              <select class="phone-prefix-select" id="profilePrefix" disabled style="opacity:0.6;cursor:not-allowed;">
                 <option value="+213" selected>🇩🇿 +213</option>
                 <option value="+33">🇫🇷 +33</option>
                 <option value="+216">🇹🇳 +216</option>
@@ -3787,7 +3804,7 @@ function showToast(msg, type = '') {
                 <option value="+971">🇦🇪 +971</option>
                 <option value="+20">🇪🇬 +20</option>
               </select>
-              <input type="tel" class="phone-number-input" id="profileInputWa" placeholder="6XX XXX XXX" autocomplete="tel">
+              <input type="tel" class="phone-number-input" id="profileInputWa" placeholder="6XX XXX XXX" autocomplete="tel" readonly style="opacity:0.6;cursor:not-allowed;background:rgba(255,255,255,0.03);">
             </div>
     </div>
     <div class="profile-modal-actions">
